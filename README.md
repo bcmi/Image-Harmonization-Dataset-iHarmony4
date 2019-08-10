@@ -23,7 +23,7 @@ We collected 5460 images from **Flickr**. After manually segmenting the foregrou
 
 - ### Hday2night
 
-[Hday2night](https://pan.baidu.com/s/1ia_P3-cmjwbpsfszntbTmQ) is generated based on **day2night** dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on different time.
+[Hday2night](https://pan.baidu.com/s/1ia_P3-cmjwbpsfszntbTmQ) is generated based on **day2night** dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time.
 
 
 
