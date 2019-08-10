@@ -1,6 +1,6 @@
 # Image_Harmonization_Datasets
 
-This dataset is a synthesized dataset for **Image Harmonization**. It contains 4 sub-datasets: HCOCO, HAdobe5k, HFlickr and Hday2night, each of which contains synthesized composite images, foreground masks of composite images and corresponding real images. 
+This dataset is a synthesized dataset for **Image Harmonization**. It contains 4 sub-datasets: HCOCO, HAdobe5k, HFlickr, and Hday2night, each of which contains synthesized composite images, foreground masks of composite images and corresponding real images. 
 
 
 
@@ -11,11 +11,11 @@ This dataset is a synthesized dataset for **Image Harmonization**. It contains 4
 
 - ### HCOCO
 
-[HCOCO](https://pan.baidu.com/s/1cjDBYWZYiqKgFNPL62LLEg) , containing 50k synthesized composite images, is generated based on **Microsoft COCO** dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within foreground region, the appearance of COCO image is edited using various color transfer methods.
+[HCOCO](https://pan.baidu.com/s/1cjDBYWZYiqKgFNPL62LLEg) , containing 50k synthesized composite images, is generated based on **Microsoft COCO** dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods.
 
 - ### HAdobe5k
 
-[HAdobe5k](https://pan.baidu.com/s/1EnaKSLfr_CTn6CbyQeEyMg) is generated based on **MIT-Adobe FiveK** dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 editions.
+[HAdobe5k](https://pan.baidu.com/s/1EnaKSLfr_CTn6CbyQeEyMg) is generated based on **MIT-Adobe FiveK** dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions.
 
 - ### HFlickr
 
@@ -23,7 +23,7 @@ We collected 5460 images from **Flickr**. After manually segmenting the foregrou
 
 - ### Hday2night
 
-[Hday2night](https://pan.baidu.com/s/1ia_P3-cmjwbpsfszntbTmQ) is generated based on **day2night** dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on different time.
+[Hday2night](https://pan.baidu.com/s/1ia_P3-cmjwbpsfszntbTmQ) is generated based on **day2night** dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time.
 
 
 
