@@ -8,30 +8,32 @@ Our dataset is a synthesized dataset for Image Harmonization. It contains 4 sub-
 
 | |HCOCO|HAdobe5k|HFlickr|Hday2night|
 |:--:|:--:|:--:|:--:|:--:|
-|Traning set| |[3896](https://pan.baidu.com/s/1fBr5EdAGP9iZULyF9GDt1w)| |[429](https://pan.baidu.com/s/1yp60iqZRB98-csieLN_nug)|
-|Test set| |[433](https://pan.baidu.com/s/1n92lEn45MTxObcZeXAxKRg)| |[48](https://pan.baidu.com/s/127E0T594rMQZ0OIyTL3vXA)|
+|Traning set| |3896| |429|
+|Test set| |433| |48|
 
 - ### HCOCO
 
-[**HCOCO**](https://pan.baidu.com/s/1cjDBYWZYiqKgFNPL62LLEg) , containing 50k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods.
+HCOCO, containing 50k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. The dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1cjDBYWZYiqKgFNPL62LLEg)
 
 
 
 - ### HAdobe5k
 
-[**HAdobe5k**](https://pan.baidu.com/s/1EnaKSLfr_CTn6CbyQeEyMg) is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions.
+HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions. The dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1EnaKSLfr_CTn6CbyQeEyMg)
 
 
 
 - ### HFlickr
 
-We collected 5460 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate [**HFlickr**](https://pan.baidu.com/s/1EMUBmQWwQbUEOfFMIPsRxg) sub-dataset.
+We collected 5460 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate HFlickr sub-dataset. The dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1EMUBmQWwQbUEOfFMIPsRxg) 
 
 
 
 - ### Hday2night
 
-[**Hday2night**](https://pan.baidu.com/s/1ia_P3-cmjwbpsfszntbTmQ) is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time.
+Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. The dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ia_P3-cmjwbpsfszntbTmQ)
+
+
 
 
 
