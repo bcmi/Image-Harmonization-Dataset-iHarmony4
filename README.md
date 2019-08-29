@@ -8,8 +8,8 @@ Our dataset is a synthesized dataset for Image Harmonization. It contains 4 sub-
 
 | |HCOCO|HAdobe5k|HFlickr|Hday2night|
 |:--:|:--:|:--:|:--:|:--:|
-|Traning set| |3896| |429|
-|Test set| |433| |48|
+|Traning set| 54000 |19437| 7200 |333|
+|Test set| 6000 |2160| 800 |144|
 
 - ### HCOCO
 
@@ -19,7 +19,7 @@ HCOCO, containing 50k synthesized composite images, is generated based on [Micro
 
 - ### HAdobe5k
 
-HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions. The dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1EnaKSLfr_CTn6CbyQeEyMg)
+HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions. The dataset and training/testing split are provided in [Baidu Cloud]()
 
 
 
@@ -31,7 +31,7 @@ We collected 5460 images from [Flickr](<https://www.flickr.com/>). After manuall
 
 - ### Hday2night
 
-Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. The dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ia_P3-cmjwbpsfszntbTmQ)
+Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. The dataset and training/testing split are provided in [Baidu Cloud]()
 
 
 
