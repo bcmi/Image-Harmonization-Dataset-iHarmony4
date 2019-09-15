@@ -8,8 +8,8 @@ Our dataset is a synthesized dataset for Image Harmonization. It contains 4 sub-
 
 | |HCOCO|HAdobe5k|HFlickr|Hday2night|
 |:--:|:--:|:--:|:--:|:--:|
-|Traning set| 54000 |19437| 7200 |333|
-|Test set| 6000 |2160| 800 |144|
+|Traning set| 42829 |19437| 7200 |311|
+|Test set| 4760 |2160| 920 |133|
 
 - ### HCOCO
 
