@@ -1,0 +1,4 @@
+0-matching mean error = 0.440632
+10 CV to choose parameters: (bestc=16.000000, bestg=0.250000, minSqrError=0.009116)
+10-CV mean error = 0.055900
+Fitting mean error = 0.047689

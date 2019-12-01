@@ -1,0 +1,176 @@
+lum high: 
+rng = 11.686000 
+mean_d = -0.225532, std_d = 0.672674, stdn_d = 0.057562, corr = 0.240826 
+
+lum shdw: 
+rng = 11.686000 
+mean_d = 0.705301, std_d = 2.211254, stdn_d = 0.189223, corr = 0.492946 
+
+lum median: 
+rng = 11.686000 
+mean_d = -0.669157, std_d = 1.993364, stdn_d = 0.170577, corr = 0.168151 
+
+lum mean: 
+rng = 11.686000 
+mean_d = -0.480421, std_d = 1.741578, stdn_d = 0.149031, corr = 0.194113 
+
+lum std: 
+rng = 11.686000 
+mean_d = -0.213925, std_d = 0.818666, stdn_d = 0.070055, corr = 0.138687 
+
+lum skew: 
+rng = 4.786652 
+mean_d = 0.349919, std_d = 1.260049, stdn_d = 0.263242, corr = 0.131106 
+
+lum kurt: 
+rng = 38.007473 
+mean_d = 0.030082, std_d = 6.921989, stdn_d = 0.182122, corr = 0.049216 
+
+lum entropy: 
+rng = 0.660013 
+mean_d = -0.005347, std_d = 0.094293, stdn_d = 0.142865, corr = 0.228051 
+
+lum range: 
+rng = 11.686000 
+mean_d = -0.930832, std_d = 2.295981, stdn_d = 0.196473, corr = 0.467619 
+
+cntrst top: 
+rng = 5.000000 
+mean_d = -0.113244, std_d = 0.752193, stdn_d = 0.150439, corr = 0.718883 
+
+cntrst low: 
+rng = 5.000000 
+mean_d = 0.000045, std_d = 0.000157, stdn_d = 0.000031, corr = 0.403004 
+
+cntrst median: 
+rng = 5.000000 
+mean_d = 0.016704, std_d = 0.081659, stdn_d = 0.016332, corr = 0.637435 
+
+cntrst mean: 
+rng = 5.000000 
+mean_d = 0.011400, std_d = 0.082463, stdn_d = 0.016493, corr = 0.713198 
+
+cntrst std: 
+rng = 5.000000 
+mean_d = -0.000277, std_d = 0.063111, stdn_d = 0.012622, corr = 0.760112 
+
+cntrst skew: 
+rng = 6.085482 
+mean_d = -0.189253, std_d = 0.925187, stdn_d = 0.152032, corr = 0.235645 
+
+cntrst kurt: 
+rng = 90.167480 
+mean_d = -1.297147, std_d = 15.323530, stdn_d = 0.169945, corr = 0.192094 
+
+cntrst entropy: 
+rng = 1.734832 
+mean_d = -0.042973, std_d = 0.237225, stdn_d = 0.136742, corr = 0.680897 
+
+cntrst range: 
+rng = 5.000000 
+mean_d = -0.113290, std_d = 0.752169, stdn_d = 0.150434, corr = 0.718866 
+
+cct high: 
+rng = 666.666667 
+mean_d = 7.860541, std_d = 52.128918, stdn_d = 0.078193, corr = 0.438429 
+
+cct warm: 
+rng = 666.666667 
+mean_d = -38.330840, std_d = 191.208282, stdn_d = 0.286812, corr = 0.309694 
+
+cct cold: 
+rng = 666.666667 
+mean_d = 17.447686, std_d = 47.466018, stdn_d = 0.071199, corr = 0.494918 
+
+cct median: 
+rng = 666.666667 
+mean_d = 24.175175, std_d = 116.127536, stdn_d = 0.174191, corr = 0.388600 
+
+cct mean: 
+rng = 666.666667 
+mean_d = 20.903838, std_d = 96.633469, stdn_d = 0.144950, corr = 0.463173 
+
+cct std: 
+rng = 666.666667 
+mean_d = 4.598608, std_d = 70.318526, stdn_d = 0.105478, corr = 0.202145 
+
+cct skew: 
+rng = 12.563590 
+mean_d = -0.485831, std_d = 3.093258, stdn_d = 0.246208, corr = 0.196365 
+
+cct kurt: 
+rng = 324.503899 
+mean_d = -1.058598, std_d = 61.107710, stdn_d = 0.188311, corr = 0.067668 
+
+cct entropy: 
+rng = 1.272751 
+mean_d = 0.024680, std_d = 0.285753, stdn_d = 0.224516, corr = 0.217894 
+
+cct range: 
+rng = 666.666667 
+mean_d = -55.778526, std_d = 210.505324, stdn_d = 0.315758, corr = 0.315830 
+
+sat top: 
+rng = 11.686000 
+mean_d = -0.080677, std_d = 0.316036, stdn_d = 0.027044, corr = 0.810676 
+
+sat low: 
+rng = 11.686000 
+mean_d = 1.164145, std_d = 3.488772, stdn_d = 0.298543, corr = 0.482382 
+
+sat median: 
+rng = 11.686000 
+mean_d = 0.153676, std_d = 1.142748, stdn_d = 0.097788, corr = 0.448758 
+
+sat mean: 
+rng = 11.686000 
+mean_d = 0.168139, std_d = 1.112825, stdn_d = 0.095227, corr = 0.483413 
+
+sat std: 
+rng = 11.686000 
+mean_d = -0.197011, std_d = 0.677416, stdn_d = 0.057968, corr = 0.390314 
+
+sat skew: 
+rng = 14.830746 
+mean_d = -0.048657, std_d = 2.543844, stdn_d = 0.171525, corr = 0.254248 
+
+sat kurt: 
+rng = 469.097614 
+mean_d = -4.808419, std_d = 96.374867, stdn_d = 0.205447, corr = 0.122810 
+
+sat entropy: 
+rng = 0.709051 
+mean_d = -0.010501, std_d = 0.113062, stdn_d = 0.159456, corr = 0.294881 
+
+sat range: 
+rng = 11.686000 
+mean_d = -1.244822, std_d = 3.493035, stdn_d = 0.298908, corr = 0.472683 
+
+hue high: 
+rng = 1.000000 
+mean_d = 0.023685, std_d = 0.338145, stdn_d = 0.338145, corr = 0.216993 
+
+hue median: 
+rng = 1.000000 
+mean_d = 0.000000, std_d = 0.000000, stdn_d = 0.000000, corr = NaN 
+
+hue mean: 
+rng = 1.000000 
+mean_d = 0.058085, std_d = 0.348241, stdn_d = 0.348241, corr = 0.235368 
+
+hue std: 
+rng = 1.000000 
+mean_d = -0.166600, std_d = 0.412709, stdn_d = 0.412709, corr = 0.366305 
+
+hue skew: 
+rng = 0.736380 
+mean_d = 0.006118, std_d = 0.348732, stdn_d = 0.473576, corr = 0.000588 
+
+hue kurt: 
+rng = 0.996887 
+mean_d = 0.119322, std_d = 0.490392, stdn_d = 0.491923, corr = 0.174815 
+
+hue entropy: 
+rng = 2.616470 
+mean_d = 0.034963, std_d = 0.413128, stdn_d = 0.157895, corr = 0.172267 
+

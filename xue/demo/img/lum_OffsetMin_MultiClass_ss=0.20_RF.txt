@@ -1,0 +1,13 @@
+mean_d1 = -0.225532,  	 std_d1 = 0.672674,	 error_d1 = 0.405060
+mean_d2 = 0.705301,  	 std_d2 = 2.211254,	 error_d2 = 1.539776
+mean_d3 = -0.480421,  	 std_d3 = 1.741578,	 error_d3 = 1.410508
+mean_d4 = NaN,  	 std_d4 = NaN,	 error_d4 = NaN
+mean_d = -0.048706,  	 std_d = 0.384747,	 error_d = 0.229924
+Fitting Error rate 1 = 0.000000
+Fitting Error rate 2 = 0.000000
+Fitting Error rate 3 = 0.000000
+fitting mean error = 0.301652
+CV Error rate 1 = 0.145939
+CV Error rate 2 = 0.263030
+CV Error rate 3 = 0.254788
+CV mean error = 0.435648

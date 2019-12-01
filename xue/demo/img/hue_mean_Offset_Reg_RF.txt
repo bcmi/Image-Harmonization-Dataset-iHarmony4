@@ -1,0 +1,3 @@
+0-matching mean error = 0.162129
+Fitting mean error = 0.136084
+CV mean error = 0.142984
