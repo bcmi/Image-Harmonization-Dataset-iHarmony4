@@ -1,0 +1,10 @@
+function [x, y] = Bezier(t, alpha) 
+%% inplicit curve 
+% INPUT:  alpha, parameter: 0 - 1
+% INPUT:  t, curve parameter, in [0,1]
+
+x0 = 0;     y0 = 0;
+x1 = alpha; y1 = 1-alpha; 
+x2 = 1;     y2 = 1;
+
+y = (1-t).^2 *y0 + 2*(1-t).*x*y1 + x.^2 *y2;
