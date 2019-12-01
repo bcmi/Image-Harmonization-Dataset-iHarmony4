@@ -1,0 +1,1416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Peter's Functions for Computer Vision</title>
+<meta NAME="keywords" CONTENT="MATLAB,image processing,computer vision,phase congruency,edge detection,image enhancement, ransac">
+
+<meta NAME="description" CONTENT="MATLAB Functions for Computer Vision and Image Analysis. Functions include: Feature detection from Phase Congruency, Edge linking and segment fitting, Projective geometry, Image enhancement, and many others">
+
+<meta http-equiv="refresh">
+<meta http-equiv="Expires" content="Tue, 20 Aug 1996 14:25:27 GMT">
+<link href="pkstylesheet.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<center>
+<h1>MATLAB and Octave Functions <br>
+for Computer Vision and Image Processing</h1>
+</center>
+
+<hr>
+
+<table>
+<tr>
+<td width ="50%">
+<h2><a href=http://www.csse.uwa.edu.au/~pk>Peter Kovesi</a></h2>
+<font size="+1" color="black">
+<a href="http://www.cet.uwa.edu.au">Centre for Exploration Targeting<br>
+School of Earth and Environment<br>
+The University of Western Australia</a></font>
+
+<!--
+<br><br><br>
+This site was developed while I was with the<p>
+<font size="+1" color="black" weight="normal"> 
+<a href="http://www.csse.uwa.edu.au">
+School of Computer Science & Software Engineering<br>
+The University of Western Australia</a> </font>
+
+<p>I continue to collaborate with the school and I thank them for continuing to host this site.
+-->
+
+<td width="50%">
+<br>
+<table border="3", cellpadding="20"> <tr><td>
+<a href="http://dicta2012.csse.uwa.edu.au">
+<font size="+4" weight="bold" color="#0000a0"><b> DICTA 2012</b></font></a>
+<br>
+<font size="+0" weight="bold"><b>
+Digital Image Computing: Techniques and Applications<br><br>
+Fremantle, Western Australia<br>  3-5th December 2012</b></font>
+
+</td></tr></table>
+
+<!--
+<table border="2", cellpadding="10">
+<tr><td>
+<a href="PhD.html"><h3>Ph.D Project: <br>Developing 3D Seismic Data Analysis Tools for the
+Petroleum Industry - An Image Analysis Approach</h3></a>
+</td></tr></table>
+-->
+
+</td>
+
+</table>
+
+<!--<img src="http://www.csse.uwa.edu.au/images/new.gif"> -->
+<!--<img src="http://www.csse.uwa.edu.au/images/updated.gif"> -->
+
+<br>
+
+<hr>
+
+<table cellpadding="20", bordercolor="000000" rules="cols" frame="void">
+<tr><td width="50%">
+<h3>Index to Code Sections</h3>
+<ul>
+<li><a href="#phasecong">Feature Detection via Phase Congruency</a>
+<li><a href="#spatial">Spatial Feature Detection</a>
+<li><a href="#integral">Integral Images</a>
+<li><a href="#hysthresh">Non-Maxima Suppression and Hysteresis Thresholding</a>
+<li><a href="#edgelink">Edge Linking and Line Segment Fitting</a>
+<li><a href="#step2line">Test Grating for Edge Detection</a>
+<li><a href="#noisecomp">Image Denoising</a>
+<li><a href="#shapelet">Surface Normals to Surfaces</a>
+<li><a href="#scalogram">Scalogram Calculation</a>
+<li><a href="#anisodiff">Anisotropic diffusion</a>
+<li><a href="#greytrans">Grey Scale Transformation and Enhancement</a>
+<li><a href="#freqfilt">Frequency Domain Transformations</a>
+<li><a href="#projective">Functions Supporting Projective Geometry</a>
+<li><a href="#match">Feature Matching</a>
+<li><a href="#robust">Model Fitting and Robust Estimation</a>
+<li><a href="#fingerprints">Fingerprint Enhancement</a>
+<li><a href="#syntheticimages">Interesting Synthetic Images</a>
+<li><a href="#asciiimage">ASCII Image Generation</a>
+<li><a href="#rotationtransforms">Rotation Transforms</a>
+<li><a href="#display">Image Display, Image Writing and Miscellaneous</a>
+</ul>
+
+<hr>
+
+The complete set of these functions is available as a zip file 
+<a href="../MatlabFns.zip">MatlabFns.zip</a> 
+
+<ul>
+<li><a href=citesite.html>How to cite this site</a>
+<li><a href=license.html>MIT License</a>
+
+<li>Can't find what you want here? Have a look at<br>
+<a href=othersites.html>Other highly recommended Computer Vision software sites</a>
+</ul>
+
+
+</td>
+
+<td valign="top" width="50%">
+
+
+<h3>MATLAB</h3>
+<p>To use these functions you will need 
+<a href="http://www.mathworks.com/products/matlab/">MATLAB</a> and the 
+<a href="http://www.mathworks.com.au/products/image/">MATLAB Image Processing Toolbox</a>.<br>
+You may also want to refer to the <a href="http://www.mathworks.com.au/help/techdoc/">MATLAB documentation</a> and the
+<a href="http://www.mathworks.com/help/images/index.html">Image Processing Toolbox documentation</a><br>
+
+<br>
+
+<h3>Octave</h3>
+<p>Alternatively you can
+use <a href="http://www.gnu.org/software/octave/">Octave</a> which is
+a very good open source alternative to MATLAB. Almost all the functions
+on this page run under Octave. See my <a href=octaveinfo.html>Notes on using Octave</a>.
+
+
+  <p>MATLAB/Octave compatibility of individual function is indicated as follows
+  <ul>
+  <li type=square> Runs under MATLAB and Octave.
+  <li type=circle> Only runs under MATLAB.
+  <li type=disc> Not tested under Octave (yet).
+  </ul>
+
+
+<hr>
+
+<p>I receive so many mail messages regarding this
+site that I have difficulty responding to them all.  
+I will endeavor to respond to mail
+that directly concerns the use of individual functions.  
+However, please note I do not have the time to provide an on-line vision
+problem solving service! 
+
+<p>Please report any bugs and/or suggest enhancements to<br>
+<!--<img src="http://www.csse.uwa.edu.au/~pk/pkem14b.png">-->
+<img src = "pkemail150.png">
+
+<p>Acknowledgement: This site was developed while I was with the<br>
+<a href="http://www.csse.uwa.edu.au">
+School of Computer Science & Software Engineering<br>
+The University of Western Australia</a> <br>
+I continue to collaborate with the school and I thank them for continuing to host this site.
+
+
+
+<p>Cheers,<br>
+Peter Kovesi
+
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+<a name="phasecong"></a>
+<hr>
+<h4>Feature Detection via Phase Congruency</h4>
+ 
+<center><img align=top src=WWWImages/baboon.pc.gif> </center><br>
+<ul>
+
+<p> Phase congruency is an illumination and contrast invariant measure
+of feature significance. Unlike gradient based feature detectors,
+which can only detect step features, phase congruency correctly
+detects features at <i>all</i> kind of phase angle, and not just step
+features having a phase angle of 0 or 180 degrees.
+
+<li type=square>
+<a href=PhaseCongruency/phasecongmono.m>phasecongmono.m</a> This
+function computes phase congruency via monogenic filters. It has
+excellent speed and much reduced memory requirements compared to the
+other phase congruency functions below.  However you may prefer the
+output from phasecong3's oriented filters.
+
+<li type=square>
+<a href=PhaseCongruency/phasecong3.m>phasecong3.m</a>  This function
+supersedes phasecong2.m and phasecong.m  being faster and requiring less
+memory.
+
+
+<p><ul>
+<li type=square> Deprecated: <a href=PhaseCongruency/phasecong.m>phasecong.m</a>
+Original code for calculating phase congruency in an image.  This function also
+returns a feature type image.  Note this function is superseded by
+phasecong2.m and phasecong3.m and is only here for reference.
+
+<li type=square> Deprecated:
+<a href=PhaseCongruency/phasecong2.m>phasecong2.m</a> Phase congruency
+code that combines edge and corner detection, and provides better
+localization.  Note this function is superseded by phasecong3.m and
+phasecongmono.m and is only here for reference.
+</ul>
+
+<p>
+<li type=circle><a href=PhaseCongruency/dispfeat.m>dispfeat.m</a> This
+function provides visualisation and statistics of the different
+feature types found in an image by phasecong.  Typically you will find
+a broad distribution of all feature types between step edges and
+lines.  This function needs <a
+href=LineSegments/edgelink.m>edgelink.m</a> (see below).
+
+<li type=square><a href=PhaseCongruency/odot.m>odot.m</a> Demonstrates
+the actions of the 'Odot' and 'Oslash' operators on a 1D signal.
+These operators allow one to decompose and combine signals in a way
+that is consistent with the Local Energy model of feature perception.
+
+<li><a href=PhaseCongruency/spatialgabor.m>spatialgabor.m</a> applies
+a single oriented Gabor filter to an image.
+
+<center>
+<table width=50%>
+<tr>
+<td><img align=top src=WWWImages/whalesm.jpg> <br>&nbsp; <td><center> <img align=top
+src=WWWImages/whalesmsym.jpg> <br>phase symmetry image</center>
+</tr></table></center>
+
+<li type=square><a href=PhaseCongruency/phasesym.m>phasesym.m</a> Code for
+calculating phase symmetry. This can be used as a line and blob
+detector.  Phase symmetry is an illumination and contrast invariant
+measure of symmetry in an image.  (A bright circle is not more
+'symmetric' than a grey circle as can be the case with some other
+measures!).  (Updated May 2009)
+
+<li type=square>
+<a href=PhaseCongruency/phasesymmono.m>phasesymmono.m</a> This
+function computes phase symmetry via monogenic filters.  Has excellent
+speed and much reduced memory requirements compared to phasesym.m
+However you may prefer the output from phasesym's oriented filters.
+
+
+<li type=square><a
+href=PhaseCongruency/gaborconvolve.m>gaborconvolve.m</a> Code for
+convolving an image with a bank of log-Gabor filters.  A
+pre-processing step for texture analysis, feature detection and
+classification, etc.
+
+<li type=circle><a
+href=PhaseCongruency/plotgaborfilters.m>plotgaborfilters.m</a> A
+function for plotting log-Gabor filters.  This function is useful for
+seeing what effect the various parameter settings have on the
+formation of a log-Gabor filter bank used in the functions above.
+
+<li type=square><a href=PhaseCongruency/monofilt.m>monofilt.m</a> An
+implementation of Felsberg's monogenic filters.  This function applies
+a bank of monogenic filters to an image to obtain the 2D analytic signal
+over a number of scales.  As in gaborconvolve this can be used as a
+pre-processing step for texture analysis, feature detection and
+classification, etc.
+
+<li><a href=PhaseCongruency/Docs/convexpl.html>An explanation</a> of
+the implementation of convolution with log-Gabor filters used in the
+functions above. 
+
+</ul>
+
+<p><b>References:</b>
+<ul>
+
+<li> Peter Kovesi, 
+     <a href="http://www.csse.uwa.edu.au/~pk/research/pkpapers/ai97.pdf">
+     "Symmetry and Asymmetry From Local Phase".</a> AI'97, Tenth
+     Australian Joint Conference on Artificial Intelligence.  2 - 4
+     December 1997. Proceedings - Poster Papers. pp 185-190.
+
+<li> Peter Kovesi, 
+     <a href="http://mitpress.mit.edu/e-journals/Videre/001/v13.html"> 
+     "Image Features From Phase Congruency".</a> 
+     <i>Videre: A Journal of Computer Vision Research</i>. MIT
+     Press. Volume 1, Number 3, Summer 1999.
+
+<li> Peter Kovesi,
+     <a href="http://www.csse.uwa.edu.au/~pk/research/pkpapers/ACCV62.pdf">
+     "Edges Are Not Just Steps".</a> Proceedings of <em>ACCV2002 The
+     Fifth Asian Conference on Computer Vision</em>, Melbourne Jan
+     22-25, 2002.  pp 822-827. 
+
+<li> Peter Kovesi, 
+     <a href="http://www.csse.uwa.edu.au/~pk/research/pkpapers/phasecorners.pdf">
+     "Phase Congruency Detects Corners and Edges".</a>
+     <i> The Australian Pattern Recognition Society Conference:
+     DICTA 2003. </i> December 2003. Sydney. pp 309-318.
+
+</ul>
+
+
+<a name="spatial"></a>
+<hr> 
+<h4>Spatial Feature Detection</h4>
+<ul>
+
+<li type=square><a href=Spatial/canny.m>canny.m</a> Canny edge
+detector.
+
+<li type=square><a href=Spatial/harris.m>harris.m</a> Harris corner
+detector.
+
+<li type=square><a href=Spatial/fastradial.m>fastradial.m</a> An
+implementation of Loy and Zelinski's fast radial feature
+detector. 
+
+<li type=square><a href=Spatial/gaussfilt.m>gaussfilt.m</a> Wrapper
+function for convenient Gaussian filtering.
+
+<li type=square><a href=Spatial/derivative5.m>derivative5.m</a>
+ computes 1st and 2nd derivatives of an image using the 5-tap
+ coefficients given by Farid and Simoncelli.  Use this function
+ instead of MATLAB's GRADIENT function for much more accurate results.
+
+<li type=square><a href=Spatial/derivative7.m>derivative7.m</a>
+ computes derivatives using the 7-tap
+ coefficients given by Farid and Simoncelli.  
+
+<li type=square><a href=Spatial/regionadjacency.m>regionadjacency.m</a>
+Computes adjacency matrix for an image of labeled regions,  as
+might be produced by a graph cut algorithm.
+
+<li type=square><a href=Spatial/cleanupregions.m>cleanupregions.m</a>
+Cleans up small regions in a segmented image.
+
+<li type=square><a href=Spatial/renumberregions.m>renumberregions.m</a>
+Renumbers regions in a labeled image so that they range from 1:maxRegions.
+
+</ul>
+
+<p><b>Reference:</b>
+<ul>
+<li><a href=Spatial/Docs/A_Combined_Corner_and_Edge_Detector.pdf>Scanned
+images</a> of my photocopy of Harris and Stephens' paper 'A Combined
+Corner and Edge Detector'.
+
+</ul>
+
+<a name="integral"></a>
+<hr>
+<h4>Integral Images</h4>
+<ul>
+
+<li type=square><a href=Spatial/integralimage.m>integralimage.m</a> computes
+integral image of an image.
+
+<li type=square><a href=Spatial/integralfilter.m>integralfilter.m</a> 
+performs filtering using an integral image.
+
+<li type=square><a href=Spatial/intfilttranspose.m>intfilttranspose.m</a>
+transposes an integral image filter specification.
+
+<li type=square><a href=Spatial/integaverage.m>integaverage.m</a>
+performs averaging filtering using an integral image.  Computation
+cost is independent of averaging filter size.
+
+<li type=square>
+<a href=Spatial/integgaussfilt.m>integgaussfilt.m</a>
+This function approximates Gaussian filtering by repeatedly applying
+integaverag.m .  This allows smoothing at a very low computational cost
+that is independent of the Gaussian size.
+
+<li type=square><a href=Spatial/solveinteg.m>solveinteg.m</a>
+This function is used by integgausfilt.m to solve for the multiple averaging
+filter widths needed to approximate a Gaussian of desired standard deviation.
+
+</ul>
+
+<p><b>Reference:</b>
+<ul>
+<li><a href="http://web.csse.uwa.edu.au/~pk/research/pkpapers/FastGaussianSmoothing.pdf">
+Fast Almost-Gaussian Filtering</a> <i> The Australian Pattern
+Recognition Society Conference: DICTA 2010. </i> December
+2010. Sydney. <br> This paper describes how to obtain high speed
+approximate Gaussian filtering via integral images.  There is no
+computational justification for using crude box filters to approximate
+Gaussians and their derivatives as is done, for example, by the SURF feature
+detector.
+</ul>
+
+
+
+
+<a name="nonmax"></a>
+<a name="hysthresh"></a>
+<hr>
+<h4>Non-Maxima Suppression and Hysteresis Thresholding</h4>
+
+<center><img align=top src=WWWImages/baboon.pc.edge.gif></center>
+<br> 
+<ul>
+
+<li type=square><a href=Spatial/nonmaxsup.m>nonmaxsup.m</a> Code for
+performing non-maxima suppression for edge images.
+
+<li type=square><a href=Spatial/nonmaxsuppts.m>nonmaxsuppts.m</a> Code
+for performing non-maxima suppression and thresholding of points
+generated by a feature/corner detector. It optionally returns
+sub-pixel feature locations.
+
+<li type=square><a href=Spatial/subpix2d.m>subpix2d.m</a> Sub-pixel
+locations in a 2D image.
+
+<li type=square><a href=Spatial/subpix3d.m>subpix3d.m</a> Sub-pixel
+locations in a 3D volume or in 2D + scale space data.
+
+<li type=square> <a href=Spatial/hysthresh.m>hysthresh.m</a> code for
+performing hysteresis thresholding. 
+
+<li type=square> <a href=Spatial/smoothorient.m>smoothorient.m</a>
+applies smoothing to an orientation field which can be useful before
+applying nonmaximal suppression.
+
+<li type=square> <a href=Spatial/adaptivethresh.m>adaptivethresh.m</a>
+an implementation of Wellner's adaptive thresholding method.
+
+</ul>
+
+<a name="edgelink"></a>
+<hr> 
+<h4>Edge Linking and Line Segment Fitting</h4>
+<center>
+<table>
+<tr>
+<td><img align=top src=WWWImages/shapes.gif> <br> <center>image</center></td>
+<td><img align=top src=WWWImages/shapese.gif> <br> <center>edges</center></td>
+<td><img align=top src=WWWImages/shapeseim.gif> <br> <center>labeled edges</center></td>
+<td><img align=top src=WWWImages/shapesseg.gif> <br> <center>fitted line segments</center></td>
+</tr></table></center><br>
+<ul>
+
+
+<li><a href=LineSegments/edgelink.m>edgelink.m</a> edge
+linking function that forms lists of connected edge points from a
+binary edge image. (Needs findendsjunctions and cleanedgelist below).
+
+<li><a href=LineSegments/drawedgelist.m>drawedgelist.m</a>
+plots out a set of edge lists generated by edgelink or lineseg.
+
+<li><a href=LineSegments/edgelist2image.m>edgelist2image.m</a>
+transfers edgelist data back into a 2D image array.
+
+<li><a href=LineSegments/lineseg.m>lineseg.m</a> forms
+straight line segments fitted with a specified tolerance to the lists
+of connected edge points.
+
+<!-- Deprecated
+<li type=square><a href=LineSegments/mergeseg.m>mergeseg.m</a> is used
+by lineseg.m to merge co-linear segments that may have been separated
+in the edge linking process.
+<li type=square><a href=LineSegments/drawseg.m>drawseg.m</a> plots the
+fitted line segments.
+<li type=circle><a href=LineSegments/selectseg.m>selectseg.m</a>
+allows you to interactively select segments from an image.
+-->
+
+<li type=square><a href=LineSegments/maxlinedev.m>maxlinedev.m</a> is
+also used by lineseg.m to calculate deviations of the edge lists from
+the fitted segments.
+
+<li><a href=LineSegments/findendsjunctions.m>findendsjunctions.m</a>
+finds line junctions and endings in a line/edge image.
+
+<li><a href=LineSegments/cleanedgelist.m>cleanedgelist.m</a> cleans up a
+set of edge lists generated by edgelink or lineseg so that isolated
+edges and spurs that are shorter than a minimum length are removed.
+
+<li><a href=LineSegments/example/index.html>Example</a> of using these
+functions above.  
+
+</ul>
+
+<a name="step2line"></a>
+<hr> 
+<h4>Test Grating for Edge Detection</h4>
+<center>
+<table>
+<tr>
+<td><img align=top src=WWWImages/step2line.gif> <br><center>Test image</center></td>
+<td><img align=top src=WWWImages/step2line.canny.gif> <br><center>Canny edge image</center></td>
+<td><img align=top src=WWWImages/step2line.pc.gif> <br><center>Phase congruency</center></td>
+<td><img align=top src=WWWImages/step2linecoded.gif> <br><center>Colour coded for feature type</center></td>
+</table> </center> <br> 
+<ul>
+
+<li type=square><a href=PhaseCongruency/step2line.m>step2line.m</a>
+Generates a test image where the feature type changes from a step edge
+to a line feature from top to bottom, while retaining perfect phase
+congruency.  This test image indicates the importance of phase
+congruency irrespective of the angle at which congruency occurs at
+and, up to a point, irrespective of the rate at which the amplitude
+spectrum decays with frequency.  A gradient based edge detector
+produces a double response for all features that have congruence of
+phase at angles other than zero (towards the bottom of the test
+image).  The phase congruency detector marks features with a single
+response.  The colour coded image was generated by <a
+href=PhaseCongruency/dispfeat.m>dispfeat.m</a>
+
+<li type=square><a href=FrequencyFilt/circsine.m>circsine.m</a>
+Generates a test image consisting of a circular sine wave grating.
+Can also be used to construct circular phase congruent patterns.
+
+<li type=square><a href=FrequencyFilt/starsine.m>starsine.m</a>
+Generates a test image consisting of a star like sine wave grating
+radiating out from the centre.  As with circsine this function can be
+used to construct star like phase congruent patterns.
+
+</ul>
+
+<a name="noisecomp"></a>
+<hr>
+<h4>Image Denoising</h4>
+<center><img align=top src=WWWImages/srvb0019gamma-tn.jpg> &nbsp;
+<img align=top src=WWWImages/gclean0019a-tn.jpg> </center><br>
+<ul>
+
+<li type=square><a href=PhaseCongruency/noisecomp.m>noisecomp.m</a>
+Code for denoising images.  This code differs from standard wavelet
+denoising techniques in that it uses non-orthogonal wavelets, and
+unlike existing techniques, ensures that phase information is
+preserved in the image. Phase information is of crucial importance to
+human visual perception.  Also, this code <i>does</i> have an
+effective way of determining threshold levels automatically.
+
+<p>See the example below, under grey scale transformation and
+enhancement, for an example of the use of this function.
+
+</ul>
+
+<p><b>Reference:</b>
+<ul>
+<li> Peter Kovesi, 
+     <a href="http://www.csse.uwa.edu.au/~pk/research/pkpapers/denoise.pdf">
+     "Phase Preserving Denoising of Images". </a>
+     <i> The Australian Pattern Recognition Society Conference:
+     DICTA'99. </i> December 1999. Perth WA. pp 212-217.
+</ul>
+
+<a name="shapelet"></a>
+<hr>
+<h4>Surface Normals to Surfaces</h4>
+
+<center>
+<table>
+<tr><td><img align=top src=WWWImages/rampneedlesm.png><br>
+<center> Surface Normals </center></td>
+<td>&nbsp; &nbsp; &nbsp;</td>
+<td> <img align=top src=WWWImages/rampreconsm.png><br>
+<center>Surface Reconstruction</center></td></tr>
+</table>
+</center>
+
+<ul>
+
+<li type=square><a href=Shapelet/shapeletsurf.m>shapeletsurf.m</a>
+Function reconstructs an estimate of a surface from its surface
+normals by correlating the surface normals with that those of a bank
+of shapelet basis functions. The correlation results are summed to
+produce the reconstruction.  The sumation of shapelet basis functions
+results in an implicit integration of the surface while enforcing
+surface continuity.
+
+<p>Note that the reconstruction is only valid up to a scale factor
+(which can be corrected for). However the reconstruction process is
+very robust to noise and to missing data values.  Reconstructions (up
+to positive/negative shape ambiguity) are possible where there is an
+ambiguity of pi in tilt values.  Low quality reconstructions are also
+possible with just slant, or just tilt data alone.  However, if you
+have full gradient information you are better off with the Frankot
+Chellappa algorithm below.
+
+<li type=square><a
+href=Shapelet/frankotchellappa.m>frankotchellappa.m</a> An
+implementation of Frankot and Chellappa's algorithm for constructing
+an integrable surface from gradient information.  If you have full
+gradient information in x and y this is probably the best algorithm to
+use.  It is very simple, very fast and highly robust to noise.  If you
+have surface normal information in the form of slant and tilt, and you
+have an ambiguity of pi in your tilt data, or only have slant, then
+try using shapeltsurf.m above.
+
+
+<li type=square><a href=Shapelet/grad2slanttilt.m>grad2slanttilt.m</a>
+Converts gradient values over a surface to slant and tilt angles.
+
+<li type=square><a href=Shapelet/slanttilt2grad.m>slanttilt2grad.m</a>
+Converts slant and tilt angles over a surface to gradients.
+
+<li type=square><a href=Shapelet/needleplotgrad.m>needleplotgrad.m</a>
+Generates a needle plot given surface gradients over a surface.
+
+<li type=square><a href=Shapelet/needleplotst.m>needleplotst.m</a> Generates a
+needle plot given slant and tilt values over a surface.
+
+<li type=square><a href=Shapelet/testp.m>testp.m</a> Generates a
+synthetic test surface along with its surface normals for testing
+shapeletsurf.
+
+
+</ul>
+
+<p><b>Reference:</b>
+<ul>
+<li> Peter Kovesi, 
+<a href="http://www.csse.uwa.edu.au/~pk/research/pkpapers/shapeletsICCV.pdf">
+"Shapelets Correlated with Surface Normals Produce Surfaces". </a>
+10th IEEE International Conference on Computer Vision.
+Beijing. pp 994-1001. 2005
+<li><a href="http://www.csse.uwa.edu.au/~pk/research/pkpapers/ShapeletsICCV.ppt">
+PowerPoint Slides</a>
+
+<li><a href="http://www.csse.uwa.edu.au/~pk/Research/ShapeFromContour/index.html">
+An example</a> of how much 3D shape you can get from very minimal
+surface normal information.
+</ul>
+
+
+<a name="scalogram"></a>
+<hr>
+<h4>Scalogram Calculation</h4>
+ <center><img align=top src=WWWImages/dphase2.jpg></center> <br>
+<ul>
+
+<li type=circle><a href=FrequencyFilt/scalogram.m>scalogram.m</a>
+Function to calculate the phase and amplitude scalograms of a 1D
+signal. The analysis is done using quadrature pairs of log Gabor
+wavelets.
+
+</ul>
+
+<a name="anisodiff"></a>
+<hr> 
+<h4>Anisotropic diffusion</h4>
+<center> <img align=top src=WWWImages/Mona_LisaGs.jpg> &nbsp;
+<img align=top src=WWWImages/Mona_diffuses.jpg> </center>  <br>
+<ul>
+
+<li type=square><a href=Spatial/anisodiff.m>anisodiff.m</a> Function
+to perform anisotropic diffusion of an image following Perona and
+Malik's algorithm.  This process smoothes regions while preserving,
+and enhancing, the contrast at sharp intensity gradients.
+
+</ul>
+
+<a name="greytrans"></a>
+<hr>
+<h4>Grey Scale Transformation and Enhancement</h4>
+<ul>
+
+<li type=square><a href=GreyTrans/extractfields.m>extractfields.m</a>
+separates fields from a video frame, and optionally interpolates
+intermediate lines.
+
+<li type=square><a href=GreyTrans/interpfields.m>interpfields.m</a>
+interpolates lines on a field extracted from a video frame.
+
+<li type=square><a href=GreyTrans/normalise.m>normalise.m</a> rescales
+image values to 0-1.
+
+<li type=square><a href=GreyTrans/adjcontrast.m>adjcontrast.m</a>
+adjusts image contrast using sigmoid function.
+
+<li type=square><a href=GreyTrans/adjgamma.m>adjgamma.m</a> adjusts
+image gamma.
+
+<li type=circle><a href=GreyTrans/greytrans.m>greytrans.m</a> allows
+you to interactively remap intensity values in a colour or greyscale
+image via a mapping function defined by a series of spline points.  A
+feeble attempt at replicating <i>xv's</i> intensity mapping tool.  It
+is not as fast but it does operate on floating point images allowing
+you to better preserve image fidelity. (Needs remapim.m).
+
+<li><a href=GreyTrans/remapim.m>remapim.m</a> is a non-interactive
+version of greytrans that allows you to apply an intensity mapping to
+a colour or greyscale image using a mapping function determined
+experimentally with greytrans.  Useful if you want to apply the same
+mapping function to a sequence of images. 
+
+<li type=square><a href=GreyTrans/histtruncate.m>histtruncate.m</a>
+truncates ends of an image histogram.  Useful for enhancing images
+with outlying values.
+
+<li><a href=GreyTrans/histeqfloat.m>histeqfloat.m</a> This function
+differs from classical histogram equalisation functions in that the
+cumulative histogram treated as a <em>function</em> rather than as a
+lookup table for mapping input grey values to their output values.
+Under this approach, for images containing floating point values, the
+number of distinct values in the output image will be the same as the
+number of distinct values in the input.  This can make a significant
+difference.
+
+<li><a href=GreyTrans/agc.m>agc.m</a> This function implements
+Rajagopalan's Automatic Gain Control algorithm.  The original
+application was for displaying geoscientific vertical magnetic
+gradient data but it can be useful for any kind of high dynamic range
+image.
+
+<!--<li><a href=GreyTrans/histtruncatex.m>histtruncatex.m</a> truncates
+ends of an image histogram.
+-->
+
+<p>
+<li> <a href=GreyTrans/example/index.html>Example</a> of using some of
+these functions above to enhance a video surveillance image.  However
+you should note that many surveillance systems are close to being
+legally blind.<br>
+See <a href="http://www.csse.uwa.edu.au/~pk/research/pkpapers/legallyblind.pdf">Video
+Surveillance: Legally Blind?</a> DICTA 2009 Melbourne.
+
+</ul>
+
+<a name="freqfilt"></a>
+<hr>
+<h4>Frequency Domain Transformations</h4>
+<ul>
+
+
+<li type=square> <img src="http://www.csse.uwa.edu.au/images/new.gif"> 
+<a href=FrequencyFilt/perfft2.m>perfft2.m</a> 2D
+Fourier transform of the periodic component of Moisan's "Periodic plus
+Smooth Image Decomposition". I think this will become my default fft
+function for images.
+
+<li type=square><a
+href=FrequencyFilt/lowpassfilter.m>lowpassfilter.m</a> constructs
+low-pass Butterworth filter.
+
+<li type=square><a
+href=FrequencyFilt/highpassfilter.m>highpassfilter.m</a> constructs
+high-pass Butterworth filter.
+
+<li type=square><a
+href=FrequencyFilt/highboostfilter.m>highboostfilter.m</a> constructs
+high-boost Butterworth filter.
+
+<li type=square><a
+href=FrequencyFilt/bandpassfilter.m>bandpassfilter.m</a> constructs
+band-pass Butterworth filter.
+
+<li type=square><a href=FrequencyFilt/homomorphic.m>homomorphic.m</a>
+performs homomorphic filtering on an image.  One of my favourite image
+enhancement techniques. (needs histtruncate.m and normalise.m)
+
+<!--
+<li><a href=FrequencyFilt/homomorphicGUI.m>homomorphicGUI.m</a> GUI
+interface to homomorphic. (needs homomorphic.m) This code is a bit
+flakey under version 6.0 R12, I think it is OK under 6.1
+-->
+
+<li type=square><a href=FrequencyFilt/psf.m>psf.m</a> generates a
+variety of point-spread functions.  This function can be useful when
+manually specifying point-spread functions for Wiener filtering or
+with deconvolution functions such as the Richardson-Lucy algorithm
+(see the MATLAB Image Processing Toolbox function deconvlucy.m).
+
+<li type=square><a href=FrequencyFilt/psf2.m>psf2.m</a> is identical
+to psf, it just has a different way of specifying the function shape
+which may be more convenient for some applications.
+
+<li type=square><a href=FrequencyFilt/imspect.m>imspect.m</a> plots
+image amplitude spectrum averaged over all orientations.
+
+<li type=circle><a href=FrequencyFilt/freqcomp.m>freqcomp.m</a>
+demonstrates image reconstruction from its Fourier components.
+
+</ul>
+
+<a name="projective"></a>
+<hr>
+<h4>Functions Supporting Projective Geometry</h4>
+<center>
+<table><tr>
+<td><img align=top src=WWWImages/trigg.jpg><br><center>image of beach</center></td>
+<td><img align=top src=WWWImages/recttrigg.jpg><br><center>rectified beach</center></td>
+</tr></table>
+</center>
+
+<ul>
+
+<li type=square> <a href=Projective/homography1d.m>homography1d.m</a>
+computes the 2x2 1D homography of 3 or more points along a line.
+
+<li type=square> <a href=Projective/homography2d.m>homography2d.m</a>
+computes the 3x3 2D homography of 4 or more points in a plane.  This
+code follows the normalised direct linear transformation algorithm
+given by Hartley and Zisserman.
+
+<li type=square> <a href=Projective/fundmatrix.m>fundmatrix.m</a>
+computes the fundamental matrix from 8 or more matching points in a
+stereo pair of images using the normalised 8 point algorithm.
+
+<li type=square> <a
+href=Projective/affinefundmatrix.m>affinefundmatrix.m</a> computes the
+affine fundamental matrix from 4 or more matching points in a stereo
+pair of images.
+
+<li type=square> <a
+href=Projective/fundfromcameras.m>fundfromcameras.m</a> computes fundamental matrix 
+given two camera projection matrices.
+
+<li type=square>
+<a href=Projective/decomposecamera.m>decomposecamera.m</a> decomposes
+camera projection matrix into intrinsic and extrinsic parameters.
+
+<li type=square> <a
+href=Projective/rq3.m>rq3.m</a> RQ decomposition of 3 x 3 matrix.
+
+<li type=square> <a
+href=Projective/normalise2dpts.m>normalise2dpts.m</a> translates and
+normalises a set of 2D homogeneous points so that their centroid is at
+the origin and their mean distance from the origin is sqrt(2).  This
+is used to improve the conditioning of any equations used to solve
+homographies, fundamental matrices etc.
+
+<li type=square> <a href=Projective/hnormalise.m>hnormalise.m</a>
+normalises an array of homogeneous coordinates so that their scale
+parameter is 1. Points at infinity are unchanged.
+
+<li type=square>
+<a href=Projective/makehomogeneous.m>makehomogeneous.m</a> converts an
+N x npts array of inhomogeneous points to homogeneous points with
+scale 1.
+
+<li type=square>
+<a href=Projective/makeinhomogeneous.m>makeinhomogeneous.m</a>
+normalises an N x npts array of homogeneous points to a scale of 1 and
+returns the inhomogeneous coordinates.
+
+<li> <a href=Projective/imTrans.m>imTrans.m</a> applies a homogeneous
+transform to an image.  The output image origin and size is adjusted
+to contain the transformed image.  (Note I wrote this code before
+version 3 of the Image Processing Toolbox was released with the
+function IMTRANSFORM.  You are probably better off using MATLAB's
+IMTRANSFORM)
+
+<li> <a href=Projective/imTransD.m>imTransD.m</a> applies a
+homogeneous transform to an image. No origin shift is applied to the
+transformed image.  I use this function for registering images etc.
+
+<li type=circle> <a href=Projective/digiplane.m>digiplane.m</a> allows
+you to digitise and transform points within a planar region in an
+image.
+
+<li> <a
+href=Projective/equalAngleConstraint.m>equalAngleConstraint.m</a> Affine
+transform constraints given two equal angles.
+
+<li> <a
+href=Projective/knownAngleConstraint.m>knownAngleConstraint.m</a> Affine
+transform constraints given a known angle.
+
+<li> <a
+href=Projective/lengthRatioConstraint.m>lengthRatioConstraint</a> Affine
+transform constraints given a length ratio.
+
+<li> <a href=Projective/circleintersect.m>circleintersect.m</a> Finds
+intersection of two circles. Use this function to solve for affine
+transformation constraints.
+
+<li type=square> <a href=Projective/circle.m>circle.m</a> Draws a
+circle.
+
+<li type=square> <a href=Projective/hcross.m>hcross.m</a> Homogeneous
+cross product, result normalised to s = 1.
+
+<li type=circle> <a href=Projective/hline.m>hline.m</a> Plot 2D lines
+defined in homogeneous coordinates.
+
+<li type=square> <a href=Projective/homoTrans.m>homoTrans</a> 2D homogeneous
+transformation of points/lines.
+
+<li type=square> <a href=Projective/plotPoint.m>plotPoint.m</a> Plots
+point with specified mark and optional text label.
+
+<p><li> If you are using these functions above you should look at
+Andrew
+Zisserman's <a href="http://www.robots.ox.ac.uk/~vgg/hzbook/code/">
+MATLAB Functions for Multiple View Geometry</a> <br> Also, you <em>must</em>
+listen to <a href="http://danielwedge.com/fmatrix/">The Fundamental
+Matrix Song</a> by Daniel Wedge.
+
+</ul>
+
+
+
+<a name="match"></a>
+<hr>
+<h4>Feature Matching</h4>
+<ul>
+
+<li type=square><a
+href=Match/matchbycorrelation.m>matchbycorrelation.m</a> generates
+putative matches between previously detected feature points in two
+images by looking for points that are maximally correlated with each
+other within windows surrounding each point.  Only points that
+correlate most strongly with each other in both directions are
+returned.  This is a simple-minded N<sup>2</sup> comparison.
+
+<li type=square><a
+href=Match/matchbymonogenicphase.m>matchbymonogenicphase.m</a> is
+similar to matchbycorrelation, but instead matches on oriented phase
+values rather than greyscale values.  This matcher performs rather
+well relative to normalised greyscale correlation.  Typically there
+are more putative matches found and fewer outliers.  There is a
+greater computational cost in the pre-filtering stage but potentially
+the matching stage is much faster as each pixel is effectively encoded
+with only 3 bits. (Though this potential speed is not realized in this
+implementation). See <a href=Robust/example/testfund.m>testfund</a>
+below to see an example of the use of this function.
+
+</ul>
+
+<a name="robust"></a>
+<hr>
+<h4>Model Fitting and Robust Estimation</h4>
+
+<center>
+<table><tr>
+<td><img align=top src=Robust/example/putativesm.jpg><br>
+Putative matches obtained<br>by <a href=Match/matchbycorrelation.m>matchbycorrelation.m</a></td>
+<td>&nbsp; &nbsp;</td>
+<td><img align=top src=Robust/example/inlierssm.jpg><br>
+Inlying matches consistent<br>with fundamental matrix</td>
+</tr></table>
+</center>
+
+<ul>
+
+<!-- Flkos ***** -->
+
+<li type=square><a href=Robust/ransac.m>ransac.m</a> a general purpose
+implementation of the RANSAC algorithm.  
+
+<li type=square><a href=Robust/ransacfithomography.m>ransacfithomography.m</a>
+robustly fits a homography to a set of putatively matched image points. 
+
+<li type=square><a
+href=Robust/ransacfitfundmatrix.m>ransacfitfundmatrix.m</a> robustly
+fits a fundamental matrix to a set of putatively matched image points.
+This function uses an 8 point fundamental matrix solution.
+
+<li><a
+href=Robust/ransacfitfundmatrix7.m>ransacfitfundmatrix7.m</a> robustly
+fits a fundamental matrix to a set of putatively matched image points.
+This function requires Andrew Zisserman's 7 point fundamental matrix code
+available from: <a href="http://www.robots.ox.ac.uk/~vgg/hzbook/code/">
+MATLAB Functions for Multiple View Geometry</a>
+
+<li type=square><a
+href=Robust/ransacfitaffinefund.m>ransacfitaffinefund.m</a> robustly
+fits an affine fundamental matrix to a set of putatively matched image
+points.
+
+<li type=square><a href=Robust/ransacfitplane.m>ransacfitplane.m</a>
+robustly fits a plane to 3D data points.
+
+<li type=square><a href=Robust/ransacfitline.m>ransacfitline.m</a>
+robustly fits a line to 3D data points.
+
+<li type=square><a href=Robust/iscolinear.m>iscolinear.m</a> tests if
+3 points are colinear, used by ransacfitplane and ransacfithomography.
+
+<li type=square><a href=Robust/fitline.m>fitline.m</a> least squares
+fit of a line to 2D data points. 
+
+<li type=square><a href=Robust/fitline3d.m>fitline3d.m</a> least squares
+fit of a line to 3D data points. Contributed by Felix Duvallet.
+
+<li type=square><a href=Robust/fitplane.m>fitplane.m</a> least squares
+fit of a plane to 3D data points.
+
+<li type=square><a href=Robust/example/testfitplane.m>testfitplane</a>
+example of using ransacfitplane.m
+
+<li type=square><a href=Robust/example/testfitline.m>testfitline</a>
+example of using ransacfitline.m
+
+<li type=square><a href=Robust/example/testfund.m>testfund</a>
+example of using ransacfitfundmatrix.m
+
+<li type=square><a href=Robust/example/testhomog.m>testhomog</a>
+example of using ransacfithoography.m
+
+<li type=square><a href=Robust/randomsample.m>randomsample</a> a basic
+replacement for <tt>randsample</tt> to be used with <tt>ransac.m</tt>
+should you not have the MATLAB Statistics Toolbox, or are using Octave.
+
+<li><a href=Robust/example/index.html>Example</a> of using these
+functions above to find the fundamental matrix.  
+</ul>
+
+<p><b>References:</b>
+<ul>
+<li><img src="http://www.csse.uwa.edu.au/images/new.gif"> Listen
+to <a href="http://danielwedge.com/ransac/">The RANSAC Song</a> by
+Daniel Wedge.
+<li> You should also check out
+his <a href="http://danielwedge.com/esong/">2.71828183: The Number <i>e</i>
+Song</a>
+
+</ul>
+
+<!--
+<a name="lensdistort"></a>
+<hr>
+
+<h4>Lens Distortion Correction</h4>
+
+<center>
+<table><tr>
+<td><img align=top src=WWWImages/distortsm.jpg><br><center>original image</center></td>
+<td><img align=top src=WWWImages/correctedsm.jpg><br><center>corrected image</center></td>
+</tr></table>
+</center>
+
+<p>Sorry, this code is broken due to changes I have made to the edge
+linking code above.  Hopefully I will get round to fixing it soon.
+
+<ul>
+<li><a href=LensDistort/lensparam.m>lensparam.m</a> Estimates lens
+distortion parameters.  This is an implementation of Devernay and
+Faugeras' technique for lens distortion removal from structured
+scenes.  Edges are detected in the image and line segments fitted to
+the edges.  If an edge is curved it will deviate from the fitted
+segment.  An optimisation process is performed on the lens distortion
+parameters in order to minimize the deviation of the edge points from
+straight lines.
+
+<li><a href=LensDistort/imlenstransform.m>imlenstransform.m</a> This
+function applies or inverts a lens distortion transformation defined
+by first order coefficients to an image.
+
+<li><a href=LensDistort/crookedness.m>crookedness.m</a> Returns a
+measure of the 'crookedness' of a set of lines. This is the objective
+function passed to the optimisation function by lensparam.m.
+
+<li><a
+href=LensDistort/edgelistlenscorrect.m>edgelistlenscorrect.m</a> This
+function corrects for lens distortion defined by first order
+coefficients on an edgelist.
+
+<li><a href=LensDistort/example/index.html>Example</a> of the use of
+these functions.  
+
+</ul>
+
+
+<p>These functions make use of:<br>
+drawedgelist.m, 
+edgelink.m, 
+lineseg.m, 
+maxlinedev.m, 
+mergeseg.m, 
+implace.m, 
+removenan.m, 
+show.m, 
+fitline.m
+-->
+
+<a name="fingerprints"></a>
+<hr>
+<h4>Fingerprint Enhancement</h4>
+
+<center>
+<table><tr>
+<td><img align=top src=WWWImages/fingervsm.png></td>
+<td>&nbsp; &nbsp;</td>
+<td><img align=top src=WWWImages/finalvsm.png></td>
+</tr></table>
+</center>
+
+<ul>
+<li><a href=FingerPrints/ridgesegment.m>ridgesegment.m</a> identifies
+ridge-like regions of a fingerprint image.  It also normalises the
+intensity values of the image.
+
+<li><a href=FingerPrints/ridgeorient.m>ridgeorient.m</a> estimates the
+local orientation of ridges in a fingerprint.
+
+<li><a href=FingerPrints/plotridgeorient.m>plotridgeorient.m</a> plots
+ridge orientations calculated by ridgeorient.
+
+<li><a href=FingerPrints/ridgefreq.m>ridgefreq.m</a> estimates the
+local ridge frequency across a fingerprint image.
+
+<li><a href=FingerPrints/freqest.m>freqest.m</a> estimates the ridge
+frequency within a small block of an image.  This is used by
+ridgefreq.
+
+<li><a href=FingerPrints/ridgefilter.m>ridgefilter.m</a> enhances
+a fingerprint image using oriented filters.
+
+<li><a href=FingerPrints/Docs/index.html>Example</a> of using these functions above.
+</ul>
+
+<a name="syntheticimages"></a>
+<hr> 
+<h4>Interesting Synthetic Images </h4>
+<center><img align=top src=WWWImages/clouds.gif></center><br> 
+<ul>
+
+<li type=square><a href=Misc/noiseonf.m>noiseonf.m</a> generates noise
+images with specified amplitude spectra.  One can create pleasing
+cloud pattern images this way.
+
+<li type=circle> <a href=Misc/cloud9.m>cloud9.m</a> creates a movie
+sequence of noise images with specified amplitude spectra.  Very
+relaxing.
+
+<li type=circle> <a href=Misc/chirpexp.m>chirpexp.m</a> creates an
+exponential chirp test image.  The amplitude of the chirp is modulated
+from 1 at the top of the image to 0 at the bottom.  I have used this
+test image to evaluate the effectiveness of different colourmaps, and
+sections of colourmaps, over varying spatial frequencies and contrast.
+
+<li type=circle> <a href=Misc/chirplin.m>chirplin.m</a> similar to
+chirpexp.m but with a linear chirp signal.
+
+</ul>    
+<br><br>
+<center><img align=top src=WWWImages/derespk.gif></center> <br>
+
+<ul>
+<li type=square><a href=Misc/derespolar.m>derespolar.m</a> Generates
+deresolved images in polar coordinates.
+
+<li><a href=Misc/polartrans.m>polartrans.m</a> Generates a polar
+transformation of an image.  A linear or logarithmic radius
+transformation can be specified.
+
+<li><a href=FrequencyFilt/quantizephase.m>quantizephase.m</a>
+Generates an image where the phase values are quantized to a desired
+number of levels.  Phase values in an image are important.  However,
+despite this, they can be quantized very heavily with relatively little
+perceptual loss.  
+
+</ul>
+     
+<a name="asciiimage"></a>
+<hr>
+<h4>ASCII Image Generation</h4>
+<center> <img align=top src=WWWImages/MonaASCIIsml.gif></center> <br>
+<ul>
+
+<li type=square><a href=Misc/matscii.m>matscii.m</a> Function to
+generate ASCII images from grey scale images.  A bit of retro fun, but
+constant width fonts are getting hard to come by these days...
+
+</ul>
+
+<a name="rotationtransforms"></a>
+<hr>
+<h4>Homogeneous Transforms</h4>
+<ul>
+
+<li type=square><a href=Rotations/plotframe.m>plotframe.m</a> plots a
+coordinate frame specified by a homogeneous transform.
+
+<li type=square><a href=Rotations/trans.m>trans.m</a> homogeneous
+tranlation matrix.
+
+<li type=square><a href=Rotations/rotx.m>rotx.m</a> homogeneous matrix
+for rotation about x-axis.
+
+<li type=square><a href=Rotations/roty.m>roty.m</a> homogeneous matrix
+for rotation about y-axis.
+
+<li type=square><a href=Rotations/rotz.m>rotz.m</a> homogeneous matrix
+for rotation about z-axis.
+
+<li type=square><a href=Rotations/homotrans.m>homotrans.m</a>
+homogeneous transformation of points/lines
+
+<li type=square><a href=Rotations/invht.m>invht.m</a> optimized
+inverse of homogeneous transformation matrix
+
+<li type=square><a href=Rotations/inveuler.m>inveuler.m</a> solves for
+euler angles given a homogeneous transform.
+
+<li type=square><a href=Rotations/invrpy.m>invrpy.m</a> solves for
+roll, pitch, yaw angles given a homogeneous transform.
+
+<li type=square><a href=Rotations/dhtrans.m>dhtrans.m</a> calculates
+the 4x4 homogeneous Denavit Hartenberg matrix given link parameters of
+joint angle, length, joint offset, and twist.
+
+</ul>
+<h4>Quaternions</h4>
+<ul>
+
+<li type=square><a href=Rotations/newquaternion.m>newquaternion.m</a> construct
+quaternion from specified angle and axis.
+
+<li type=square><a href=Rotations/matrix2quaternion.m>matrix2quaternion.m</a>
+converts 4x4 homogeneous rotation matrix to quaternion
+
+<li type=square><a href=Rotations/quaternion2matrix.m>quaternion2matrix.m</a>
+converts quaternion to a 4x4 homogeneous transformation matrix.
+
+<li type=square><a href=Rotations/quaternionrotate.m>quaternionrotate.m</a>
+uses quaternion to rotate vectors.
+
+<li type=square><a href=Rotations/quaternionproduct.m>quaternionproduct.m</a>
+computes quaternion product.
+
+<li type=square><a href=Rotations/quaternionconjugate.m>quaternionconjugate.m</a>
+computes quaternion conjugate.
+
+<li type=square><a href=Rotations/vector2quaternion.m>vector2quaternion.m</a>
+embeds a 3-vector in a quaternion.
+
+</ul>
+<h4>Angle-Axis Descriptors</h4>
+<ul>
+
+<li type=square><a href=Rotations/newangleaxis.m>newangleaxis.m</a>
+constructs angle-axis descriptor from specified angle and axis.
+
+<li type=square><a href=Rotations/matrix2angleaxis.m>matrix2angleaxis.m</a>
+converts homogeneous rotation matrix to angle-axis description
+
+<li type=square><a href=Rotations/angleaxis2matrix.m>angleaxis2matrix.m</a>
+converts angle-axis descriptor to 4x4 homogeneous transformation
+matrix. 
+
+<li type=square><a href=Rotations/angleaxisrotate.m>angleaxisrotate.m</a>
+uses angle axis descriptor to rotate vectors
+
+<li type=square><a href=Rotations/normaliseangleaxis.m>normaliseangleaxis.m</a>
+normalises angle-axis descriptor so that the angle has a maximum magnitude of pi.
+
+
+</ul>
+
+<hr>
+
+
+<a name="display"></a>
+<h4>Image Display, Image Writing and Miscellaneous</h4>
+<ul>
+
+<li type=circle><a href=Misc/findimage.m>findimage.m</a> Displays a
+file dialog box to allow you to find and load your image
+interactively.  Useful when you have forgotten the name of your image,
+or can't be bothered typing it out.
+
+<li type=square><a href=Misc/show.m>show.m</a> This function displays
+an image, automatically setting the colour map to grey if it is a 2D
+image, or leaving it as colour otherwise, and setting the axes to be
+'equal'.  The image is also displayed as 'TrueSize', that is, pixels
+on the screen match pixels in the image.  Finally a title
+corresponding to the image variable name is added.
+
+<li type=square><a href=Misc/showfft.m>showfft.m</a> displays the
+amplitude spectrum of an fft.
+
+<li type=square><a href=Misc/showlogfft.m>showlogfft.m</a> displays
+the log amplitude spectrum of an fft.
+
+<li><a href=Misc/showsurf.m>showsurf.m</a> This function wraps up the
+commands I usually use to display a surface.  The surface is
+displayed using SURFL with interpolated shading, in my favourite
+colormap of 'copper', with rotate3d on, and axis vis3d set.
+
+<li type=circle><a href=Misc/togglefigs.m>togglefigs.m</a> provides a
+convenient means of toggling the display of multiple figures. Handy
+for comparing images and plots.
+
+<li type=square><a href=Misc/imwritesc.m>imwritesc.m</a> This function
+combines image rescaling and writing into the one function.  If the
+image type is <tt>double</tt> image values are rescaled to the range
+0-1 so that no overflow occurs when writing 8-bit intensity values.
+The image format to use is determined by MATLAB from the file ending.
+If the image type is of <tt>uint8</tt> no rescaling is performed.
+
+<li type=square><a href=Misc/matprint.m>matprint.m</a> This function
+prints out a matrix using a specified C style format string.  Often
+you find that MATLAB's default number formats are not what you want...
+
+<li type=square><a href=Misc/digipts.m>digipts.m</a> Function to
+digitise points in an image.  This function uses the cross-hair cursor
+provided by GINPUT.  I find this is much more useable than the cursor
+used by IMPIXEL. In addition each location digitised is marked with a
+red '+'.
+
+<li type=square><a href=Spatial/impad.m>impad</a> Pads the boundary of
+an image with zeros.
+
+<li type=square><a href=Spatial/imtrim.m>imtrim</a> Trims the boundary of
+an image (unpads it)
+
+<li type=square><a href=Spatial/imsetborder.m>imsetborder</a> Sets
+border pixels of an image to a specified value.
+
+<li type=square><a href=Misc/removenan.m>removenan</a> Replaces NaN
+values in a matrix with a specified default value.  Useful when you
+want to prevent NaNs from contaminating and destroying some operation
+on an array, for example, an FFT.
+
+<li><a href=Misc/fillnan.m>fillnan</a> Replaces NaN
+values in a matrix with the value in the closest non-Nan pixel.
+
+<li type=square><a href=Misc/implace.m>implace.m</a> Function to place
+an image at a specified location within a larger image.
+
+
+<li type=square><a href=Misc/cubicroots.m>cubicroots.m</a> computes
+the real roots of a cubic.
+
+<li type=square><a href=Misc/rgb2nrgb.m>rgb2nrgb.m</a> RGB to
+normalised RGB colour conversion.
+
+<li><a href=Misc/rgb2lab.m>rgb2lab.m</a> RGB to L*a*b* colour conversion.
+
+<li><a href=Misc/hsvmap.m>hsvmap.m</a> Generates an HSV colourmap over
+a specified range of hues.
+
+<li><a href=Misc/labmap.m>labmap.m</a> Generates a L*a*b* colourmap
+over a specified range of angles in the a*b* plane.  In principle
+L*a*b* space is more perceptually uniform than, say, HSV space.  Thus
+it may be a better colourmap for some applications.
+
+<li><a href=Misc/graymap.m>graymap.m</a> Generates a gray colourmap over
+a specified range of levels.
+
+<li><a href=Misc/weightedhistc.m>weightedhistc.m</a> basic equivalent
+ to MATLAB's HISTC function for weighted data.
+
+<li><a href=Misc/geoseries.m>geoseries.m</a> convenience function for
+generating geometric series.
+
+</ul>
+
+<a name="shapes"></a>
+<h4>Geometric shapes</h4>
+<ul>
+
+<li type=square><a href=Shapes/icosahedron.m>icosahedron.m</a>
+generates the vertices, adjacency graph and face list of an
+icosahedron.
+
+<li type=square><a href=Shapes/geodome.m>geodome.m</a> generates the
+vertices, adjacency graph and face list of a geodesic sphere. Apart
+from looking cool the vertices, or face centres, of a geodesic sphere
+can be useful for defining the bin centres of a 3D orientation
+histogram.
+
+<li><a href=Shapes/gplot3d.m>gplot3d.m</a> a 3D version of MATLAB's
+gplot function.
+
+<li><a href=Shapes/drawfaces.m>drawfaces.m</a> draws triangular faces
+defined by a set of vertices and a corresponding face vertex list.
+
+<li type=square><a href=Shapes/superquad.m>superquad.m</a> generates
+parametric surfaces of superquadratics.
+
+<li type=square><a href=Shapes/supertorus.m>supertorus.m</a> generates
+parametric surfaces of a supertorus.
+
+
+</ul>
+
+
+<a name="string"></a>
+<h4>String handling convenience functions</h4>
+<ul>
+
+<li><a href=Misc/strstartswith.m>strstartswith.m</a> tests if a string
+starts with a specified substring.
+
+<li><a href=Misc/strendswith.m>strendswith.m</a> tests if a string
+ends with a specified substring.
+
+<li><a href=Misc/namenpath.m>namenpath.m</a> returns filename and its
+path from a full filename that may include a directory path 
+
+<li><a href=Misc/basename.m>basename.m</a> trims off the suffix ending
+from a filename.
+
+<li><a href=Misc/pathlist.m>pathlist.m</a> produces a cell array of
+directories along a directory path
+
+</ul>
+
+<hr>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-11964402-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body>
+</html>
+
+

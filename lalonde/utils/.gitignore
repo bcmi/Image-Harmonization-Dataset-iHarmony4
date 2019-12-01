@@ -1,0 +1,4 @@
+*~
+*.mexmaci64
+.DS_Store
+3rd_party/export_fig/.ignore

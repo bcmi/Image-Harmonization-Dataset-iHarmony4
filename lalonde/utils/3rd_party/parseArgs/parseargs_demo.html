@@ -1,0 +1,218 @@
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>Demonstrates usage and behaviour of parseargs</title>
+      <meta name="generator" content="MATLAB 7.2">
+      <meta name="date" content="2006-04-07">
+      <meta name="m-file" content="parseargs_demo"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows.  On Gecko-based browsers, the shrink-to-fit doesn't work. */ 
+p,h1,h2,div.content div {
+  /* for MATLAB's browser */
+  width: 600px;
+  /* for Mozilla, but the "width" tag overrides it anyway */
+  max-width: 600px;
+  /* for IE */
+  width:expression(document.body.clientWidth > 620 ? "600px": "auto" );
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>Demonstrates usage and behaviour of parseargs</h1>
+         <introduction>
+            <p>Use parseargs to simplify the input handling of functions which have a lot of options.  Apart from reducing the tedious task
+               of input checking, using parseargs helps to make it clear what all the possible inputs to a function are, and reduces the
+               chances of breaking a function while adding options to it.
+            </p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#1">Create structure X</a></li>
+               <li><a href="#2">Demonstrate default behaviour</a></li>
+               <li><a href="#3">Demonstrate ability to specify other fields</a></li>
+               <li><a href="#4">Demonstrate error thrown when a non-scalar value is specified for a scalar one</a></li>
+               <li><a href="#5">Demonstrate error thrown when a different data type is specified</a></li>
+               <li><a href="#6">Demonstrate error thrown when a string is specified which is not one of the allowed values</a></li>
+            </ul>
+         </div>
+         <h2>Create structure X<a name="1"></a></h2>
+         <p>The structure has fields chosen to demonstrate the various features of parseargs.</p><pre class="codeinput">X = struct;
+X.StartValue = 10; <span class="comment">% must be a double scalar</span>
+X.StopOnError = false; <span class="comment">% must be a logical scalar</span>
+X.OutputFile = <span class="string">'out.txt'</span>; <span class="comment">% must be string (of any size)</span>
+X.SolverType = {<span class="string">'fixedstep'</span>,<span class="string">'variablestep'</span>}; <span class="comment">% must be one of these strings, and</span>
+                                             <span class="comment">% will default to 'fixedstep'</span>
+X.InputData = [1 2 3 4]; <span class="comment">% must be a double (of any size)</span>
+X.OutputData = []; <span class="comment">% can be anything at all</span>
+</pre><h2>Demonstrate default behaviour<a name="2"></a></h2>
+         <p>The only change in the output will be that a default string is selected for "SolverType"</p><pre class="codeinput">Y = parseargs(X)
+</pre><pre class="codeoutput">
+Y = 
+
+     StartValue: 10
+    StopOnError: 0
+     OutputFile: 'out.txt'
+     SolverType: 'fixedstep'
+      InputData: [1 2 3 4]
+     OutputData: []
+
+</pre><h2>Demonstrate ability to specify other fields<a name="3"></a></h2>
+         <p>All fields will take the specified values</p><pre class="codeinput">Y = parseargs(X,<span class="keyword">...</span>
+    <span class="string">'StartValue'</span>,3,<span class="keyword">...</span>
+    <span class="string">'StopOnError'</span>,true,<span class="keyword">...</span>
+    <span class="string">'OutputFile'</span>,<span class="string">'temp.txt'</span>,<span class="keyword">...</span>
+    <span class="string">'SolverType'</span>,<span class="string">'variablestep'</span>,<span class="keyword">...</span>
+    <span class="string">'InputData'</span>,[6 7],<span class="keyword">...</span>
+    <span class="string">'OutputData'</span>,{1 2 3})
+</pre><pre class="codeoutput">
+Y = 
+
+     StartValue: 3
+    StopOnError: 1
+     OutputFile: 'temp.txt'
+     SolverType: 'variablestep'
+      InputData: [6 7]
+     OutputData: {[1]  [2]  [3]}
+
+</pre><h2>Demonstrate error thrown when a non-scalar value is specified for a scalar one<a name="4"></a></h2><pre class="codeinput"><span class="keyword">try</span>
+    Y = parseargs(X,<span class="string">'StartValue'</span>,[1 2])
+<span class="keyword">catch</span>
+    disp(lasterr);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Error using ==&gt; parseargs
+New value for "StartValue" must be a scalar
+</pre><h2>Demonstrate error thrown when a different data type is specified<a name="5"></a></h2><pre class="codeinput"><span class="keyword">try</span>
+    Y = parseargs(X,<span class="string">'StopOnError'</span>,int32(1))
+<span class="keyword">catch</span>
+    disp(lasterr);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Error using ==&gt; parseargs
+Cannot change class of field "StopOnError" from "logical" to "int32"
+</pre><h2>Demonstrate error thrown when a string is specified which is not one of the allowed values<a name="6"></a></h2><pre class="codeinput"><span class="keyword">try</span>
+    Y = parseargs(X,<span class="string">'SolverType'</span>,<span class="string">'ode1'</span>)
+<span class="keyword">catch</span>
+    disp(lasterr);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Error using ==&gt; parseargs
+"ode1" is not allowed for field "SolverType"
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.2<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% Demonstrates usage and behaviour of parseargs
+% Use parseargs to simplify the input handling of functions which have
+% a lot of options.  Apart from reducing the tedious task of input
+% checking, using parseargs helps to make it clear what all the possible
+% inputs to a function are, and reduces the chances of breaking a function
+% while adding options to it.
+
+%% Create structure X
+% The structure has fields chosen to demonstrate the various features of
+% parseargs.
+X = struct;
+X.StartValue = 10; % must be a double scalar
+X.StopOnError = false; % must be a logical scalar
+X.OutputFile = 'out.txt'; % must be string (of any size)
+X.SolverType = {'fixedstep','variablestep'}; % must be one of these strings, and
+                                             % will default to 'fixedstep'
+X.InputData = [1 2 3 4]; % must be a double (of any size)
+X.OutputData = []; % can be anything at all
+
+%% Demonstrate default behaviour
+% The only change in the output will be that a default string is selected
+% for "SolverType"
+Y = parseargs(X)
+
+%% Demonstrate ability to specify other fields
+% All fields will take the specified values
+Y = parseargs(X,...
+    'StartValue',3,...
+    'StopOnError',true,...
+    'OutputFile','temp.txt',...
+    'SolverType','variablestep',...
+    'InputData',[6 7],...
+    'OutputData',{1 2 3})
+
+%% Demonstrate error thrown when a non-scalar value is specified for a scalar one
+try
+    Y = parseargs(X,'StartValue',[1 2])
+catch
+    disp(lasterr);
+end
+
+%% Demonstrate error thrown when a different data type is specified
+try
+    Y = parseargs(X,'StopOnError',int32(1))
+catch
+    disp(lasterr);
+end
+
+%% Demonstrate error thrown when a string is specified which is not one of the allowed values
+try
+    Y = parseargs(X,'SolverType','ode1')
+catch
+    disp(lasterr);
+end
+
+
+
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

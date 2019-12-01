@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Octave</title>
+<link href="pkstylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h2>Octave</h2>
+
+Sure you can have the code, but you will need MATLAB to run it...<br>
+MATLAB is great, but it is expensive.  GNU Octave is a very
+viable alternative.  Octave runs under Linux, Windows and Mac OS X. 
+
+<p> With the release of Octave 3 many of the remaining
+incompatibilities between Octave and MATLAB have been eliminated and
+the graphics much improved.  Plotting and image display is not as fast
+or as polished as it is under MATLAB but you can do pretty well
+everything you want to.  Most of your MATLAB code will run under
+Octave with no modifications required.
+
+<p> You will also find that Octave has a number of features that are
+improvements on MATLAB.  For example you can create stand-alone
+executable scripts, you can write sin(x)(1:10); rather than being
+forced to write y = sin(x); y = y([1:10]); and you can specify default
+argument values for functions, to name a few.
+
+<p>The installation of Octave is straightforward and the installation of
+packages (Octave's equivalent of MATLAB toolboxes) has been
+streamlined. 
+
+<p> I suggest you check the following links
+
+<ul>
+
+  <li><a href=http://www.octave.org>The Octave home page</a> Download
+  Octave and get documentation here.
+  
+  <li><a href=http://octave.sourceforge.net/>GNU Octave-Forge Package
+  Repository</a> Get your packages (toolboxes) here.  I suggest you
+  start with the image, signal, optim, plot and miscellaneous
+  packages.
+  
+  <!--
+  <li><a href=http://wiki.octave.org/wiki.pl?CategoryScriptArchive>The Octave
+Script Archive</a> 
+
+<li><a href=http://hpc.sourceforge.net/>HPC Mac OS X</a> A great page
+of Mac OS X numerical software.  Here you will find an easily
+installed Octave binary for the Mac.  This is what I use.
+-->
+</ul>
+
+<p>Please do not mail me about any Octave installation problems, I
+will not know how to help you. You should refer to the appropriate FAQ
+pages.
+
+
+<h3>A few gotchas to look out for</h3>
+
+<ul>
+<li> imwrite under Octave has its arguments reversed relative to MATLAB
+<pre>
+ > imwrite(filename, image)  % Octave
+ > imwrite(image, filename)  % MATLAB
+</pre>
+However the Octave imwrite function now detects if the arguments are in
+'MATLAB order' and swaps them for you so you do not need to worry about this.
+
+<li>Display of colour images can be washed out.  This seems to be
+caused by the rgb colormap having only 64 entries.  If I create a 256
+element colormap images are displayed fine. At least this is what I
+find with my Mac OSX installation.
+  
+<li> Some image processing toolbox functions test the input image
+against the function <tt>isgray</tt> which, if your data is of type
+double, only returns true if all values lie in the range [0 1].  If
+you get an error message saying your gray scale image is not a gray
+scale image you probably need to rescale its values to [0 1].
+
+<li>I have found on odd occasions (that I have difficulty replicating)
+that the SVD in 'economy' mode can sometimes be too economical and I
+lose a dimension in the decomposed matrices.
+
+<li>The use of 'private' subdirectories does not seem to be supported.
+You can, of course, explicitly add the private subdirectory to your
+PATH assuming name clashes are not a problem.
+
+<li>Subfunctions within a file do not seem to over-ride public
+functions of the same name.  Note this is also a problem in MATLAB
+when the public function happens to be a built-in function.
+
+ </ul>
+
+
+<h3>Notes on code modifications to provide Octave compatibility</h3>
+
+In a few cases I have had to create slightly different execution paths
+for Octave and MATLAB.  To detect whether the code is running under
+Octave I am using the following test (thanks to Rosen Diankov for this).
+
+<pre>
+  Octave = exist('OCTAVE_VERSION');
+</pre>
+
+<p>
+While MATLAB allows one to pass string arguments to functions without
+enclosing quotes and brackets, for example
+<pre>
+  warning off
+  axis equal
+</pre>
+this is not (always) allowed under Octave.  However, by writing code in the
+proper functional form such as
+<pre>
+  warning('off');
+  axis('equal')
+</pre>
+
+ compatibility under both MATLAB and Octave can be maintained. With
+ Octave 3 this problem is mostly eliminated.
+
+ 
+<hr>
+
+
+<h3>Historical Stuff</h3>
+<!--<h3>Some additional functions to allow execution under Octave </h3>-->
+
+ With the earier versions of Octave there was a bit of fiddling around
+ required to get things to work.  I wrote a number of functions to
+ allow execution of my code under Octave.  With Octave 3 they are no
+ longer needed.  Listed below are a few of these functions, you may
+ possibly want the placeholder functions.
+
+ <ul>
+
+   <li><a href=OctaveCode/fspecial.m>fspecial.m</a> replacement for
+   MATLAB fspecial. Note the current image package now has an
+   implementation of fspecial (which incorporates some of this
+   code). This link is just here for historical reference.
+  
+   <li><a href=OctaveCode/truesize.m>truesize.m</a> Placeholder function that
+   does nothing except allow code written for MATLAB handle-graphics to
+   at least execute under Octave.
+
+   <li><a href=OctaveCode/pixval.m>pixval.m</a> Placeholder
+
+   <li><a href=OctaveCode/rotate3d.m>rotate3d.m</a> Placeholder
+  
+   <!--
+   <li><a href=OctaveCode/line.m>line.m</a> Minimal implementation of
+   MATLAB's LINE function using PLOT.  This is needed for a number of
+   functions.
+
+   <li><a href=OctaveCode/show.m>show.m</a> Minimal implementation of
+   SHOW so that code that uses my MATLAB function SHOW will at least
+   still execute under Octave.
+
+   <li><a href=OctaveCode/set.m>set.m</a> Placeholder function that
+   does nothing except allow code written for MATLAB handle-graphics to
+   at least execute under Octave.
+   <li><a href=OctaveCode/get.m>get.m</a> Placeholder
+   <li><a href=OctaveCode/shading.m>shading.m</a> Placeholder
+   <li><a href=OctaveCode/box.m>box.m</a> Placeholder
+   -->
+
+ </ul>
+
+
+ 
+</body>
+</html>
