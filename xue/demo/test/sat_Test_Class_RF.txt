@@ -1,0 +1,302 @@
+pic = a0151-JI2E3955
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a0455-_DSC4605
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 2
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 2
+f=2, b=1, Predicted Label = 2
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a0547-_DSC0445
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a0711-WP_IMG_1592
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a0776-050813_162440__I2E5677
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 2
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 2
+f=2, b=1, Predicted Label = 2
+f=0, b=2, Predicted Label = 2
+f=1, b=2, Predicted Label = 2
+f=2, b=2, Predicted Label = 2
+pic = a0804-CRW_1088
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 2
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a0879-jmac_MG_0200
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a0926-kme_278
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 2
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 2
+f=2, b=1, Predicted Label = 2
+f=0, b=2, Predicted Label = 2
+f=1, b=2, Predicted Label = 2
+f=2, b=2, Predicted Label = 2
+pic = a1161-kme_409
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a1275-20080809_at_14h45m40__MG_0065
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a1322-050704_163432__MG_3493
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a1502-NKIM_MG_6279
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a1647-MB_060909_078
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a1650-jn_2007_12_13__BU_CRUISE_135
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a1802-061006_014724__MG_6933
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a1981-WP_CRW_7751
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a2319-LSYD4O2499
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a2604-_MG_1446
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a2656-LSCRW_0073
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 2
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 2
+f=2, b=1, Predicted Label = 2
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a2870-NKIM_MG_7449
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a3442-MB_060909_003
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a3575-IMG_0834
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 2
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 2
+f=2, b=1, Predicted Label = 2
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a4266-DSC_0426
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 2
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 2
+f=2, b=1, Predicted Label = 2
+f=0, b=2, Predicted Label = 2
+f=1, b=2, Predicted Label = 2
+f=2, b=2, Predicted Label = 2
+pic = a4375-DSC_0029
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a4541-DSC_0040-2
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a4628-Duggan_090428_8108
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a4852-kme_288
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a4886-Duggan_090503_8792
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+pic = a4955-_DGW0261
+f=0, b=0, Predicted Label = 2
+f=1, b=0, Predicted Label = 2
+f=2, b=0, Predicted Label = 2
+f=0, b=1, Predicted Label = 2
+f=1, b=1, Predicted Label = 2
+f=2, b=1, Predicted Label = 2
+f=0, b=2, Predicted Label = 2
+f=1, b=2, Predicted Label = 2
+f=2, b=2, Predicted Label = 2
+pic = a4978-_DSC0032-2
+f=0, b=0, Predicted Label = 1
+f=1, b=0, Predicted Label = 1
+f=2, b=0, Predicted Label = 1
+f=0, b=1, Predicted Label = 1
+f=1, b=1, Predicted Label = 1
+f=2, b=1, Predicted Label = 1
+f=0, b=2, Predicted Label = 1
+f=1, b=2, Predicted Label = 1
+f=2, b=2, Predicted Label = 1
+Exact minOffset error = 0.104347
+Error Rate=0.122222, Prediction error = 0.127594
