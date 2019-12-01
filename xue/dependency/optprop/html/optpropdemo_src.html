@@ -1,0 +1,508 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>OPTPROP, a color properties toolbox</title>
+      <meta name="generator" content="MATLAB 7.3">
+      <meta name="date" content="2007-03-28">
+      <meta name="m-file" content="optpropdemo_src"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h1>OPTPROP, a color properties toolbox</h1>
+         <introduction>
+            <p><b>OptProp</b> is a MATLAB toolbox for calculation and examination of color related optical properties. It is has a functional pipelined
+               design, in that:
+            </p>
+            <div>
+               <ul>
+                  <li>except for ASTM tables, lookup tables are avoided</li>
+                  <li>a conversion is carried out in one single call</li>
+                  <li>the output can directly be used as input to other conversion routines</li>
+               </ul>
+            </div>
+            <p>This makes it a good tool for short command line conversions and tryouts, since functionality is localized. Another advantage
+               of this approach is that users can verify the routines by comparing the source code to current standards definitions.
+            </p>
+            <p><b>OptProp</b> was written by Jerker W&aring;gberg, More Research &amp; DPC, Sweden
+            </p>
+         </introduction>
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#2">Arguments in the OPTPROP toolbox</a></li>
+               <li><a href="#13">Preferred arguments</a></li>
+               <li><a href="#19">Generate the surface of an RGB-cube</a></li>
+               <li><a href="#20">View the RGB cube as a solid</a></li>
+               <li><a href="#21">Transform to XYZ and display</a></li>
+               <li><a href="#22">View as a solid.</a></li>
+               <li><a href="#23">Transform into LAB and view as solid</a></li>
+               <li><a href="#24">Enclose in R&ouml;sch color solid for reference</a></li>
+               <li><a href="#25">View as data points in Lab space</a></li>
+               <li><a href="#26">Show RGB as chromaticity coordinates</a></li>
+               <li><a href="#27">Show the difference between sRGB and Adobe RGB</a></li>
+               <li><a href="#28">Show Macbeth ColorChecker</a></li>
+               <li><a href="#29">Show errors in Bradford adaptation</a></li>
+               <li><a href="#30">Image Processing Toolbox comparsion</a></li>
+            </ul>
+         </div>
+         <p>The Matlab source of this demo is available as <tt>optpropdemo_src.m</tt> and can be executed, preferably in <tt>Cell Mode</tt>.
+         </p>
+         <p><b>NOTE:</b> In the end of this demo, there a comparison between <b>OptProp</b> and Image Processing Toolbox, IPT. Of course, this comparison can not be executed if IPT is not loaded and will render an
+            error.
+         </p>
+         <p>However, this file is the only file that refers to IPT and all other <b>OptProp</b> functions are completely independent of IPT.
+         </p>
+         <h2>Arguments in the OPTPROP toolbox<a name="2"></a></h2>
+         <p>Many functions within the OPTPROP toolbox have a similar flexible way of dealing with arguments. If a function expects multi-dimensional
+            input, such as e.g. Lab or XYZ, these three dimensions can either be entered individually or as the last dimension in a single
+            variable. In the same manner, the output can be delivered in one variable or in separate variables.
+         </p>
+         <p>For example: A single XYZ triplet can be converted to Lab by</p><pre class="codeinput">[L,a,b]=xyz2lab(50,25,45);
+</pre><p>The result is delivered as three scalars in the variables <tt>L</tt>, <tt>a</tt> and <tt>b</tt>. If we now define
+         </p><pre class="codeinput">X=50;
+Y=25;
+Z=45;
+</pre><p>and finally</p><pre class="codeinput">XYZ=[X,Y,Z];
+</pre><p>the following four conversions are congruent:</p><pre class="codeinput">[L,a,b]=xyz2lab(X,Y,Z)
+</pre><pre class="codeoutput">L =
+   57.0754
+a =
+   88.9817
+b =
+  -23.7103
+</pre><pre class="codeinput">[L,a,b]=xyz2lab(XYZ)
+</pre><pre class="codeoutput">L =
+   57.0754
+a =
+   88.9817
+b =
+  -23.7103
+</pre><pre class="codeinput">Lab=xyz2lab(X,Y,Z)
+</pre><pre class="codeoutput">Lab =
+   57.0754   88.9817  -23.7103
+</pre><pre class="codeinput">Lab=xyz2lab(XYZ)
+</pre><pre class="codeoutput">Lab =
+   57.0754   88.9817  -23.7103
+</pre><p>The dimensionality of input arguments, except for the last, is always preserved. For example, a Macbeth Colorchecker is organized
+            as four rows and six columns. The OptProp function <tt>colorchecker</tt> returns the spectra for such a chart in a 4x6x31 matrix
+         </p><pre class="codeinput">size(colorchecker)
+</pre><pre class="codeoutput">ans =
+     4     6    31
+</pre><p>The last dimension reflects the wavelengths in steps of ten from 400 nm to 700 nm. When converting these spectra to Lab by</p><pre class="codeinput">Lab=roo2lab(colorchecker);
+</pre><p><tt>Lab</tt> gets the size
+         </p><pre class="codeinput">size(Lab)
+</pre><pre class="codeoutput">ans =
+     4     6     3
+</pre><p>where <tt>Lab(:,:,1)</tt> holds the L-values, <tt>Lab(:,:,2)</tt> the a-values and finally <tt>L(:,:,3)</tt> the b-values.
+         </p>
+         <p>As before, it is also possible to direct the output into three separate variables:</p><pre class="codeinput">[L,a,b]=roo2lab(colorchecker);
+whos <span class="string">L</span> <span class="string">a</span> <span class="string">b</span>
+</pre><pre class="codeoutput">  Name      Size            Bytes  Class     Attributes
+
+  L         4x6               192  double              
+  a         4x6               192  double              
+  b         4x6               192  double              
+
+</pre><h2>Preferred arguments<a name="13"></a></h2>
+         <p>Many conversion routines in <b>OptProp</b> have one or more default arguments. In the previous example, <tt>xyz2lab</tt>, the routine needs to know the illuminant and observer to perform the conversion. The full command line is therefore:
+         </p><pre class="codeinput">xyz2lab(XYZ,<span class="string">'D50/2'</span>)
+</pre><pre class="codeoutput">ans =
+   57.0754   86.7192  -37.4056
+</pre><p>When the <tt>'D50/2'</tt> argument is missing, <tt>xyz2lab</tt> takes this argument from
+         </p><pre class="codeinput">optgetpref(<span class="string">'cwf'</span>)
+</pre><pre class="codeoutput">D65/10
+</pre><p>where <tt>cwf</tt> stands for <i>color weighting function</i>. To convert using another illuminant/observer pair, say <tt>'D65/10'</tt>, one can enter it as
+         </p><pre class="codeinput">xyz2lab(XYZ,<span class="string">'D65/10'</span>)
+</pre><pre class="codeoutput">ans =
+   57.0754   88.9817  -23.7103
+</pre><p>or set <tt>'D65/10'</tt> as the new preferred illuminant/observer by
+         </p><pre class="codeinput">optsetpref(<span class="string">'cwf'</span>,<span class="string">'D65/10'</span>)
+</pre><p>and then issue the command without cwf argument:</p><pre class="codeinput">xyz2lab(XYZ)
+</pre><pre class="codeoutput">ans =
+   57.0754   88.9817  -23.7103
+</pre><p>What follows are some examples of the conversions and graphics that are available within <b>OptProp</b>.
+         </p>
+         <h2>Generate the surface of an RGB-cube<a name="19"></a></h2><pre class="codeinput">rgb=addmix(5,5);
+ballplot(rgb,rgb);
+camorbit(90,0);
+camlight;
+lighting <span class="string">phong</span>
+xlabel(<span class="string">'Red'</span>);ylabel(<span class="string">'Green'</span>); zlabel(<span class="string">'Blue'</span>);
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_01.png"> <h2>View the RGB cube as a solid<a name="20"></a></h2><pre class="codeinput">viewgamut(rgb,rgb, <span class="string">'EdgeColor'</span>, [0 0 0]);
+camorbit(90,0);
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_02.png"> <h2>Transform to XYZ and display<a name="21"></a></h2><pre class="codeinput"><span class="comment">% Use GAMMA=1, so that the RGB values are</span>
+<span class="comment">% evenly distributed in XYZ-space also</span>
+xyz=rgb2xyz(rgb,<span class="string">'srgb'</span>,<span class="string">'Gamma'</span>, 1);
+ballplot(xyz,rgb);
+camorbit(90,0);
+camlight;
+lighting <span class="string">phong</span>
+xlabel(<span class="string">'X'</span>);ylabel(<span class="string">'Y'</span>); zlabel(<span class="string">'Z'</span>);
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_03.png"> <h2>View as a solid.<a name="22"></a></h2><pre>Note that the volume is a perfect parallelepiped wich
+is a direct consequence of the linear conversion between
+RGB and XYZ.</pre><pre class="codeinput">h=viewgamut(xyz,rgb, <span class="string">'EdgeColor'</span>, [0 0 0]);
+camorbit(90,0);
+xlabel(<span class="string">'X'</span>);ylabel(<span class="string">'Y'</span>); zlabel(<span class="string">'Z'</span>);
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_04.png"> <h2>Transform into LAB and view as solid<a name="23"></a></h2><pre class="codeinput">lab=xyz2lab(xyz);
+h=viewlab(lab,rgb,<span class="string">'EdgeColor'</span>, [0 0 0]);
+xlabel(<span class="string">'a'</span>);ylabel(<span class="string">'b'</span>); zlabel(<span class="string">'L'</span>);
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_05.png"> <h2>Enclose in R&ouml;sch color solid for reference<a name="24"></a></h2><pre class="codeinput">rlab=roo2lab(rosch);
+hold <span class="string">on</span>
+hr=viewlab(rlab);
+hold <span class="string">off</span>
+alpha(hr,.5);
+axis <span class="string">tight</span>
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_06.png"> <h2>View as data points in Lab space<a name="25"></a></h2><pre class="codeinput">ballplot(lab(:,:,[2 3 1]),rgb);
+lighting <span class="string">phong</span>
+camlight
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_07.png"> <h2>Show RGB as chromaticity coordinates<a name="26"></a></h2><pre class="codeinput"><span class="comment">% Only use the pure RGB colors</span>
+rgb=cat(3,[1 0 0], [0 1 0], [0 0 1]);
+xyz=rgb2xyz(rgb,<span class="string">'srgb'</span>,<span class="string">'D65/10'</span>);
+xy=xyz2xy(xyz);
+ballplot(xy(:,:,1),xy(:,:,2),zeros(size(xy(:,:,1))),rgb);
+hold <span class="string">on</span>
+<span class="comment">% Make it a closed curve</span>
+xyl=cat(2,xy,xy(:,1,:));
+plot3(xyl(:,:,1),xyl(:,:,2),zeros(size(xyl(:,:,1))),<span class="string">'-k'</span>);
+<span class="comment">%Display a Helmoltz horseshoe for reference</span>
+helmholtz;
+hold <span class="string">off</span>
+axis <span class="string">auto</span>
+<span class="comment">% Make it more exciting...</span>
+lighting <span class="string">phong</span>;camlight
+camorbit(-10,-70)
+set(gca,<span class="string">'ztick'</span>,[]);
+xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>)
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_08.png"> <h2>Show the difference between sRGB and Adobe RGB<a name="27"></a></h2><pre class="codeinput">rgb=cat(3,[1 0 0], [0 1 0], [0 0 1]);
+xyz=[rgb2xyz(rgb,<span class="string">'srgb'</span>,<span class="string">'D50/2'</span>); rgb2xyz(rgb,<span class="string">'adobe'</span>,<span class="string">'D50/2'</span>)];
+xy=xyz2xy(xyz);
+xyl=cat(2,xy,xy(:,1,:));
+plot(xyl(:,:,1)',xyl(:,:,2)');
+xlabel(<span class="string">'x'</span>);ylabel(<span class="string">'y'</span>)
+legend(<span class="string">'sRGB'</span>, <span class="string">'Adobe'</span>);
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_09.png"> <h2>Show Macbeth ColorChecker<a name="28"></a></h2>
+         <p>ColorChecker returns spectral readings for a Macbeth ColorChecker</p><pre class="codeinput">r=colorchecker;
+rgb=roo2rgb(r);
+optimage(rgb);
+axis <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_10.png"> <h2>Show errors in Bradford adaptation<a name="29"></a></h2>
+         <p>Visualize the errors in the Bradford adaptation when adapting the ColorChecker Lab readings from D65/10 to A/2</p><pre class="codeinput"><span class="comment">% Start with calculating 'true' Lab based on spectra</span>
+dlab=roo2lab(r,<span class="string">'D65/10'</span>);
+lab=roo2lab(r,<span class="string">'A/2'</span>);
+<span class="comment">% Now calculate Lab(A/2) based on Lab(D65/10)</span>
+Alab=lab2lab(dlab,<span class="string">'D65/10'</span>,<span class="string">'A/2'</span>,<span class="string">'cat'</span>,<span class="string">'bradford'</span>);
+DeltaE=de(lab,Alab);
+<span class="comment">% Display as colored bar chart</span>
+bar3c(DeltaE,rgb)
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_11.png"> <h2>Image Processing Toolbox comparsion<a name="30"></a></h2>
+         <p>MathWork's Image Processing Toolbox and <b>OptProp</b> have some conversions in common. We can compare the two by e.g. do the same sRGB to Lab conversion.
+         </p>
+         <p>First create a one megabyte image and prepare IPT for a conversion:</p><pre class="codeinput">rgb=rand(1024,1024,3);
+C=makecform(<span class="string">'srgb2lab'</span>);
+</pre><p>First do a conversion round without timing, so we don't measure the time used for compilation.</p><pre class="codeinput">lab=rgb2lab(rgb,<span class="string">'srgb'</span>,<span class="string">'D50/2'</span>);
+lab=applycform(rgb,C);
+</pre><p>Now time conversion with <b>OptProp</b>:
+         </p><pre class="codeinput">tic;lab=rgb2lab(rgb,<span class="string">'srgb'</span>,<span class="string">'D50/2'</span>);toc
+</pre><pre class="codeoutput">Elapsed time is 7.632448 seconds.
+</pre><p>and with IPT</p><pre class="codeinput">tic;lab=applycform(rgb,C);toc
+</pre><pre class="codeoutput">Elapsed time is 7.469732 seconds.
+</pre><p>IPT is most often, depending on the input data, somewhat faster due to its use of lookup tables for gamma calculations.</p>
+         <p>Now compare the numerical results when converting a MacBeth ColorChecker chart:</p><pre class="codeinput">rgb=roo2rgb(colorchecker);
+labopt=rgb2lab(rgb,<span class="string">'srgb'</span>,<span class="string">'D50/2'</span>);
+labipt=applycform(rgb,C);
+</pre><p>Compare by using DeltaE</p><pre class="codeinput">bar3c(de(labopt,labipt),rgb)
+</pre><img vspace="5" hspace="5" src="optpropdemo_src_12.png"> <p>Considering the IPT's use of lookup tables, IPT and <b>OptProp</b> seems to calculate the same.
+         </p>
+         <p class="footer"><br>
+            Published with MATLAB&reg; 7.3<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+%% OPTPROP, a color properties toolbox
+% *OptProp* is a MATLAB toolbox for calculation and examination of color
+% related optical properties. It is has a functional pipelined design, in
+% that:
+%
+% * except for ASTM tables, lookup tables are avoided
+% * a conversion is carried out in one single call
+% * the output can directly be used as input to other conversion routines
+%
+% This makes it a good tool for short command line conversions and tryouts,
+% since functionality is localized. Another advantage of this approach is
+% that users can verify the routines by comparing the source code to
+% current standards definitions.
+%
+% *OptProp* was written by Jerker Wågberg, More Research & DPC, Sweden
+%%
+% The Matlab source of this demo is available as |optpropdemo_src.m| and
+% can be executed, preferably in |Cell Mode|.
+%
+% *NOTE:* In the end of this demo, there a comparison between *OptProp* and
+% Image Processing Toolbox, IPT. Of course, this comparison can not be
+% executed if IPT is not loaded and will render an error.
+%
+% However, this file is the only file that refers to IPT and all other
+% *OptProp* functions are completely independent of IPT.
+%% Arguments in the OPTPROP toolbox
+% Many functions within the OPTPROP toolbox have a similar flexible way of
+% dealing with arguments. If a function expects multi-dimensional input,
+% such as e.g. Lab or XYZ, these three dimensions can either be entered
+% individually or as the last dimension in a single variable. In the same
+% manner, the output can be delivered in one variable or in separate
+% variables.
+%
+% For example: A single XYZ triplet can be converted to Lab by
+[L,a,b]=xyz2lab(50,25,45);
+%%
+% The result is delivered as three scalars
+% in the variables |L|, |a| and |b|. If we now define
+X=50;
+Y=25;
+Z=45;
+%%
+% and finally
+XYZ=[X,Y,Z];
+%%
+% the following four conversions are congruent:
+[L,a,b]=xyz2lab(X,Y,Z)
+%%
+[L,a,b]=xyz2lab(XYZ)
+%%
+Lab=xyz2lab(X,Y,Z)
+%%
+Lab=xyz2lab(XYZ)
+%%
+% The dimensionality of input arguments, except for the last, is always
+% preserved. For example, a Macbeth Colorchecker is organized as four rows and six
+% columns. The OptProp function |colorchecker| returns the spectra for such
+% a chart in a 4x6x31 matrix
+size(colorchecker)
+%%
+% The last dimension reflects the wavelengths in steps of ten from 400 nm
+% to 700 nm. When converting these spectra to Lab by
+Lab=roo2lab(colorchecker);
+%%
+% |Lab| gets the size
+size(Lab)
+%%
+% where |Lab(:,:,1)| holds the L-values, |Lab(:,:,2)| the a-values and
+% finally |L(:,:,3)| the b-values.
+%
+% As before, it is also possible to direct the output into three separate
+% variables:
+[L,a,b]=roo2lab(colorchecker);
+whos L a b
+%% Preferred arguments
+% Many conversion routines in *OptProp* have one or more default arguments.
+% In the previous example, |xyz2lab|, the routine needs to know the
+% illuminant and observer to perform the conversion. The full command line
+% is therefore:
+xyz2lab(XYZ,'D50/2')
+%%
+% When the |'D50/2'| argument is missing, |xyz2lab| takes this argument
+% from
+optgetpref('cwf')
+%%
+% where |cwf| stands for _color weighting function_. To convert using
+% another illuminant/observer pair, say |'D65/10'|, one can enter it as
+xyz2lab(XYZ,'D65/10')
+%%
+% or set |'D65/10'| as the new preferred illuminant/observer by
+optsetpref('cwf','D65/10')
+%%
+% and then issue the command without cwf argument:
+xyz2lab(XYZ)
+%%
+% What follows are some examples of the conversions and graphics that are
+% available within *OptProp*.
+%% Generate the surface of an RGB-cube
+rgb=addmix(5,5);
+ballplot(rgb,rgb);
+camorbit(90,0);
+camlight;
+lighting phong
+xlabel('Red');ylabel('Green'); zlabel('Blue');
+%% View the RGB cube as a solid
+viewgamut(rgb,rgb, 'EdgeColor', [0 0 0]);
+camorbit(90,0);
+%% Transform to XYZ and display
+
+% Use GAMMA=1, so that the RGB values are
+% evenly distributed in XYZ-space also
+xyz=rgb2xyz(rgb,'srgb','Gamma', 1);
+ballplot(xyz,rgb);
+camorbit(90,0);
+camlight;
+lighting phong
+xlabel('X');ylabel('Y'); zlabel('Z');
+%% View as a solid.
+%  Note that the volume is a perfect parallelepiped wich
+%  is a direct consequence of the linear conversion between
+%  RGB and XYZ.
+h=viewgamut(xyz,rgb, 'EdgeColor', [0 0 0]);
+camorbit(90,0);
+xlabel('X');ylabel('Y'); zlabel('Z');
+%% Transform into LAB and view as solid
+lab=xyz2lab(xyz);
+h=viewlab(lab,rgb,'EdgeColor', [0 0 0]);
+xlabel('a');ylabel('b'); zlabel('L');
+%% Enclose in Rösch color solid for reference
+rlab=roo2lab(rosch);
+hold on
+hr=viewlab(rlab);
+hold off
+alpha(hr,.5);
+axis tight
+%% View as data points in Lab space
+ballplot(lab(:,:,[2 3 1]),rgb);
+lighting phong
+camlight
+%% Show RGB as chromaticity coordinates
+
+% Only use the pure RGB colors
+rgb=cat(3,[1 0 0], [0 1 0], [0 0 1]);
+xyz=rgb2xyz(rgb,'srgb','D65/10');
+xy=xyz2xy(xyz);
+ballplot(xy(:,:,1),xy(:,:,2),zeros(size(xy(:,:,1))),rgb);
+hold on
+% Make it a closed curve
+xyl=cat(2,xy,xy(:,1,:));
+plot3(xyl(:,:,1),xyl(:,:,2),zeros(size(xyl(:,:,1))),'-k');
+%Display a Helmoltz horseshoe for reference
+helmholtz;
+hold off
+axis auto
+% Make it more exciting...
+lighting phong;camlight
+camorbit(-10,-70)
+set(gca,'ztick',[]);
+xlabel('x');ylabel('y')
+%% Show the difference between sRGB and Adobe RGB
+rgb=cat(3,[1 0 0], [0 1 0], [0 0 1]);
+xyz=[rgb2xyz(rgb,'srgb','D50/2'); rgb2xyz(rgb,'adobe','D50/2')];
+xy=xyz2xy(xyz);
+xyl=cat(2,xy,xy(:,1,:));
+plot(xyl(:,:,1)',xyl(:,:,2)');
+xlabel('x');ylabel('y')
+legend('sRGB', 'Adobe');
+%% Show Macbeth ColorChecker
+% ColorChecker returns spectral
+% readings for a Macbeth ColorChecker
+r=colorchecker;
+rgb=roo2rgb(r);
+optimage(rgb);
+axis off
+%% Show errors in Bradford adaptation
+% Visualize the errors in the Bradford adaptation
+% when adapting the ColorChecker Lab readings
+% from D65/10 to A/2
+
+% Start with calculating 'true' Lab based on spectra
+dlab=roo2lab(r,'D65/10');
+lab=roo2lab(r,'A/2');
+% Now calculate Lab(A/2) based on Lab(D65/10)
+Alab=lab2lab(dlab,'D65/10','A/2','cat','bradford');
+DeltaE=de(lab,Alab);
+% Display as colored bar chart
+bar3c(DeltaE,rgb)
+%% Image Processing Toolbox comparsion
+% MathWork's Image Processing Toolbox and *OptProp* have some conversions
+% in common. We can compare the two by e.g. do the same sRGB to Lab
+% conversion.
+%
+% First create a one megabyte image and prepare IPT for a conversion:
+rgb=rand(1024,1024,3);
+C=makecform('srgb2lab');
+%%
+% First do a conversion round without timing, so we don't measure the
+% time used for compilation.
+lab=rgb2lab(rgb,'srgb','D50/2');
+lab=applycform(rgb,C);
+%%
+% Now time conversion with *OptProp*:
+tic;lab=rgb2lab(rgb,'srgb','D50/2');toc
+%%
+% and with IPT
+tic;lab=applycform(rgb,C);toc
+%%
+% IPT is most often, depending on the input data, somewhat faster due to
+% its use of lookup tables for gamma calculations.
+%
+% Now compare the numerical results when converting a MacBeth ColorChecker
+% chart:
+rgb=roo2rgb(colorchecker);
+labopt=rgb2lab(rgb,'srgb','D50/2');
+labipt=applycform(rgb,C);
+%%
+% Compare by using DeltaE
+bar3c(de(labopt,labipt),rgb)
+%%
+% Considering the IPT's use of lookup tables, IPT and *OptProp* seems to
+% calculate the same.
+##### SOURCE END #####
+-->
+   </body>
+</html>
