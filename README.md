@@ -63,11 +63,11 @@ Notice that it requires matcaffe interface. We make some changes corresponds to 
 
 This is a Tensorflow implementation based on the caffe network released by the original authors in their [GitHub](<https://github.com/wasidennis/DeepHarmonization>).
 
-Besides, we also reduce one layer to make it suitable for input of 256*256 size.
+Besides, we also discard one inner-most convolutional layer and one inner- most deconvolutional layer to make it suitable for input of 256*256 size.
 
 To train DIH, 
 
-`CUDA_VISIBLE_DEVICES=0 python train.py --data_dir <Your Path to Dataset> --init_lr 0.0001 --batch_size 32`
+`python train.py --data_dir <Your Path to Dataset> --init_lr 0.0001 --batch_size 32`
 
 Don't forget to specify the directory of Image Harmonization Dataset after `data_dir`.
 
@@ -80,6 +80,21 @@ Since our dataset is not organized to be like a normally aligned dataset, we hav
 To train U-net:
 
 `python train_g.py  --dataroot ./datasets/ihd/ --name unet --model unet --gpu_ids 1 --dataset_mode ihd --is_train 1 --no_flip --preprocess none --norm instance`
+
+
+
+
+
+**When using images from our dataset, please cite this dataset using the following BibTeX**:
+
+@misc{cong2019deep,
+​    title={Deep Image Harmonization via Domain Verification},
+​    author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and Weiyuan Li and Liqing Zhang},
+​    year={2019},
+​    eprint={1911.13239},
+​    archivePrefix={arXiv},
+​    primaryClass={cs.CV}
+}
 
 
 
