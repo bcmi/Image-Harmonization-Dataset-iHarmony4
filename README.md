@@ -98,8 +98,7 @@ author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and 
 year={2019},
 eprint={1911.13239},
 archivePrefix={arXiv},
-primaryClass={cs.CV}
-}
+primaryClass={cs.CV}}
 ```
 
 
