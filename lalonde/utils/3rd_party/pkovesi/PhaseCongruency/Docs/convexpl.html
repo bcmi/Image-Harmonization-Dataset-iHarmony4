@@ -1,0 +1,538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Log-Gabor Filters</title>
+<link href="../../pkstylesheet.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<h2>What Are Log-Gabor Filters and Why Are They Good?</h2>
+
+
+<p>Gabor filters are a traditional choice for obtaining localised
+frequency information.  They offer the best simultaneous localization
+of spatial and frequency information.  However they have two main
+limitations.  The maximum bandwidth of a Gabor filter is limited to
+approximately one octave and Gabor filters are not optimal if one is
+seeking broad spectral information with maximal spatial localization.
+
+<p>An alternative to the Gabor function is the Log-Gabor function
+proposed by Field [1987].  Log-Gabor filters can be constructed with
+arbitrary bandwidth and the bandwidth can be optimised to produce a
+filter with minimal spatial extent.
+
+
+
+<h4>Bandwidth limitations of Gabor filters</h4>
+
+<p>One cannot construct Gabor functions of arbitrarily wide bandwidth and
+still maintain a reasonably small DC component in the even-symmetric
+filter.  This difficulty can be seen if we look at the transfer
+function of an even-symmetric Gabor filter in the frequency domain.
+The transfer function is the sum of two Gaussians centred at plus and
+minus the centre frequency.  If the standard deviation of
+these Gaussians becomes more than about one third of the centre
+frequency the tails of the two Gaussians will start to overlap
+excessively at the origin, resulting in a nonzero DC component.  
+
+<center>
+<table width=50%>
+<tr><td><img src=GaborDCproblem.png>
+
+<tr><td>
+Transfer function of a high bandwidth even-symmetric 
+Gabor filter.  The two Gaussians that make up the function overlap
+at the origin, resulting in a significant DC component.
+</table>
+</center>
+
+<p>At the limiting situation where the centre frequency is equal to
+three standard deviations, the bandwidth will be approximately one
+octave.  This can be seen as follows: For a Gaussian, the points where
+its value falls to half the maximum are at approximately plus and
+minus one standard deviation, these points defining the cutoff
+frequencies.  Thus the upper and lower cut-off frequencies will be at
+approximately 4&sigma; and 2&sigma; respectively, giving a bandwidth
+of one octave.  This limitation on bandwidth means that we need many
+Gabor filters to obtain wide coverage of the spectrum.
+
+
+<h4>The Log-Gabor Filter</h4>
+
+<p>An alternative to the Gabor function is the log-Gabor function
+proposed by Field [1987]. Field suggests that natural images are
+better coded by filters that have Gaussian transfer functions when
+viewed on the <em>logarithmic</em> frequency scale.  (Gabor functions
+have Gaussian transfer functions when viewed on the <em>linear</em>
+frequency scale).  On the linear frequency scale the log-Gabor
+function has a transfer function of the form
+
+<center>
+G(w) = e<sup> (-log(w/w<sub>o</sub>)<sup>2</sup>)  / 
+             ( 2 (log(k/w<sub>o</sub>)<sup>2</sup> )
+ </sup>
+
+</center>
+<!--
+\begin{equation}
+{\cal G}(\omega) = e^{\frac{- (log (\omega / \omega_{o}))^{2}} 
+                {2 (log (\kappa/ \omega_{o}))^{2}}} \ ,
+\end{equation}
+-->
+
+<p>where w<sub>o</sub> is the filter's centre frequency.  To obtain
+constant shape ratio filters the term k/w<sub>o</sub> must also be
+held constant for varying w<sub>o</sub>.  For example, a
+k/w<sub>o</sub> value of .74 will result in a filter bandwidth of
+approximately one octave, .55 will result in two octaves, and .41 will
+produce three octaves.
+
+<center>
+<table width=70%>
+<tr><td><img src=LOGGs_f.png> <td> <img src=LOGGs_lf.png>
+<tr><td colspan=2> An example of a log-Gabor transfer function viewed on 
+both linear and logarithmic frequency scales.
+</table>
+</center>
+
+
+<p>There are two important characteristics to note.  Firstly, log-Gabor
+functions, by definition, always have no DC component, and secondly,
+the transfer function of the log Gabor function has an extended tail
+at the high frequency end.  Field's studies of the statistics of
+natural images indicate that natural images have amplitude spectra
+that fall off at approximately 1/w.  To encode images having
+such spectral characteristics one should use filters having spectra
+that are similar.  Field suggests that log Gabor functions, having
+extended tails, should be able to encode natural images more
+efficiently than, say, ordinary Gabor functions, which would
+over-represent the low frequency components and under-represent the
+high frequency components in any encoding.  Another point in support
+of the log Gabor function is that it is consistent with measurements
+on mammalian visual systems which indicate we have cell responses that
+are symmetric on the log frequency scale.
+
+<p>What do log Gabor functions look like in the spatial domain?
+Unfortunately due to the singularity in the log function at the origin
+one cannot construct an analytic expression for the shape of the log
+Gabor function in the spatial domain.  One is reduced to designing the
+filters in the frequency domain and then performing a numerical
+inverse Fourier Transform to see what they look like.  Their
+appearance is similar to Gabor functions though their shape becomes
+much `sharper' as the bandwidth is increased.  The shapes of log Gabor
+and Gabor functions are almost identical for bandwidths less than one
+octave.  Shown below are three log Gabor filters of different
+bandwidths all tuned to the same centre frequency.
+
+<center> <table width=70%>
+<tr> 
+<td> <img src=logg1e.png>
+<td> <img src=logg2e.png>
+<td> <img src=logg3e.png>
+<tr>
+<td> <img src=logg1o.png>
+<td> <img src=logg2o.png>
+<td> <img src=logg3o.png>
+
+<tr>
+<td colspan = 3>Three quadrature pairs of log Gabor wavelets all tuned to the
+same frequency, but having bandwidths of 1, 2 and 3 octaves respectively.
+</table>
+</center>
+
+<p>Given that we are now able to construct filters of arbitrary bandwidth
+and zero DC component the following question arises: What is the best
+bandwidth to use?  One observation is that as bandwidth increases so
+too does the sharpness of the filter.  Therefore, one constraint might
+be imposed by the maximum sharpness of the filter that we can
+effectively represent.  Of perhaps greater interest is to study the
+variation of the spatial width of filters with bandwidth.  A useful
+objective might be to minimize the spatial width of filters in order
+to get maximal spatial localization of our frequency information.
+
+<p>Normally when a function is wide in the frequency domain it is narrow
+in the spatial domain, thus we expect broad bandwidth filters to be
+narrow in the spatial domain.  However, changing the bandwidth of a
+log Gabor filter does not result in a simple linear stretch of its
+transfer function in the frequency domain, so one's first intuitive
+thoughts about their behaviour in the spatial domain can be
+misleading. Careful observation of the behaviour of broad bandwidth
+log Gabor filters in the spatial domain reveals that while the central
+spike(s) of the filter may become very narrow the tails of the filter
+become extended.  To investigate this phenomenon further two measures
+of filter 'width' were studied.
+
+<ul>
+<li> The width required to represent 99% of the spatial filter's absolute 
+      area.
+<li> The second moment about the centre of the filter with respect to the
+   absolute value of the filter.
+</ul>
+
+Analytical investigation of these quantities is hampered by the
+singularity in the expression for the log Gabor function at the
+origin.  Thus, the variation of both these width measures with respect
+to bandwidth could only be investigated numerically, and the results
+are shown below.
+
+<center>
+<table width=50%>
+<tr>
+<td> <img src=width_vs_bw.png>
+<tr><td>
+Variation of the spatial width of log Gabor functions with bandwidth
+(evaluated numerically).
+</table>
+</center>
+
+<p>As one can see, both measures of width are minimized when the
+bandwidth is about two octaves. The troughs in the curves are very
+broad with any value between one and three octaves achieving a near
+minimal spatial width.  The data shown above were for even-symmetric
+filters.  The results for odd-symmetric filters are similar though
+with a more gradual increase in width for bandwidths above three
+octaves being observed.  These results have to be treated with some
+caution as they are vulnerable to numerical effects; the spatial form
+of the filters was calculated via the discrete Fourier transform, and
+the width measures are also determined numerically.  The systematic
+undulations in the measure of width to represent 99% of the area are
+troubling; all attempts to eliminate them were unsuccessful. The
+magnitude of these undulations would vary with filter centre frequency
+but their locations would remain constant.  A flaw in attempting to
+measure the width required to represent 99% of the filter's absolute
+area is that one does not know the <em>actual area</em>, all one knows
+is the total discrete area in the finite spatial window being
+considered.  The data above was obtained using an FFT applied over
+1024 points and with filters having a centre frequency of 0.05 (a
+wavelength of 20 units).  The aim was to achieve a good discrete
+representation of the filter in both spatial and frequency domains,
+and also to avoid truncation of the filter tails.  Despite the
+concerns one might have over the absolute accuracy of the data, it is
+felt that the overall trends of the curves are valid.  It is
+interesting to note that the range of bandwidths over which filter
+spatial size is near minimum, 1 to 3 octaves, matches well with
+measurements obtained on mammalian visual cells.  One should also note
+that the spatial width of a 3 octave log Gabor function is
+approximately the same as that of a 1 octave Gabor function, clearly
+illustrating the ability of the log Gabor function to capture broad
+spectral information with a compact spatial filter.
+
+
+<hr>
+
+
+<h2>Efficient Implementation of Convolution of Log-Gabor Filters in
+the Frequency Domain</h2>
+
+
+<p>
+I am often asked how the code I use in my functions works.  The code
+for constructing the filters and performing the convolution does
+appear a bit mysterious.  Here's an attempt at an explanation.</p>
+
+<p>
+In the frequency domain the even symmetric filter is represented by
+two real-valued log-Gaussian 'bumps' symmetrically placed on each side
+of the origin.  The odd-symmetric filter is represented by two
+imaginary valued log-Gaussian 'bumps' anti-symmetrically placed on
+each side of the origin.</p>
+
+<center>
+<img src=evenfilter.png>
+<p>Even symmetric filter transfer function</p>
+<pre>
+
+</pre>
+</center>
+
+<p>
+<center>
+<img src=oddfilter.png>
+<p>Odd symmetric filter transfer function</p>
+</center>
+
+<p>
+One can combine the convolution of the even and odd symmetric filters
+into the one operation.  Exploiting the linearity of the Fourier
+Transform where FFT(A+B) = FFT(A) + FFT(B) we can do the following:
+Multiply the FFT of the odd-symmetric filter by i (to make it real
+valued) and add it to the FFT of the even symmetric filter.  The
+anti-symmetric 'bump' from the odd-symmetric filter will cancel out
+the corresponding symmetric bump from the even-symmetric filter.  This
+leaves a single 'bump' (multiplied by 2) on the positive side of the
+frequency spectrum.</p>
+
+<p>
+Thus if we construct a filter in the frequency domain with a single
+log-Gabor 'bump' on the positive side of the frequency spectrum we can
+consider this filter to be the sum of the FFTs of the even and odd
+symmetric filters (with the odd symmetric filter multiplied by i).</p>
+
+<center>
+<img src=combinedfilter.png>
+</center>
+
+<p>If we perform the convolution by multiplying this frequency domain
+filter by the FFT of the image and take the inverse FFT we end up with
+the even-symmetric convolution residing in the real part of the result
+and the odd-symmetric convolution residing in the imaginary part.</p>
+
+<p>Returning the result in this form is very convenient.  With the
+complex values of the the convolution result simultaneously encoding
+the magnitude and phase response of the quadrature filters.</p>
+
+<h3>2D Filter Construction</h3>
+
+Following describes extracts of code in <tt>phasecong2</tt>.
+
+<p>The first step is to compute a matrix the same size as the image
+where every value of the matrix contains the normalised radius from
+the centre on the matrix.  Values range from 0 at the middle to 0.5
+at the boundary.
+<pre>
+  [x,y] = meshgrid([-cols/2:(cols/2-1)]/cols,...
+                   [-rows/2:(rows/2-1)]/rows);
+  radius = sqrt(x.^2 + y.^2);       % Matrix values contain *normalised* radius 
+                                    % values ranging from 0 at the centre to 
+                                    % 0.5 at the boundary.
+  radius(rows/2+1, cols/2+1) = 1;   % Get rid of the 0 radius value in the middle 
+                                    % so that taking the log of the radius will 
+                                    % not cause trouble.
+</pre>
+
+Filters are constructed in terms of two components.
+<ol>
+<li> The radial component, which controls the frequency band that the filter
+   responds to
+<li> The angular component, which controls the orientation that the filter
+   responds to.
+</ol>
+The two components are multiplied together to construct the overall filter.
+
+<p>Here is an example of constructing the radial component of the filter
+given some desired filter wavelength.  The bandwidth of the filter is 
+controlled by the parameter <tt>sigmaOnf</tt>.
+
+<pre>
+  fo = 1.0/wavelength;                  % Centre frequency of filter.
+
+  % The following implements the log-gabor transfer function.
+  logGabor = exp((-(log(radius/fo)).^2) / (2 * log(sigmaOnf)^2));  
+  logGabor(rows/2+1, cols/2+1) = 0;     % Set the value at the 0 frequency point 
+                                        % of the filter back to zero 
+                                        % (undo the radius fudge).
+</pre>
+<center><img src=loggabor.jpg><p>
+Radial log-Gabor component of the filter. </center>
+
+A problem is that for small wavelengths the filters can extend into
+the higher frequencies in the 'corners' of the FFT, whereas in the
+vertical and horizontal directions the filters are cut off by the
+boundary. This uneven coverage depending on direction can upset the
+normalisation process when calculating phase congrunecy.  To make the
+coverage uniform in all directions the filters are multiplied by a
+low-pass filter that is as large as possible, yet falls away to zero
+at the boundaries.  For most filter scales, other than the highest
+frequency ones, this has no appreciable effect on the filter.
+Note the application of the low pass filter is only implemented
+in phasecong2 (so far).
+
+<pre>
+  lp = lowpassfilter([rows,cols],.4,10);   % Radius .4, 'sharpness' 10
+  logGabor = logGabor.*lp;                 % Apply low-pass filter
+</pre>
+
+<center><table width="10%" border=0 cellpadding=10 cellspacing=0><tr>
+<td align="top"><img src=lp.jpg>
+<p>Large low-pass filter.<br><br><br> </td>
+<td align="top"><img src=loggaborlp.jpg>
+<p>Product of low-pass filter and log-Gabor filter (in this case 
+it does nothing). </td>
+</tr></table></center>
+
+Now we calculate the angular component that controls the orientation
+selectivity of the filter. This is simply a Gaussian with respect to
+the polar angle around the centre.  The Gaussian is centred at some
+angle <tt>angl</tt>, and has standard deviation <tt>thetaSigma</tt>.
+
+<pre>
+  theta = atan2(-y,x);              % Matrix values contain polar angle.
+                                    % (note -ve y is used to give +ve
+                                    % anti-clockwise angles)
+  sintheta = sin(theta);
+  costheta = cos(theta);
+
+  % For each point in the filter matrix calculate the angular distance from the
+  % specified filter orientation.  To overcome the angular wrap-around problem
+  % sine difference and cosine difference values are first computed and then
+  % the atan2 function is used to determine angular distance.
+
+  ds = sintheta * cos(angl) - costheta * sin(angl);    % Difference in sine.
+  dc = costheta * cos(angl) + sintheta * sin(angl);    % Difference in cosine.
+  dtheta = abs(atan2(ds,dc));                          % Absolute angular distance.
+  spread = exp((-dtheta.^2) / (2 * thetaSigma^2));     % Calculate the angular 
+                                                       % filter component.
+
+  filter = spread.*logGabor;                           % Product of the two components.
+</pre>
+
+<center><table width="10%" border=0 cellpadding=10 cellspacing=0><tr>
+<td><img src=spread.jpg>
+<p>Angular component of the filter.<br><br><br>
+<td><img src=filter.jpg>
+<p>Product of angular and radial components to produce the frequency domain
+representation of the log-Gabor filter.
+</tr></table></center>
+
+<p>If we take the inverse Fourier Transform of this filter the even-symmetric
+component will be in the real part of the result and odd-symmetric
+component will be in the imaginary part of the result.
+
+<center><table width="10%" border=0 cellpadding=10 cellspacing=0><tr>
+<td><img src=realEO.jpg>
+<p>Even symmetric filter.
+<td><img src=imagEO.jpg>
+<p>Odd symmetric filter.
+</tr></table></center>
+
+
+<p>To create filters tuned to other frequencies and oriented in
+different directions one simply forms the product between the
+appropriate radial and angular spread components - mix and match.
+
+<hr>
+
+<h2>Design of a Log-Gabor Filter Bank</h2>
+
+A Gabor, or log-Gabor, filter bank does not form an orthogonal basis
+set and hence there is no unique or ideal arrangement of the filters.
+Thus, the design of a filter bank is somewhat of an art but the
+following should give you some guidelines.
+
+<p> One aim is to produce a filter bank that provides even coverage of
+the section of the spectrum that you wish to represent.  This can be
+achieved by making the overlap of the filter transfer functions
+sufficiently large so that when one sums the individual transfer
+functions the net result is an even coverage of the spectrum. Thus,
+every point in the spectrum ends up being represented equally in the
+final result.  For computational reasons one wants to achieve this
+even coverage of the spectrum with a minimal number of filters.
+
+<p>A second aim, which conflicts with the first, is to ensure the
+outputs of the individual filters in the bank are as independent as
+possible.  The whole aim of applying the filter bank is to obtain
+information about our signal, if a filter's outputs are highly
+correlated with those of its neighbours then we have an inefficient
+arrangement of filters that do not provide as much information as they
+should.  To achieve independence of output the filters should have
+minimal overlap of their transfer functions.
+
+<p>Thus the transfer functions of our filters should have the minimal
+overlap necessary to achieve fairly even spectral coverage.
+
+
+
+<p>Here are the parameters you have to decide on, several are interdependent.
+
+<ul>
+<li>The minimum and maximum frequencies you wish to cover.  
+
+<li>The filter bandwidth to use.
+
+<li>The scaling between centre frequencies of successive filters.
+
+<li>The number of filter scales.
+
+<li>The number of filter orientations to use.
+
+<li>The angular spread of each filter.
+</ul>
+
+<h3>Maximum frequency</h3>
+
+<p>The maximum frequency is set by the wavelength of the smallest scale
+filter, this is controlled by the parameter <tt>minWaveLength</tt>.
+The smallest value you can sensibly use here is the Nyquist wavelength
+of 2 pixels, however at this wavelength you will get considerable alaising
+and I prefer to keep the minimum value to 3 pixels or above.
+
+<h3>Minimum frequency</h3>
+
+<p>The minimum frequency is set by the wavelength of the largest scale
+filter.  This is implicitly defined once you have set the number of
+filter scales (<tt>nscale</tt>), the scaling between centre
+frequencies of successive filters (<tt>mult</tt>), and the
+wavelength of the smallest scale filter.
+
+<pre>
+   maximum wavelength = minWavelength * mult^(nscale-1)
+
+   minimum frequency = 1 / maximum wavelength
+</pre>
+
+
+<h3>Filter bandwidth</h3>
+
+<p>The filter bandwidth is set by specifying the ratio of the standard
+deviation of the Gaussian describing the log Gabor filter's transfer
+function in the log-frequency domain to the filter center frequency.
+This is set by the parameter <tt> sigmaOnf </tt>.  The smaller <tt>
+sigmaOnf </tt> is the larger the bandwidth of the filter.  I have not
+worked out an expression relating <tt>sigmaOnf</tt> to bandwidth, but
+empirically a <tt>sigmaOnf</tt> value of 0.75 will result in a filter
+with a bandwidth of approximately 1 octave and a value of 0.55 will
+result in a bandwidth of roughly 2 octaves.
+
+<!-- add material relating bandwidth to spatial extent -->
+
+<h3>Scaling between centre frequencies</h3>
+
+<p>Having set a filter bandwidth one is then in a position to decide
+on the scaling between centre frequencies of successive filters
+(<tt>mult</tt>).  It is here one has to play off the conflicting
+demands of even spectral coverage and independence of filter output.
+
+
+<p>Here is a table of values, determined experimentally, that result
+in the minimal overlap necessary to achieve fairly even spectral
+coverage.
+<pre>
+ sigmaOnf  .85   mult 1.3
+ sigmaOnf  .75   mult 1.6     (bandwidth ~1 octave)
+ sigmaOnf  .65   mult 2.1
+ sigmaOnf  .55   mult 3       (bandwidth ~2 octaves)
+</pre>
+
+
+<h3>The number of filter orientations</h3>
+
+This, in conjunction with the angular spread of each filter, specifies
+the resolution of the orientation information you obtain from the
+filters.  I have traditionally used six orientations. 
+
+
+<h3>The angular spread of each filter</h3>
+
+Here again one plays off the demands of even spectral coverage and
+independence of filter output. The angular interval between filter
+orientations is fixed by the number of filter orientations.  In the
+frequency domain the spread of 2D log-Gabor filter in the angular
+direction is simply a Gaussian with respect to the polar angle around
+the centre.  The angular overlap of the filter transfer functions is
+controlled by the ratio of the angular interval between filter
+orientations and the standard deviation of the angular Gaussian
+spreading function.  Within the code this ratio is controlled by the
+parameter <tt>dThetaOnSigma</tt>. A value of <tt>dThetaOnSigma</tt> =
+1.5 results in approximately the minimum overlap needed to get even
+spectral coverage.
+
+
+
+<hr>
+
+
+
+
+
+</body>
+</html>

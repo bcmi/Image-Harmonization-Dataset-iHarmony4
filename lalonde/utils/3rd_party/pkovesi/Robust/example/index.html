@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Example of finding the fundamental matrix using RANSAC</title>
+<link href="../../pkstylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h2>Example of finding the fundamental matrix using RANSAC</h2>
+
+<hr>
+
+<center><table>
+<tr><td><a href=im1.jpg><img src=im1.jpg></a><br> im1.jpg
+    <td><a href=im2.jpg><img src=im2.jpg></a><br> im2.jpg
+</table></center>
+
+<pre>
+    thresh = 500;   % Harris corner threshold
+    nonmaxrad = 3;  % Non-maximal suppression radius
+    
+    im1 = imread('im1.jpg');
+    im2 = imread('im2.jpg');
+
+    % Find Harris corners in image1 and image2
+    [cim1, r1, c1] = harris(im1, 1, thresh, 3);
+    show(im1,1), hold on, plot(c1,r1,'r+');
+
+    [cim2, r2, c2] = harris(im2, 1, thresh, 3);
+    show(im2,2), hold on, plot(c2,r2,'r+');
+</pre>
+
+<center><table>
+<tr><td><img src=im1c.jpg>
+    <td><img src=im2c.jpg>
+</table></center>
+
+<pre>
+
+    w = 7;    % Window size for correlation matching
+    [m1,m2] = matchbycorrelation(im1, [r1';c1'], im2, [r2';c2'], w);
+
+    % Display putative matches
+    show(im1,3), set(3,'name','Putative matches'), hold on    
+    for n = 1:length(m1);
+	line([m1(2,n) m2(2,n)], [m1(1,n) m2(1,n)])
+    end
+
+</pre>
+
+<center>
+<img src=putative.jpg>
+</center>
+
+<pre>
+    % Assemble homogeneous feature coordinates for fitting of the
+    % fundamental matrix, note that [x,y] corresponds to [col, row]
+    x1 = [m1(2,:); m1(1,:); ones(1,length(m1))];
+    x2 = [m2(2,:); m2(1,:); ones(1,length(m1))];    
+    
+    t = .001;  % Distance threshold for deciding outliers
+    [F, inliers] = ransacfitfundmatrix(x1, x2, t);
+
+    % Display both images overlayed with inlying matched feature points
+    show(double(im1)+double(im2),4), set(4,'name','Inlying matches'), hold on    
+    plot(m1(2,inliers),m1(1,inliers),'r+');
+    plot(m2(2,inliers),m2(1,inliers),'g+');    
+
+    for n = inliers
+	line([m1(2,n) m2(2,n)], [m1(1,n) m2(1,n)],'color',[0 0 1])
+    end
+</pre>
+
+<center>
+<img src=inliers.jpg>
+</center>
+
+<pre>
+    % Step through each matched pair of points and display the
+    % corresponding epipolar lines on the two images.
+    
+    l2 = F*x1;    % Epipolar lines in image2
+    l1 = F'*x2;   % Epipolar lines in image1
+
+    for n = inliers
+	figure(1), clf, show(im1,1), hold on, plot(x1(1,n),x1(2,n),'r+');
+	hline(l1(:,n));
+	figure(2), clf, show(im2,2), hold on, plot(x2(1,n),x2(2,n),'r+');
+	hline(l2(:,n));
+	fprintf('hit any key to see next point\r'); pause
+    end
+</pre>
+
+<center><table>
+<tr><td><img src=match1.jpg>
+    <td><img src=match2.jpg>
+</table></center>
+
+
+
+<a href=testfund.m>testfund.m</a> download the code above
+<hr>
+
+</body>
+</html>

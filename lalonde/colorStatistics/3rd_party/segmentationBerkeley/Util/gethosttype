@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# Create a canonical system name "machine_system" for use in 
+# bin and lib paths.
+#
+# If a name cannot be found, then "unknown" is the output,
+# and the exit status is 1.
+#
+
+uname_machine=`(uname -m) 2> /dev/null` || machine=unknown
+uname_system=`(uname -s) 2> /dev/null` || system=unknown
+
+case $uname_machine in 
+    i*86)
+	machine=ix86;;
+    ia64)
+        machine=ia64;;
+    IP27)
+	machine=mips;;
+    sun4*)
+	machine=sparc;;
+    *)
+	machine=unknown;;
+esac
+
+if [ $machine = "unknown" ]; then
+    echo unknown
+    exit 1
+fi
+
+case $uname_system in 
+    Linux)
+	system=linux;;
+    IRIX*)
+	system=irix;;
+    SunOS)
+	system=solaris;;
+    NetBSD)
+        system=netbsd;;
+    *)
+	system=unknown;;
+esac
+
+if [ $system = "unknown" ]; then
+    echo unknown
+    exit 1
+fi
+
+echo ${machine}_${system}
+exit 0
+
+
+

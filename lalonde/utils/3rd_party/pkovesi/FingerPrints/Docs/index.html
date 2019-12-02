@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Example of fingerprint enhancement</title>
+<link href="../../pkstylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h2>Example of fingerprint enhancement</h2>
+
+<p> This code loosely follows the approach presented by <br>
+Hong, L., Wan, Y., and Jain, A. K. 'Fingerprint image enhancement:
+Algorithm and performance evaluation'. IEEE Transactions on Pattern
+Analysis and Machine Intelligence 20, 8 (1998), pp 777-789.
+
+<p>Ridge regions in the image are identified and normalised, ridge
+orientations are determined, local ridge frequencies calculated, and
+then contextual filters with the appropriate orientation and frequency
+are applied.
+
+
+<hr>
+
+<center>
+<a href=finger.png><img src=fingersm.png></a><p>finger.png
+</center>
+
+
+<pre>
+    im = imread('finger.png');
+
+    
+    % Identify ridge-like regions and normalise image
+    blksze = 16; thresh = 0.1;
+    [normim, mask] = ridgesegment(im, blksze, thresh);
+    show(normim,1);
+
+    % Determine ridge orientations
+    [orientim, reliability] = ridgeorient(normim, 1, 5, 5);
+    plotridgeorient(orientim, 20, im, 2)
+    show(reliability,6)
+</pre>
+<center>
+<table>
+<tr>
+<td align='center'>
+<img src=orientsm.png><p>Orientations overlaid
+<td align='center'><img src=reliasm.png><p>'Reliability' of orientations
+</table
+</center>
+<pre>    
+    % Determine ridge frequency values across the image
+    blksze = 36; 
+    [freq, medfreq] = ridgefreq(normim, mask, orientim, blksze, 5, 5, 15);
+    show(freq,3) 
+</pre>
+<center>
+<img src=freqsm.png><p>Frequency data
+</center>
+<pre>    
+    % Actually I find the median frequency value used across the whole
+    % fingerprint gives a more satisfactory result...    
+    freq = medfreq.*mask;
+    
+    % Now apply filters to enhance the ridge pattern
+    newim = ridgefilter(normim, orientim, freq, 0.5, 0.5, 1);
+    show(newim,4);
+</pre>
+<center>
+<img src=newimsm.png><p>Filtered image
+</center>
+<pre>        
+    % Binarise, ridge/valley threshold is 0
+    binim = newim > 0;
+    show(binim,5);
+</pre>
+<center>
+<img src=binimsm.png><p>Binary image
+</center>
+<pre>    
+    % Display binary image for where the mask values are one and where
+    % the orientation reliability is greater than 0.5
+    show(binim.*mask.*(reliability>0.5), 7)
+</pre>
+</pre>
+<center>
+<table>
+<tr>
+<td align='center'>
+<img src=finalsm.png><p>Masked binary image
+<td align='center'><img src=fingersm.png><p>Original image
+</table>
+</center>
+
+
+<p>It would probably be sensible to apply a morphological closing to
+the (reliability > 0.5) masking image so that small 'holes' in the
+reliability data (which often occur at minutiae points) are removed.
+
+<p>Download this <a href=testfin.m>code example</a>
+
+<p>I leave it to you to thin the binary image and then try to pick out the valid minutiae...
+
+
+
+</body>
+</html>

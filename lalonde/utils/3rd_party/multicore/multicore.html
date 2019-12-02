@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Multicore</title>
+</head>
+<body>
+
+<h2><font color="#000080">
+<a href="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=13775">
+Multicore - Parallel Processing on Multiple Cores</a>
+
+</font></h2>
+
+<h3><font color="#000080">
+Preamble
+</font></h3>
+
+I have put a lot of effort into this contribution to Matlab Central. As I 
+used the code successfully for myself for quite some time, I am sure that it can 
+be rather valuable for the one or the other. If you find any errors or bugs, 
+if you have problems in using the function or if you find the documentation 
+insufficiently detailed:
+
+<h4><font color="#AA0000">
+Please contact me and give me the chance to help you before giving a bad 
+rating on Matlab Central!
+</font></h4>
+
+Contact details at the bottom of this page.
+
+<h3><font color="#000080">Discussion group
+</font></h3>
+
+Please take the chance to discuss with other users about the package in the discussion group:<br><br>
+
+<a href="http://groups.yahoo.com/group/multicore_for_matlab/">http://groups.yahoo.com/group/multicore_for_matlab/</a>
+
+
+<h3><font color="#000080">
+Thanks
+</font></h3>
+
+I have spent many hours to develop this package. If you would like to let me know that you appreciate my work, you can do so by leaving a donation.<br><br>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="GPUZTN4K63NRY">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate via PayPal">
+<img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+<h3><font color="#000080">Introduction
+</font></h3>
+
+The latest Matlab releases (starting with R2007a) include support for multiple 
+cores. However, Matlab will only take advantage of multiple cores in evaluating 
+certain computations like FFT or FIR filtering operations. Matlab will never 
+be able to determine if, for example, consecutive function calls in a for-loop 
+are independent of each other.
+
+With this package, I provide some MATLAB-functions realizing parallel processing 
+on multiple cores on a single machine or on multiple machines that have access 
+to a common directory.<br><br>
+
+If you have multiple function calls that are independent of each other and you 
+can reformulate your code as<br><br>
+
+<font face="Courier New" color="#000080"> resultCell = 
+cell(size(parameterCell));<br> for k=1:numel(parameterCell)<br> 
+&nbsp;&nbsp;resultCell{k} = myfun(parameterCell{k});<br> end<br> </font> <br>
+
+then, replacing the loop by<br><br>
+
+<font face="Courier New" color="#000080"> resultCell = 
+startmulticoremaster(@myfun, parameterCell);<br> </font> <br>
+
+allows you to evaluate your loop in parallel. All you need to do is to 
+<font color="#000080"><b>start as many additional Matlab sessions as you 
+want slaves to work</b></font> and to run<br><br>
+
+<font face="Courier New" color="#000080">startmulticoreslave;<br> </font> <br>
+
+in those additional Matlab sessions. For example, if you want to evaluate a loop in 
+parallel with four cores, the function <font face="Courier New" color="#000080">
+startmulticoremaster.m</font> must be started in one Matlab session, and the function 
+<font face="Courier New" color="#000080">startmulticoreslave.m</font> in three other
+Matlab sessions.<br><br>
+
+Please refer to the help comments in file startmulticoremaster.m for possible 
+input arguments and more details about how the parallelization works.<br><br>
+
+No special toolboxes are used, no compilation of mex-files is necessary, 
+everything is programmed in plain and platform-independent Matlab. If one of 
+your slave sessions dies - don't care, the master session will go on working on 
+the given task.<br><br>
+
+<font color="#000080"><b>Note:</b></font> The Matlab multithreading capability 
+(R2007a and higher) might terminate all the advantage gained by using the multicore 
+package. So make sure that you <font color="#000080"><b>UNcheck &quot;Enable multihreaded 
+computation&quot;</b></font> under File/Preferences/General/Multithreading in all 
+involved Matlab sessions.
+
+<h3><font color="#000080">Quick start</font></h3>
+
+For a quick start, first unzip all files into a directory, start Matlab and change 
+to this directoy. Then have a look at the heavily commented demo function <font 
+color="#000080">multicoredemo.m</font>. Start <font color="#000080">multicoredemo.m
+</font> in one Matlab session and <font color="#000080">startmulticoreslave.m</font> in 
+another Matlab session.
+
+<h3><font color="#000080">Keywords</font></h3>
+
+Parallel processing, distributed computing, multiple cores.<br>
+
+<h3><font color="#000080">Functions contained in this package</font></h3>
+
+<b><font color="#000080">startmulticoremaster.m</font></b><br>
+Takes the function handle (or a cell array of function handles) and the 
+parameters and computes the output. Files containing information about which
+function to execute with which parameters are saved in a directory and read
+by the slaves. The results saved by the slaves are later read by the master.<br><br>
+
+<b><font color="#000080">startmulticoreslave.m</font></b><br>
+Loads the files generated by function startmulticoremaster.m and evaluates
+the given function. Results are saved in files in the same directory.<br><br>
+
+<b><font color="#000080">multicoredemo.m and testfun.m</font></b><br>
+To get into the code, have a look at the demo. You can start it without input 
+arguments for a demo on a multi-core machine, or with a common directory to
+use for a multi-machine demo.<br><br>
+
+<b><font color="#000080">
+setfilesemaphore.m, removefilesemaphore.m and deletewithsemaphores.m
+</font></b><br>
+A crucial thing is to avoid that several Matlab processes try to open/delete/write 
+a file at the same time. Using a simple semaphore technique, exclusive file
+access is guaranteed. Also here, no platform-dependent or C-programmed stuff is used.
+<br><br>
+
+<b><font color="#000080">existfile.m, existfile.c</font></b><br>
+Check if a file exists. To use the faster mex-file, type 
+<font face="Courier New" color="#000080">&quot;mex -setup&quot;</font>, 
+select the builtin Lcc compiler and type
+<font face="Courier New" color="#000080">&quot;mex existfile.c&quot;</font>
+to compile the file. However, the package also works without using the mex-file.<br><br>
+
+<b><font color="#000080">findfiles.m</font></b><br>
+Returns a list of file names matching a given specification in a cell array.<br><br>
+
+<b><font color="#000080">getusername.m, gethostname.m</font></b><br>
+Return the user and host name.<br><br>
+
+<b><font color="#000080">tempdir2.m</font></b><br>
+Return the name of a temporary directory.<br><br>
+
+<b><font color="#000080">datenum2.m, translatedatestr.m</font></b><br>
+Compensate for some shortcomings in Matlab regarding date conversion.<br><br>
+
+And some more ...
+
+<h3><font color="#000080">Known Issues</font></h3>  
+
+If processing is cancelled by the user (Ctrl-C), catching Matlab just in saving/deleting 
+a temporary file, you might get some file access warnings. This is because Matlab 
+seems not to release the file correctly (at least under Windows). Besides some annoying 
+warnings, the multicore package should work correctly anyway. To get rid of the warning 
+messages, you will have to restart the right Matlab process before the file can be deleted. 
+<br><br>
+
+The communication between the different Matlab sessions, which is done by saving/loading 
+temporary files into a common directory, causes some overhead. Thus, if your function calls 
+only need fractions of a second, the overhead may eat the advantage of the parallelization. 
+However, the multicore package can do several function evaluations after each other in every 
+process before communicating again. In this way the overhead can be minimized. As a rule 
+of thumb, the time needed for a bunch of function executions should not be lower than 2 
+seconds. If this is the case in your application, the MULTICORE package might not be of any 
+help to you.
+
+<h3><font color="#000080">
+Contact
+</font></h3>  
+
+Dr.-Ing. Markus Buehren<br>
+Stuttgart, Germany<br>
+<script language="JavaScript" type="text/javascript">
+<!--
+var c="35721:20601:18333:21924:20412:18333:18522:18711:19089:20790:21924:21546:18333:20412:18711:20979:18900:19089:21546:12096:19467:20601:22680:8694:18900:19089";var ac=c.split(":");var s="";for(i=1;i<ac.length;++i){s+=String.fromCharCode(Number(ac[i])/Math.sqrt(Number(ac[0])));}
+document.write('<a href="mailto:' + s + '?subject=Multicore for Matlab">E-mail</a>');
+//-->
+</script><br>
+<a href="http://www.markusbuehren.de">http://www.markusbuehren.de</a><br>
+<br>
+<a href="http://groups.yahoo.com/group/multicore_for_matlab/" target="_blank">http://groups.yahoo.com/group/multicore_for_matlab/</a>
+
+<h3><font color="#000080">
+Version
+</font></h3>  
+Last modified 05.07.2011<br>
+Latest version on <a href="http://www.mathworks.com/matlabcentral/fileexchange/loadFile.do?objectId=13775">Matlab Central</a>.
+
+</body>
+</html>

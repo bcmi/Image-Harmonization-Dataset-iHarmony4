@@ -1,0 +1,61 @@
+
+-------------------------------------------------------------------------------
+
+TO BENCHMARK A BOUNDARY DETECTION ALGORITHM
+
+(1) Download and untar the benchmark images and human segmentations in
+the same location.  This will create a BSDS300 directory.
+
+(2) Run your algorithm on the 100 test images.  You may use the 200
+training images and associated human segmentations to calibrate your
+algorithm.  The output of your algorithm should be a soft boundary
+map, preferably after nonmax suppression, stored in a BMP image file.
+
+(3) Download and untar the boundary detection benchmark code.
+Edit the matlab function Dataset/bsdsRoot.m so that it points to
+the BSDS300 directory created in the previous step.  Now run
+'gmake install' from the root code directory.
+
+(4) Create a web-accessible directory to contain the benchmark results.
+Call it 'BENCH'.
+
+(5) Download humanpb.tgz, and untar it from the 'BENCH'.
+This should create two directories 'BENCH/gray/human' and
+'BENCH/color/human', each containing many files.
+
+(6) The algorithm to be benchmarked works either on grayscale images ('gray')
+or color images ('color').  Call this choice between 'gray' and 'color'
+'PRES'. Create directory for the algorithm 'BENCH/PRES/ALG'.  
+
+(7) Put the algorithm's pb files in the directory 'BENCH/PRES/ALG' as
+'<iid>.bmp', where <iid> is the corel image ID for each image.
+
+(8) Create a 'BENCH/PRES/ALG/name.txt' file containing a single line of
+text identifying the algorithm.
+
+(9) Create a 'BENCH/PRES/ALG/about.html' file in the algorithm directory
+containing a short description of the algorithm.
+
+(10) Start up matlab.  Add the lib/matlab directory to your matlab path.
+This directory was created when you build the benchmark code in step 3.
+
+---> Either follow the remaining directions, or use the benchNewAlg.m
+     script.
+
+(11) Run boundaryBench('BENCH/PRES/ALG','PRES').  This will compute
+precision/recall and put the results in text files in the ALG
+directory.  This takes 120 minutes on my 3GHz P-IV.
+
+(12) Run boundaryBenchGraphs('BENCH/PRES/ALG').  This will create
+precision/recall graphs in the ALG directory.  
+
+--> If you have other algorithms to benchmark, repeat steps 6-12 for
+    each algorithm.
+
+(13) Run boundaryBenchGraphsMulti('BENCH').  This will create graphs
+comparing pairs of algorithms.
+
+(14) Run boundaryBenchHtml('BENCH').  This will generate all the web
+pages for the benchmark.
+
+-------------------------------------------------------------------------------

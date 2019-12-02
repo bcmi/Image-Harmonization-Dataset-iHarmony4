@@ -1,0 +1,50 @@
+%function BrAdj = AdjustLocCntrst( bright, alpha )
+% INPUT: brigth: 1 channel, double 0~1, already GammaInv.
+% alpha: parameter
+
+%For debug: bright = linspace(0, 1, 1000);
+
+BrAdj = bright; 
+
+thrsh = mean( BrAdj(~isnan(BrAdj)) );
+
+rngLow  = thrsh;
+rngHigh = 1 - rngLow;
+
+%%  exponent
+% BrAdj(BrAdj>=thrsh) =  thrsh + rngHigh * ( (BrAdj(BrAdj>=thrsh) - thrsh)/rngHigh ).^ alpha ; 
+% BrAdj(BrAdj<thrsh)  =  thrsh - rngLow  * ( (thrsh - BrAdj(BrAdj<thrsh)) /rngLow   ).^ alpha ; 
+
+%% Sin
+% BrAdj(BrAdj>=thrsh) =  BrAdj(BrAdj>=thrsh) + alpha .* sin( (BrAdj(BrAdj>=thrsh) - thrsh)/rngHigh * pi ); 
+% BrAdj(BrAdj<thrsh)  =  BrAdj(BrAdj<thrsh)  + alpha .* sin( (BrAdj(BrAdj <thrsh) - thrsh)/rngLow  * pi ); 
+
+
+%% Spline
+%define a spline function [0,1] --> [0,1]
+% x = [0, alpha, 1];      % alpha 0~ 1 
+% y = [0, 1-alpha, 1]; 
+% xi = 0:0.01:1; 
+% yi = interp1(x,y,xi, 'spline'); 
+% figure; hold on;
+% plot(x,y,'bo',xi,yi, 'r-');
+
+%% Bezier
+%alpha = 0.5: linear;   alpha > 0.5: reduce contrast;  alpha < 0.5: increase contrast (typical, 0.2)
+[x,y] = Bezier(0:0.001:1, alpha);
+
+for i = 1: length(BrAdj(:))
+    xx = BrAdj(i) - thrsh;
+    if xx >= 0 
+        xx = xx/rngHigh;
+        [C,idx] = min(abs(x-xx));
+        BrAdj(i) =  thrsh + rngHigh * y(idx);  
+    else 
+        xx = -xx/rngLow;
+        [C,idx] = min(abs(x-xx));
+        BrAdj(i) =  thrsh - rngLow * y(idx);  
+    end
+end
+% 
+% figure; 
+% plot(BrAdj);

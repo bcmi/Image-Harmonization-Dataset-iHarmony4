@@ -1,0 +1,71 @@
+Matlab Progress Bars
+
+Includes three matlab files:
+prog.m
+Progress.m
+progress_example.m
+progress_example2.m
+
+These can be used to add java progress bars to matlab programs. The bars appear in a separate window, and are organised as a stack, allowing tasks and subtasks to the tracked. For each task, an estimated remaining time is calculated.
+
+Change log:
+
+17/8/2010
+Changed the Progress.set(value) function to Progress.set_val(value) to disambiguate it from handle.set(). Added progress_example2.m to illustrate manual progress bar use.
+
+4/8/2010
+Added support for the %%finalise tag to run some code during execution; this can be used to display partial results before the entire experiment is complete. Alternatively, when creating a progress bar with
+pr = Progress(finalise_script);
+the progress bar will contain a button allowing the script 'finalise_script' to be execute at any point. See progress_example for an example.
+
+
+Using progress bars:
+- Progress bars can be easily added to standard matlab scripts, or can be integrated in more complex scenarios with a bit more effort.
+
+- Standard Matlab scripts:
+When a matlab file is a script (i.e. not a function or class), and progress is to be tracked over a number of nested for-loops, the prog function can be used to automatically generate progress bar code prior to execution. In this case, simply add comments after each loop like so:
+for i=1:10 %%p1
+  for j=5:7 %%p2
+  end %%p2
+end %%p1
+where %%p# is used to indicate a for statement and its corresponding end, and # is the level of nesting.
+Once a script is annotated, it can be executed either by inserting
+prog;return;
+at the start of the script, or by invoking
+prog('script_name');
+from the command line. The prog function processes the script, creates a temporary file containing boilerplate code, and executes this (but variables are assigned as though the original script was executed in the base workspace).
+
+- Generate-once boilerplate
+If a script needs to be executed many times, for example, it may be undesirable for prog to regenerate the boilerplate code on every execution. In this case, the function
+Progress.annotate('script_name');
+can be used to create a file script_name_pr.m which contains boilerplate code and can be executed as usual; however, changes to the script (e.g. different loop parameters) will require Progress.annotate to be rerun.
+
+- Custom Progress Bars
+In some cases, a progress bar is needed for a task that is more complex than nested for-loops; perhaps a while-loop, or loops that occur in functions or across multiple scripts. Where the autogeneration of boilerplate code is insufficient, this can be added manually.
+A progress bar is created using:
+progress_bars = Progress();
+which creates an invisible empty progress bar window. To add a bar (and make the window visible), use:
+progress_bars.push_bar(label, min, max);
+where label is the varying quantity, and min and max are numerical limits on that quantity. For example,
+progress_bars.push_bar('Problem Size', 10, 100);
+will create an empty bar with the label 'Problem Size 10/100'
+To update the value on the bar, use
+progress_bars.set_val(value);
+which will set the value of the most recently added progress bar. Example:
+progress_bars.set_val(20);
+will make the bar 1/9th filled, and change the label to 'Problem Size 20/100 | Remain 1:30', where the 'Remain' label indicates the estimated time to reach 100/100, based on the delay between each call to progress_bars.set.
+Once a progress bar is no longer needed,
+progress_bars.pop_bar();
+will remove the most recently added bar. If this leaves the window empty, then the window will be hidden.
+
+- Additional Information
+There is much more documentation in prog.m and Progress.m, and progress_example.m gives an example script that uses automatic annotation - it can be run using
+progress_example and performs an experiment with two nested for-loops.
+
+TODO:
+- Auto-annotate for-loops with custom step sizes
+- Allow more powerful remaining time estimation; currently the estimate assumes that the problem size is growing relative to the iteration number (i.e. for iterations 1 to N, with complexity O(1) or O(N)). Sometimes loop execution time is not correlated with N, or grows at an irregular speed. In the first case, it should be possible to mark that the loop variable is meaningless in time prediction (e.g. when varying a property of the experiment that is non-ordinal, like algorithm type) - in this case it would be best to assume O(1) complexity for time estimation. In the second case, we may have an ordinal value, but with irregular growth - for example if we define an array of problem sizes [1 5 10 20 50 100] and use the loop variable to index them. In this case, it would be nice to provide the progress bar with the array of problem sizes, and use these values to compute remaining time.
+- Allow explicit complexity definition: it would be good to tag a for-loop and force the polynomial use to estimate remaining time to be of the specified degree.
+- Allow communication between bars and with previous bars at the same stack level; this would let parent bars update as their child progresses, and let bars use previous bars to assist in their remaining time computation. It will also be really hard to do.
+
+Comments, questions, complaints and bug reports can be directed to stapenr5@cs.man.ac.uk

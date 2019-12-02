@@ -1,0 +1,572 @@
+pic = a0151-JI2E3955
+f=0, b=0, Input Offset = 0.273634
+Predicted Offset = -0.133285
+f=1, b=0, Input Offset = 0.590723
+Predicted Offset = 0.020749
+f=2, b=0, Input Offset = 0.590723
+Predicted Offset = 0.062095
+f=0, b=1, Input Offset = -0.323920
+Predicted Offset = -0.057824
+f=1, b=1, Input Offset = 0.000625
+Predicted Offset = -0.074724
+f=2, b=1, Input Offset = 0.000625
+Predicted Offset = 0.010808
+f=0, b=2, Input Offset = -0.313077
+Predicted Offset = -0.111173
+f=1, b=2, Input Offset = 0.000000
+Predicted Offset = -0.060841
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.012031
+pic = a0455-_DSC4605
+f=0, b=0, Input Offset = -0.041805
+Predicted Offset = -0.161231
+f=1, b=0, Input Offset = 0.585573
+Predicted Offset = 0.052896
+f=2, b=0, Input Offset = 1.172107
+Predicted Offset = -0.016149
+f=0, b=1, Input Offset = -0.645593
+Predicted Offset = -0.197537
+f=1, b=1, Input Offset = -0.140622
+Predicted Offset = -0.039732
+f=2, b=1, Input Offset = 0.445912
+Predicted Offset = -0.023302
+f=0, b=2, Input Offset = -1.143739
+Predicted Offset = -0.324002
+f=1, b=2, Input Offset = -0.584386
+Predicted Offset = -0.230888
+f=2, b=2, Input Offset = 0.002148
+Predicted Offset = -0.144662
+pic = a0547-_DSC0445
+f=0, b=0, Input Offset = 0.662899
+Predicted Offset = -0.002761
+f=1, b=0, Input Offset = 1.364697
+Predicted Offset = -0.016058
+f=2, b=0, Input Offset = 1.590697
+Predicted Offset = -0.062757
+f=0, b=1, Input Offset = -0.035781
+Predicted Offset = -0.067540
+f=1, b=1, Input Offset = 0.668112
+Predicted Offset = -0.072514
+f=2, b=1, Input Offset = 0.894112
+Predicted Offset = -0.111436
+f=0, b=2, Input Offset = -0.539449
+Predicted Offset = 0.018993
+f=1, b=2, Input Offset = 0.123740
+Predicted Offset = 0.074735
+f=2, b=2, Input Offset = 0.349740
+Predicted Offset = 0.136106
+pic = a0711-WP_IMG_1592
+f=0, b=0, Input Offset = 0.050327
+Predicted Offset = -0.090684
+f=1, b=0, Input Offset = 0.715537
+Predicted Offset = -0.063048
+f=2, b=0, Input Offset = 1.249413
+Predicted Offset = 0.028119
+f=0, b=1, Input Offset = -0.596990
+Predicted Offset = -0.131090
+f=1, b=1, Input Offset = 0.046420
+Predicted Offset = -0.090447
+f=2, b=1, Input Offset = 0.580561
+Predicted Offset = 0.000962
+f=0, b=2, Input Offset = -1.179605
+Predicted Offset = -0.170093
+f=1, b=2, Input Offset = -0.523725
+Predicted Offset = -0.185898
+f=2, b=2, Input Offset = 0.010889
+Predicted Offset = -0.013897
+pic = a0776-050813_162440__I2E5677
+f=0, b=0, Input Offset = -0.087731
+Predicted Offset = -0.517543
+f=1, b=0, Input Offset = 0.545558
+Predicted Offset = -0.326124
+f=2, b=0, Input Offset = 0.772225
+Predicted Offset = -0.088471
+f=0, b=1, Input Offset = -0.554889
+Predicted Offset = -0.613878
+f=1, b=1, Input Offset = -0.039958
+Predicted Offset = -0.343511
+f=2, b=1, Input Offset = 0.155798
+Predicted Offset = -0.091228
+f=0, b=2, Input Offset = -0.534238
+Predicted Offset = -0.572386
+f=1, b=2, Input Offset = -0.222283
+Predicted Offset = -0.282671
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.073836
+pic = a0804-CRW_1088
+f=0, b=0, Input Offset = -0.183369
+Predicted Offset = 0.009305
+f=1, b=0, Input Offset = 0.459224
+Predicted Offset = 0.157487
+f=2, b=0, Input Offset = 0.960525
+Predicted Offset = 0.147319
+f=0, b=1, Input Offset = -0.783427
+Predicted Offset = -0.146500
+f=1, b=1, Input Offset = -0.180637
+Predicted Offset = -0.009427
+f=2, b=1, Input Offset = 0.316441
+Predicted Offset = 0.009568
+f=0, b=2, Input Offset = -1.081839
+Predicted Offset = -0.177603
+f=1, b=2, Input Offset = -0.501014
+Predicted Offset = -0.027285
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.009748
+pic = a0879-jmac_MG_0200
+f=0, b=0, Input Offset = 0.544819
+Predicted Offset = 0.175444
+f=1, b=0, Input Offset = 1.210692
+Predicted Offset = -0.069838
+f=2, b=0, Input Offset = 1.224571
+Predicted Offset = 0.039723
+f=0, b=1, Input Offset = -0.181672
+Predicted Offset = -0.019291
+f=1, b=1, Input Offset = 0.478383
+Predicted Offset = 0.025284
+f=2, b=1, Input Offset = 0.492262
+Predicted Offset = 0.393160
+f=0, b=2, Input Offset = -0.653663
+Predicted Offset = -0.187880
+f=1, b=2, Input Offset = -0.013732
+Predicted Offset = -0.164315
+f=2, b=2, Input Offset = 0.000147
+Predicted Offset = 0.143254
+pic = a0926-kme_278
+f=0, b=0, Input Offset = -0.236248
+Predicted Offset = 0.019250
+f=1, b=0, Input Offset = 0.418148
+Predicted Offset = 0.065563
+f=2, b=0, Input Offset = 0.678665
+Predicted Offset = 0.082227
+f=0, b=1, Input Offset = -0.909239
+Predicted Offset = -0.193292
+f=1, b=1, Input Offset = -0.254843
+Predicted Offset = -0.200236
+f=2, b=1, Input Offset = 0.005674
+Predicted Offset = -0.017067
+f=0, b=2, Input Offset = -0.916031
+Predicted Offset = -0.538548
+f=1, b=2, Input Offset = -0.261635
+Predicted Offset = -0.357286
+f=2, b=2, Input Offset = -0.001118
+Predicted Offset = -0.215472
+pic = a1161-kme_409
+f=0, b=0, Input Offset = 0.388082
+Predicted Offset = 0.002027
+f=1, b=0, Input Offset = 1.084410
+Predicted Offset = 0.117015
+f=2, b=0, Input Offset = 1.279612
+Predicted Offset = 0.135289
+f=0, b=1, Input Offset = -0.313952
+Predicted Offset = -0.129579
+f=1, b=1, Input Offset = 0.382550
+Predicted Offset = 0.028238
+f=2, b=1, Input Offset = 0.578617
+Predicted Offset = 0.021430
+f=0, b=2, Input Offset = -0.892067
+Predicted Offset = -0.265996
+f=1, b=2, Input Offset = -0.196065
+Predicted Offset = -0.016294
+f=2, b=2, Input Offset = 0.000033
+Predicted Offset = -0.008666
+pic = a1275-20080809_at_14h45m40__MG_0065
+f=0, b=0, Input Offset = 0.000587
+Predicted Offset = -0.184603
+f=1, b=0, Input Offset = 0.573967
+Predicted Offset = -0.128720
+f=2, b=0, Input Offset = 0.613813
+Predicted Offset = -0.019212
+f=0, b=1, Input Offset = -0.613195
+Predicted Offset = -0.145470
+f=1, b=1, Input Offset = -0.039816
+Predicted Offset = -0.095814
+f=2, b=1, Input Offset = 0.000030
+Predicted Offset = -0.000941
+f=0, b=2, Input Offset = -0.613226
+Predicted Offset = -0.065375
+f=1, b=2, Input Offset = -0.039846
+Predicted Offset = -0.004806
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.009516
+pic = a1322-050704_163432__MG_3493
+f=0, b=0, Input Offset = -0.046089
+Predicted Offset = 0.015594
+f=1, b=0, Input Offset = 0.337134
+Predicted Offset = 0.133823
+f=2, b=0, Input Offset = 0.337136
+Predicted Offset = 0.087540
+f=0, b=1, Input Offset = -0.370622
+Predicted Offset = -0.123591
+f=1, b=1, Input Offset = 0.000001
+Predicted Offset = -0.095129
+f=2, b=1, Input Offset = 0.000003
+Predicted Offset = -0.121583
+f=0, b=2, Input Offset = -0.352593
+Predicted Offset = -0.142668
+f=1, b=2, Input Offset = -0.000002
+Predicted Offset = 0.040475
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.054290
+pic = a1502-NKIM_MG_6279
+f=0, b=0, Input Offset = 0.046060
+Predicted Offset = 0.010292
+f=1, b=0, Input Offset = 0.541909
+Predicted Offset = 0.207637
+f=2, b=0, Input Offset = 0.643187
+Predicted Offset = 0.259470
+f=0, b=1, Input Offset = -0.472615
+Predicted Offset = -0.049645
+f=1, b=1, Input Offset = 0.015215
+Predicted Offset = -0.027023
+f=2, b=1, Input Offset = 0.116726
+Predicted Offset = 0.077128
+f=0, b=2, Input Offset = -0.526638
+Predicted Offset = 0.031712
+f=1, b=2, Input Offset = -0.097945
+Predicted Offset = 0.016355
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.033196
+pic = a1647-MB_060909_078
+f=0, b=0, Input Offset = -0.330650
+Predicted Offset = -0.008066
+f=1, b=0, Input Offset = 0.370510
+Predicted Offset = -0.016268
+f=2, b=0, Input Offset = 0.656832
+Predicted Offset = 0.018677
+f=0, b=1, Input Offset = -0.929003
+Predicted Offset = -0.027857
+f=1, b=1, Input Offset = -0.211413
+Predicted Offset = -0.001333
+f=2, b=1, Input Offset = 0.074909
+Predicted Offset = -0.005314
+f=0, b=2, Input Offset = -0.952313
+Predicted Offset = -0.117661
+f=1, b=2, Input Offset = -0.286322
+Predicted Offset = -0.013768
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.009070
+pic = a1650-jn_2007_12_13__BU_CRUISE_135
+f=0, b=0, Input Offset = -0.196253
+Predicted Offset = 0.039686
+f=1, b=0, Input Offset = 0.448165
+Predicted Offset = 0.175112
+f=2, b=0, Input Offset = 0.858191
+Predicted Offset = 0.083708
+f=0, b=1, Input Offset = -0.894871
+Predicted Offset = -0.295377
+f=1, b=1, Input Offset = -0.245285
+Predicted Offset = 0.020785
+f=2, b=1, Input Offset = 0.164742
+Predicted Offset = -0.111997
+f=0, b=2, Input Offset = -1.061570
+Predicted Offset = -0.246343
+f=1, b=2, Input Offset = -0.408466
+Predicted Offset = -0.032083
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.212222
+pic = a1802-061006_014724__MG_6933
+f=0, b=0, Input Offset = 0.308701
+Predicted Offset = -0.161208
+f=1, b=0, Input Offset = 0.758403
+Predicted Offset = -0.017990
+f=2, b=0, Input Offset = 0.797734
+Predicted Offset = 0.023481
+f=0, b=1, Input Offset = -0.309894
+Predicted Offset = -0.182366
+f=1, b=1, Input Offset = 0.139808
+Predicted Offset = -0.032134
+f=2, b=1, Input Offset = 0.179139
+Predicted Offset = 0.021621
+f=0, b=2, Input Offset = -0.489033
+Predicted Offset = -0.142787
+f=1, b=2, Input Offset = -0.039331
+Predicted Offset = 0.013102
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.064489
+pic = a1981-WP_CRW_7751
+f=0, b=0, Input Offset = -0.110724
+Predicted Offset = -0.001246
+f=1, b=0, Input Offset = 0.425811
+Predicted Offset = -0.071190
+f=2, b=0, Input Offset = 0.464394
+Predicted Offset = 0.090215
+f=0, b=1, Input Offset = -0.559129
+Predicted Offset = -0.204219
+f=1, b=1, Input Offset = -0.033051
+Predicted Offset = -0.066278
+f=2, b=1, Input Offset = 0.014666
+Predicted Offset = 0.041743
+f=0, b=2, Input Offset = -0.563754
+Predicted Offset = -0.073447
+f=1, b=2, Input Offset = -0.043007
+Predicted Offset = -0.020025
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.012547
+pic = a2319-LSYD4O2499
+f=0, b=0, Input Offset = 0.090326
+Predicted Offset = -0.239407
+f=1, b=0, Input Offset = 0.689253
+Predicted Offset = -0.109286
+f=2, b=0, Input Offset = 0.723363
+Predicted Offset = 0.109913
+f=0, b=1, Input Offset = -0.474949
+Predicted Offset = -0.227991
+f=1, b=1, Input Offset = 0.131136
+Predicted Offset = -0.118950
+f=2, b=1, Input Offset = 0.165246
+Predicted Offset = 0.060078
+f=0, b=2, Input Offset = -0.637644
+Predicted Offset = -0.259172
+f=1, b=2, Input Offset = -0.034107
+Predicted Offset = -0.165420
+f=2, b=2, Input Offset = 0.000003
+Predicted Offset = -0.040986
+pic = a2604-_MG_1446
+f=0, b=0, Input Offset = 0.785183
+Predicted Offset = 0.044766
+f=1, b=0, Input Offset = 1.180488
+Predicted Offset = 0.216918
+f=2, b=0, Input Offset = 1.184945
+Predicted Offset = -0.000071
+f=0, b=1, Input Offset = 0.119152
+Predicted Offset = -0.071957
+f=1, b=1, Input Offset = 0.514308
+Predicted Offset = 0.004497
+f=2, b=1, Input Offset = 0.518822
+Predicted Offset = 0.141301
+f=0, b=2, Input Offset = -0.398666
+Predicted Offset = -0.091748
+f=1, b=2, Input Offset = -0.004443
+Predicted Offset = -0.025817
+f=2, b=2, Input Offset = 0.000030
+Predicted Offset = -0.178194
+pic = a2656-LSCRW_0073
+f=0, b=0, Input Offset = -0.134600
+Predicted Offset = -0.458092
+f=1, b=0, Input Offset = 0.310049
+Predicted Offset = -0.220212
+f=2, b=0, Input Offset = 0.976163
+Predicted Offset = -0.171740
+f=0, b=1, Input Offset = -0.618361
+Predicted Offset = -0.451039
+f=1, b=1, Input Offset = -0.370997
+Predicted Offset = -0.262800
+f=2, b=1, Input Offset = 0.288765
+Predicted Offset = -0.212338
+f=0, b=2, Input Offset = -1.317550
+Predicted Offset = -0.420096
+f=1, b=2, Input Offset = -0.963382
+Predicted Offset = -0.230962
+f=2, b=2, Input Offset = -0.384241
+Predicted Offset = -0.093285
+pic = a2870-NKIM_MG_7449
+f=0, b=0, Input Offset = -0.427677
+Predicted Offset = 0.012948
+f=1, b=0, Input Offset = 0.262261
+Predicted Offset = 0.033653
+f=2, b=0, Input Offset = 0.687816
+Predicted Offset = 0.122181
+f=0, b=1, Input Offset = -1.081643
+Predicted Offset = -0.146162
+f=1, b=1, Input Offset = -0.304953
+Predicted Offset = -0.153078
+f=2, b=1, Input Offset = 0.081397
+Predicted Offset = 0.118982
+f=0, b=2, Input Offset = -0.967057
+Predicted Offset = -0.121610
+f=1, b=2, Input Offset = -0.388671
+Predicted Offset = -0.133930
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.058174
+pic = a3442-MB_060909_003
+f=0, b=0, Input Offset = 0.022114
+Predicted Offset = 0.100603
+f=1, b=0, Input Offset = 0.649292
+Predicted Offset = 0.136394
+f=2, b=0, Input Offset = 0.760222
+Predicted Offset = 0.073940
+f=0, b=1, Input Offset = -0.607268
+Predicted Offset = -0.046784
+f=1, b=1, Input Offset = 0.024185
+Predicted Offset = -0.008571
+f=2, b=1, Input Offset = 0.134841
+Predicted Offset = 0.039689
+f=0, b=2, Input Offset = -0.732684
+Predicted Offset = 0.048539
+f=1, b=2, Input Offset = -0.110477
+Predicted Offset = 0.030099
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.029019
+pic = a3575-IMG_0834
+f=0, b=0, Input Offset = -0.000601
+Predicted Offset = -0.006957
+f=1, b=0, Input Offset = 0.601775
+Predicted Offset = -0.003899
+f=2, b=0, Input Offset = 0.675996
+Predicted Offset = 0.021410
+f=0, b=1, Input Offset = -0.621031
+Predicted Offset = -0.307302
+f=1, b=1, Input Offset = -0.018656
+Predicted Offset = -0.056324
+f=2, b=1, Input Offset = 0.055566
+Predicted Offset = 0.057600
+f=0, b=2, Input Offset = -0.676597
+Predicted Offset = -0.184833
+f=1, b=2, Input Offset = -0.074222
+Predicted Offset = -0.086468
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.022126
+pic = a4266-DSC_0426
+f=0, b=0, Input Offset = 0.068017
+Predicted Offset = -0.195615
+f=1, b=0, Input Offset = 0.555024
+Predicted Offset = 0.048713
+f=2, b=0, Input Offset = 0.555068
+Predicted Offset = 0.091039
+f=0, b=1, Input Offset = -0.483790
+Predicted Offset = -0.215818
+f=1, b=1, Input Offset = 0.003217
+Predicted Offset = -0.032813
+f=2, b=1, Input Offset = 0.003260
+Predicted Offset = -0.010619
+f=0, b=2, Input Offset = -0.476905
+Predicted Offset = -0.118244
+f=1, b=2, Input Offset = -0.000044
+Predicted Offset = -0.028042
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.014739
+pic = a4375-DSC_0029
+f=0, b=0, Input Offset = 0.092655
+Predicted Offset = 0.012211
+f=1, b=0, Input Offset = 0.384659
+Predicted Offset = 0.106822
+f=2, b=0, Input Offset = 0.384678
+Predicted Offset = -0.029022
+f=0, b=1, Input Offset = -0.265497
+Predicted Offset = -0.081105
+f=1, b=1, Input Offset = 0.000016
+Predicted Offset = 0.111828
+f=2, b=1, Input Offset = 0.000034
+Predicted Offset = -0.013688
+f=0, b=2, Input Offset = -0.286265
+Predicted Offset = -0.001296
+f=1, b=2, Input Offset = -0.000010
+Predicted Offset = 0.056405
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.054517
+pic = a4541-DSC_0040-2
+f=0, b=0, Input Offset = 0.273523
+Predicted Offset = -0.043804
+f=1, b=0, Input Offset = 0.658600
+Predicted Offset = 0.087762
+f=2, b=0, Input Offset = 0.658600
+Predicted Offset = 0.053130
+f=0, b=1, Input Offset = -0.312345
+Predicted Offset = 0.061572
+f=1, b=1, Input Offset = 0.040903
+Predicted Offset = -0.077151
+f=2, b=1, Input Offset = 0.040903
+Predicted Offset = 0.082186
+f=0, b=2, Input Offset = -0.397920
+Predicted Offset = -0.207336
+f=1, b=2, Input Offset = 0.000000
+Predicted Offset = -0.163666
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.011401
+pic = a4628-Duggan_090428_8108
+f=0, b=0, Input Offset = 0.440658
+Predicted Offset = -0.093434
+f=1, b=0, Input Offset = 0.975437
+Predicted Offset = -0.082393
+f=2, b=0, Input Offset = 1.177822
+Predicted Offset = 0.040571
+f=0, b=1, Input Offset = -0.248575
+Predicted Offset = -0.081590
+f=1, b=1, Input Offset = 0.280462
+Predicted Offset = 0.072799
+f=2, b=1, Input Offset = 0.482848
+Predicted Offset = -0.038785
+f=0, b=2, Input Offset = -0.715203
+Predicted Offset = -0.081425
+f=1, b=2, Input Offset = -0.202371
+Predicted Offset = -0.233027
+f=2, b=2, Input Offset = 0.000014
+Predicted Offset = -0.029276
+pic = a4852-kme_288
+f=0, b=0, Input Offset = 0.114550
+Predicted Offset = 0.016128
+f=1, b=0, Input Offset = 0.760038
+Predicted Offset = 0.056459
+f=2, b=0, Input Offset = 0.805757
+Predicted Offset = 0.054931
+f=0, b=1, Input Offset = -0.399863
+Predicted Offset = -0.176132
+f=1, b=1, Input Offset = 0.141987
+Predicted Offset = -0.042610
+f=2, b=1, Input Offset = 0.195449
+Predicted Offset = -0.017637
+f=0, b=2, Input Offset = -0.449059
+Predicted Offset = -0.287720
+f=1, b=2, Input Offset = -0.020768
+Predicted Offset = -0.094846
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.030054
+pic = a4886-Duggan_090503_8792
+f=0, b=0, Input Offset = -0.180802
+Predicted Offset = 0.022212
+f=1, b=0, Input Offset = 0.448384
+Predicted Offset = 0.005918
+f=2, b=0, Input Offset = 0.944447
+Predicted Offset = 0.012749
+f=0, b=1, Input Offset = -0.852999
+Predicted Offset = -0.035831
+f=1, b=1, Input Offset = -0.282577
+Predicted Offset = 0.017038
+f=2, b=1, Input Offset = 0.212858
+Predicted Offset = -0.016692
+f=0, b=2, Input Offset = -1.017466
+Predicted Offset = -0.064029
+f=1, b=2, Input Offset = -0.483548
+Predicted Offset = 0.057475
+f=2, b=2, Input Offset = -0.000029
+Predicted Offset = 0.141592
+pic = a4955-_DGW0261
+f=0, b=0, Input Offset = 0.026315
+Predicted Offset = -0.373467
+f=1, b=0, Input Offset = 0.527924
+Predicted Offset = -0.363974
+f=2, b=0, Input Offset = 0.666825
+Predicted Offset = 0.122430
+f=0, b=1, Input Offset = -0.674825
+Predicted Offset = -0.447055
+f=1, b=1, Input Offset = -0.137820
+Predicted Offset = -0.466014
+f=2, b=1, Input Offset = 0.000864
+Predicted Offset = 0.074795
+f=0, b=2, Input Offset = -0.671982
+Predicted Offset = -0.745869
+f=1, b=2, Input Offset = -0.138684
+Predicted Offset = -0.960765
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = -0.071399
+pic = a4978-_DSC0032-2
+f=0, b=0, Input Offset = -0.010953
+Predicted Offset = -0.263074
+f=1, b=0, Input Offset = 0.482305
+Predicted Offset = -0.267936
+f=2, b=0, Input Offset = 0.572740
+Predicted Offset = -0.280627
+f=0, b=1, Input Offset = -0.496559
+Predicted Offset = 0.044952
+f=1, b=1, Input Offset = 0.004929
+Predicted Offset = 0.038833
+f=2, b=1, Input Offset = 0.096363
+Predicted Offset = 0.022684
+f=0, b=2, Input Offset = -0.569716
+Predicted Offset = 0.005107
+f=1, b=2, Input Offset = -0.084964
+Predicted Offset = 0.012555
+f=2, b=2, Input Offset = 0.000000
+Predicted Offset = 0.015791
+0-matching error= 0.133969
+Prediction error = 0.192465

@@ -1,0 +1,8 @@
+mean_d1 = 0.006231,  	 std_d1 = 0.236725,	 error_d1 = 0.171286
+mean_d2 = -0.000824,  	 std_d2 = 0.220939,	 error_d2 = 0.162129
+mean_d3 = NaN,  	 std_d3 = NaN,	 error_d3 = NaN
+mean_d4 = NaN,  	 std_d4 = NaN,	 error_d4 = NaN
+mean_d = -0.001360,  	 std_d = 0.156601,	 error_d = 0.101537
+Fitting Error rate 0.000000
+Classification CV error rate 0.407758
+CV mean error = 0.1510

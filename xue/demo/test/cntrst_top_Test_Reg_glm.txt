@@ -1,0 +1,3 @@
+pic = a0151-JI2E3955
+f=0, b=0, Input Offset = 1.221806
+Predicted Offset = 1.147687

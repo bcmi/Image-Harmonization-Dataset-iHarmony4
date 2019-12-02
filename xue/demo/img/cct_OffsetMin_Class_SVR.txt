@@ -1,0 +1,10 @@
+mean_d1 = -38.548578,  	 std_d1 = 190.965425,	 error_d1 = 129.524304
+mean_d2 = 17.456150,  	 std_d2 = 47.475976,	 error_d2 = 32.347032
+mean_d3 = 20.848229,  	 std_d3 = 96.623757,	 error_d3 = 64.375338
+mean_d4 = 7.803038,  	 std_d4 = 52.076081,	 error_d4 = 30.631525
+mean_d = 1.667165,  	 std_d = 16.841763,	 error_d = 8.529076
+10 CV to choose parameters: (bestc=16.000000, bestg=0.250000, maxAccuracy=57.142857)
+Classification CV error rate 0.428571
+CV mean error = 21.047244
+Classification Fitting error rate 0.384429
+Fitting mean error = 19.072399

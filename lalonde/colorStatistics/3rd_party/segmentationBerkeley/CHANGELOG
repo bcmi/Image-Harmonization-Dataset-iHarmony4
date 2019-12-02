@@ -1,0 +1,58 @@
+-------------------------------------------------------------------------------
+Version 1.2.0
+- Thanks to the following individuals, especially John Kaufhold, whose
+  patient use of the version 1.1.0 benchmark and extremely helpful comments 
+  and suggestions led to this hopefully much improved release:
+        John Kaufhold (GE Research)
+        Stefano Casadei
+        Robert O'Callaghan (University of Bristol)
+        Stephen Zheng
+- moved thinning operations in boundaryPR.m and boundaryPRfast.m after
+  the thresholding operation.  This way, we can benchmark boundary maps
+  that have not been thinned first (though it is always best for users
+  to do whatever nonmax suppression they can beforehand)
+        ** This has the effect of improving the scores of algorithms
+           on the benchmark, as thinning before thresholding tends
+           to remove more boundary pixels.
+- removed thinning operation from boundaryBench.m when upsampling a boundary
+  map that is smaller than the segmentations, since it is unnecessary
+- added best F measure points to all graphs
+- boundaryBenchHtml.m and boundaryBenchGraphsMulti.m scripts are more 
+  robust w.r.t. half-completed algorithm directories (they skip them)
+  and missing human pb directories
+- [internal] setup.pl script now generates iids_{train,test}.txt in
+  BSDS directory
+- iids_{train,test}.txt now included in BSDS-images.tgz tarball
+- made sure all calls to correspondPixels pass double arrays instead
+  of logical arrays, so that we don't get those warnings about accessing
+  a logical array with mxGetPr (instead of mxGetLogicals)
+- in Util/Matrix.{hh,cc}:
+        - disclude nextpow2 methods by default, since they depend
+          on the system header ieeefp.h (which doesn't exist on some
+          systems)
+        - made helper scalar math functions static
+        - commented out log2() and trunc(), since they now appear to be
+          in libc.  If your libc doesn't have these, then you need to
+          uncomment them.
+- added -DNOBLAS to compilation of Util/Matrix.cc so that one does not
+  need a BLAS library to use the Matrix class.  None of my code uses
+  this class to do matrix multiplcation.  If it did, then this would
+  impact the performance of such code.
+- removed unused runtest directive from Benchmark/GNUmakefile
+- added all Benchmark/*.m files to install directive in Benchmark/GNUmakefile
+- fixed non-critical idiag bug in Benchmark/correspondPixels.cc
+- fixed declaration of nomem_msg in CSA/csa.{hh,cc}
+- removed extern "C" from Util/isum.c; mex doesn't seem to need it, and it
+  was causing build problems for some
+- bugfix: added fclose(fid) to end of writeSeg.m
+-------------------------------------------------------------------------------
+Version 1.1.0
+- Created single feature gradient detectors {bg,cg,tg}.
+- Retrained {bg,cg,tg,bgtg,cgtg} detectors using either gray or color
+segmentations, depending on whether the detector is to be benchmarked
+as a gray or color algorithm.  The bgtg detector was trained with both
+to have a comparison point.
+-------------------------------------------------------------------------------
+Version 1.0.0 
+- Initial public release.
+-------------------------------------------------------------------------------

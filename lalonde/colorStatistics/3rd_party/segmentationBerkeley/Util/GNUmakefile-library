@@ -1,0 +1,250 @@
+# use gmake
+
+# Some of the following variables should be defined for something to
+# be built or installed:
+#	srcs, hdrs, lib, mex, scripts, matlab
+# The following variables are optional: 
+#	cc, cxx, ccFlags, cxxFlags, mexFlags, mexLibs
+# The following "phony" targets are defined.  Note that these are all
+# defined with double-colon rules, so that clients can append them.
+#	default, install, uninstall, realclean, clean
+#
+
+baseDir = ..
+hostType := $(shell ../Util/gethosttype)
+
+# Determine the mex suffix.
+ifeq ($(hostType),ix86_linux)
+mexSuffix := mexglx
+endif
+ifndef mexSuffix
+mexSuffix := mexa64
+#$(error mexSuffix not defined)
+endif
+
+ifdef lib
+ifndef srcs
+$(error You must define srcs if you define lib.)
+endif
+endif
+
+# Provide default values for optional variables
+ifndef cc
+cc := gcc
+endif
+ifndef cxx
+cxx := g++
+endif
+ifndef ccFlags
+ccFlags :=
+endif
+ifndef cxxFlags
+cxxFlags :=
+endif
+ifndef mexFlags
+mexFlags :=
+endif
+ifndef mexLibs
+mexLibs :=
+endif
+
+# Add some compile flags
+ccFlags 	:= -g -Wall -I../include $(ccFlags)
+cxxFlags 	:= -g -Wall -fPIC -I../include $(cxxFlags)
+mexFlags	:= -I../include -L../lib/$(hostType) $(mexFlags)
+mexFlags	:= $(mexFlags) \
+		   CC=g++ COPTIMFLAGS=-O3 CDEBUGFLAGS=-g \
+		   CFLAGS='-fPIC -ansi -D_GNU_SOURCE -pthread -Wall' \
+		   CXX=g++ CXXOPTIMFLAGS=-O3 CXXDEBUGFLAGS=-g \
+		   CXXFLAGS='-fPIC -ansi -D_GNU_SOURCE -pthread -Wall'
+
+# Build/install directories.
+buildBase	:= ./build
+buildDir	:= $(buildBase)/$(hostType)
+dirs 		:= $(buildDir)
+ifdef scripts
+installScriptDir := $(baseDir)/bin/scripts
+dirs		:= $(dirs) $(installScriptDir)
+endif
+ifdef matlab
+installMatlabDir := $(baseDir)/lib/matlab
+dirs		:= $(dirs) $(installMatlabDir) 
+endif
+ifdef lib
+installLibDir	:= $(baseDir)/lib/$(hostType)
+dirs		:= $(dirs) $(installLibDir)
+endif
+ifdef hdrs
+installHdrDir	:= $(baseDir)/include
+dirs		:= $(dirs) $(installHdrDir)
+endif
+
+# Things to build and install.
+ifdef srcs
+cBuildObjs	:= $(addprefix $(buildDir)/,$(patsubst %.c,%.o,$(filter %.c,$(srcs))))
+ccBuildObjs	:= $(addprefix $(buildDir)/,$(patsubst %.cc,%.o,$(filter %.cc,$(srcs))))
+cxxBuildObjs	:= $(addprefix $(buildDir)/,$(patsubst %.cxx,%.o,$(filter %.cxx,$(srcs))))
+cppBuildObjs	:= $(addprefix $(buildDir)/,$(patsubst %.cpp,%.o,$(filter %.cpp,$(srcs))))
+buildObjs	:= $(cBuildObjs) $(ccBuildObjs) $(cxxBuildObjs) $(cppBuildObjs)
+else
+buildObjs	:= # used to build mex
+endif
+ifdef lib
+buildLib	:= $(buildDir)/$(lib)
+installLib	:= $(installLibDir)/$(lib)
+endif
+ifdef hdrs
+installHdrs	:= $(addprefix $(installHdrDir)/,$(hdrs))
+endif
+ifdef scripts
+installScripts	:= $(addprefix $(installScriptDir)/,$(scripts))
+endif
+ifdef matlab
+installMatlab	:= $(addprefix $(installMatlabDir)/,$(matlab))
+endif
+ifdef mex
+cBuildMex 	:= $(patsubst %.c,%.$(mexSuffix),$(filter %.c,$(mex)))
+ccBuildMex 	:= $(patsubst %.cc,%.$(mexSuffix),$(filter %.cc,$(mex)))
+cxxBuildMex 	:= $(patsubst %.cxx,%.$(mexSuffix),$(filter %.cxx,$(mex)))
+cppBuildMex 	:= $(patsubst %.cpp,%.$(mexSuffix),$(filter %.cpp,$(mex)))
+buildMex 	:= $(cBuildMex) $(ccBuildMex) $(cxxBuildMex) $(cppBuildMex)
+installMex	:= $(addprefix $(installMatlabDir)/,$(buildMex))
+endif
+
+###########################################################################
+
+.PHONY: default install uninstall realclean clean
+
+default:: $(dirs) 
+install:: $(dirs)
+realclean:: clean 
+
+$(dirs):
+	mkdir -p $@
+
+###########################################################################
+
+ifdef srcs
+
+default:: $(buildObjs)
+
+$(cBuildObjs): $(buildDir)/%.o: %.c
+	$(cc) $(ccFlags) -c $< -o $@
+
+$(ccBuildObjs): $(buildDir)/%.o: %.cc
+	$(cxx) $(cxxFlags) -c $< -o $@
+
+$(cxxBuildObjs): $(buildDir)/%.o: %.cxx
+	$(cxx) $(cxxFlags) -c $< -o $@
+
+$(cppBuildObjs): $(buildDir)/%.o: %.cpp
+	$(cxx) $(cxxFlags) -c $< -o $@
+
+clean::
+	-rm -f $(buildObjs)
+
+endif
+
+###########################################################################
+
+ifdef lib
+
+default:: $(buildLib)
+install:: $(installLib)
+
+$(buildLib): $(buildObjs) 
+	ar crs $@ $^
+
+$(installLib): $(installLibDir)/%.a: $(buildDir)/%.a
+	cp $< $@
+	chmod 644 $@
+
+uninstall::
+	-rm -f $(installLib)
+
+realclean::
+	-rm -f $(buildLib)
+
+endif
+
+###########################################################################
+
+ifdef mex
+
+default:: $(buildMex) 
+install:: $(installMex)
+
+$(buildMex): $(buildObjs)
+
+$(cBuildMex): %.$(mexSuffix): %.c
+	matlab -nodisplay -nojvm -r "mex $(mexFlags) $< $(buildObjs) $(mexLibs) $(mexLibs); exit"
+$(ccBuildMex): %.$(mexSuffix): %.cc
+	matlab -nodisplay -nojvm -r "mex $(mexFlags) $< $(buildObjs) $(mexLibs) $(mexLibs); exit"
+$(cxxBuildMex): %.$(mexSuffix): %.cxx
+	matlab -nodisplay -nojvm -r "mex $(mexFlags) $< $(buildObjs) $(mexLibs) $(mexLibs); exit"
+$(cppBuildMex): %.$(mexSuffix): %.cpp
+	matlab -nodisplay -nojvm -r "mex $(mexFlags) $< $(buildObjs) $(mexLibs) $(mexLibs); exit"
+
+$(installMex): $(installMatlabDir)/%.$(mexSuffix): %.$(mexSuffix)
+	cp $< $@
+	chmod 644 $@
+
+uninstall::
+	-rm -f $(installMex)
+
+clean::
+	-rm -f $(buildMex)
+
+endif
+
+###########################################################################
+
+ifdef hdrs
+
+install:: $(installHdrs)
+
+$(filter %.hh,$(installHdrs)): $(installHdrDir)/%.hh: %.hh
+	cp $< $@
+	chmod 644 $@
+
+$(filter %.h,$(installHdrs)): $(installHdrDir)/%.h: %.h
+	cp $< $@
+	chmod 644 $@
+
+uninstall::
+	-rm -f $(installHdrs)
+
+endif
+
+###########################################################################
+
+ifdef scripts
+
+install:: $(installScripts)
+
+$(installScripts): $(installScriptDir)/%: %
+	cp $< $@
+	chmod 755 $@
+
+uninstall::
+	-rm -f $(installScripts)
+
+endif
+
+###########################################################################
+
+ifdef matlab
+
+install:: $(installMatlab)
+
+$(installMatlab): $(installMatlabDir)/%: %
+	cp $< $@
+	chmod 644 $@
+
+uninstall::
+	-rm -f $(installMatlab)
+endif
+
+###########################################################################
+
+# eof

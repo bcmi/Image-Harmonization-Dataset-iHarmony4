@@ -1,0 +1,139 @@
+%% Input
+%  d1(index)~d4(index), d(index), predLabel_1 ~ predLabel_4
+%% Output
+% 
+
+switch goal,
+    case 'lum',
+        feature_1_F = lum_high_F;   feature_1_B = lum_high_B;
+        feature_2_F = lum_shdw_F;   feature_2_B = lum_shdw_B;
+        feature_3_F = lum_mean_F;   feature_3_B = lum_mean_B;
+        limit_up   =    0;   
+        limit_down =    -11.686;
+    case 'cct',
+        feature_1_F = cct_warm_F;   feature_1_B = cct_warm_B;
+        feature_2_F = cct_cold_F;   feature_2_B = cct_cold_B;
+        feature_3_F = cct_mean_F;   feature_3_B = cct_mean_B;
+        feature_4_F = cct_high_F;   feature_4_B = cct_high_B;
+        limit_up   =    1e6/1500;
+        limit_down =    1e6/20000;
+    case 'sat',
+        feature_1_F = sat_top_F;    feature_1_B = sat_top_B;
+        feature_2_F = sat_low_F;    feature_2_B = sat_low_B;
+        feature_3_F = sat_mean_F;   feature_3_B = sat_mean_B;
+        limit_up   =    0;   
+        limit_down =    -11.686;
+    case 'hue',
+        feature_1_F = hue_high_F;    feature_1_B = hue_high_B;
+        feature_2_F = hue_mean_F;    feature_2_B = hue_mean_B;
+        limit_up   =    1;   
+        limit_down =    0;
+
+end
+
+switch goal,                             %input "mean offset"        
+   case 'lum',      input_mean_off = lum_mean_F - lum_mean_B;   
+   case 'cntrst',   input_mean_off = cntrst_top_F - cntrst_top_B;   % cntrst doesn't allow mean
+   case 'cct',      input_mean_off = cct_mean_F - cct_mean_B;   
+   case 'sat',      input_mean_off = sat_mean_F - sat_mean_B;   
+   case 'hue',      input_mean_off = hue_mean_F - hue_mean_B;   
+end
+
+eps = 0.001;
+
+% Find bset Shift
+minCost  = 1e6;
+minMeanCost = 1e6;
+bestOpt = 0;
+bestOff = 1e6;
+for option =1:4    %option of label for matching
+   switch option
+       case 1, 
+            if  isempty(d1),  continue; end;      %top is empty
+            if  predLabel_1==0,  continue; end;   %top is not suitable for matching
+            dp = d1(index);                       % input offset  
+       case 2,
+            if  isempty(d2),  continue; end;  
+            if  predLabel_2==0,  continue; end;   
+            dp = d2(index);
+       case 3,
+            if  isempty(d3),  continue; end;   
+            if  predLabel_3==0,  continue; end;  
+            dp = d3(index);
+       case 4,
+            if  isempty(d4),  continue; end;   
+            if  predLabel_4==0,  continue; end;   
+            dp = d4(index);
+   end
+
+   % Sum Cost
+   cost = 0;
+   if  ~isempty(d1), 
+       ff = feature_1_F - dp;
+       ff = min(max(ff, limit_down), limit_up);
+       off_1 =  ff - feature_1_B;  
+       cost = cost + abs(off_1) * predLabel_1; 
+   end;
+   if  ~isempty(d2), 
+       ff = feature_2_F - dp;
+       ff = min(max(ff, limit_down), limit_up);
+       off_2 =  ff - feature_2_B; 
+       cost = cost+abs(off_2) * predLabel_2; 
+   end;
+   if  ~isempty(d3), 
+       ff = feature_3_F - dp;
+       ff = min(max(ff, limit_down), limit_up);
+       off_3 =  ff - feature_3_B; 
+       cost = cost+abs(off_3) * predLabel_3; 
+   end;
+   if  ~isempty(d4), 
+       ff = feature_4_F - dp;
+       ff = min(max(ff, limit_down), limit_up);
+       off_4 =  ff - feature_4_B;  
+       cost = cost+abs(off_4) * predLabel_4; 
+   end;
+
+   % Mean cost: the offset of mean after adjustment
+   meanCost = abs(input_mean_off + (0-dp));
+   
+   if cost < minCost - eps,
+       minCost = cost;
+       minMeanCost = meanCost;
+       bestOpt = option;
+       bestOff = dp;
+   elseif cost > minCost - eps && cost < minCost + eps   % cost == minCost
+       %% Option 1: use meanOff
+       if meanCost < minMeanCost - eps
+            minCost = cost;
+            minMeanCost = meanCost;
+            bestOpt = option;
+            bestOff = dp;
+       end
+       %% Option 2: use minOff
+%        if dp < bestOff
+%             minCost = cost;
+%             minMeanCost = meanCost;
+%             bestOpt = option;
+%             bestOff = dp;
+%        end
+   end
+   disp(sprintf('Option = %d: cost = %f, meanCost = %f, dp = %f\n', option, cost, meanCost, dp));
+   %fprintf(fid, 'Option = %d: cost = %f, meanCost = %f, dp = %f\n', option, cost, meanCost, dp);
+end
+
+% In case no label is selected
+%% Option 1: use meanOff
+if bestOpt == 0
+   minMeanCost = 0;
+   bestOpt = 3;   %mean offset of input
+   bestOff = d3(index);
+end
+%% Option 2: use minOff
+% if bestOpt == 0
+%    bestOpt = label;   %min offset of input
+%    bestOff = d(index);
+% end
+
+
+disp(sprintf('bestOpt = %d: minCost = %f, minMeanCost = %f, bestOff = %f\n', bestOpt, minCost, minMeanCost, bestOff));
+%fprintf(fid, 'bestOpt = %d: minCost = %f, minMeanCost = %f, bestOff = %f\n', bestOpt, minCost, minMeanCost, bestOff);
