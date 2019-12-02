@@ -63,7 +63,7 @@ Notice that it requires matcaffe interface. We make some changes corresponds to 
 
 This is a Tensorflow implementation based on the caffe network released by the original authors in their [GitHub](<https://github.com/wasidennis/DeepHarmonization>).
 
-Besides, we also discard one inner-most convolutional layer and one inner- most deconvolutional layer to make it suitable for input of 256*256 size.
+Besides, we also discard one inner-most convolutional layer and one inner-most deconvolutional layer to make it suitable for input of 256*256 size.
 
 To train DIH, 
 
@@ -75,7 +75,7 @@ Don't forget to specify the directory of Image Harmonization Dataset after `data
 
 This code of CVPR 2017: Image-to-Image Translation with Conditional Adversarial Networks,  is released by Jun-Yan Zhu in their [GitHub](<https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix>)
 
-Since our dataset is not organized to be like a normally aligned dataset, we have to implement image loading and processing part according to our dataset. For more details, you could refer to `data/ihd_dataset.py`. We implement the U-net backbone based on Zhu's implementation of unet 256. and train it alone instead of in an adversarial manner. Refer to `unet_model.py` for more details.
+Since our dataset is not organized like a normally aligned dataset, we have to implement image loading and processing part according to our dataset. For more details, you could refer to `data/ihd_dataset.py`. We implement the U-net backbone based on Zhu's implementation of unet_256, and train it alone instead of in an adversarial manner. Refer to `unet_model.py` for more details.
 
 To train U-net:
 
@@ -85,16 +85,21 @@ To train U-net:
 
 
 
+# Bibtex
+
 **When using images from our dataset, please cite this dataset using the following BibTeX**:
 
-@misc{cong2019deep,
-​    title={Deep Image Harmonization via Domain Verification},
-​    author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and Weiyuan Li and Liqing Zhang},
-​    year={2019},
-​    eprint={1911.13239},
-​    archivePrefix={arXiv},
-​    primaryClass={cs.CV}
-}
+
+
+```
+@misc{
+title={Deep Image Harmonization via Domain Verification},
+author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and Weiyuan Li and Liqing Zhang},
+year={2019},
+eprint={1911.13239},
+archivePrefix={arXiv},
+primaryClass={cs.CV}}
+```
 
 
 
