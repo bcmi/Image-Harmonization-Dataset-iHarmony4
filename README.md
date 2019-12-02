@@ -85,16 +85,18 @@ To train U-net:
 
 
 
+### Bibtex
+
 **When using images from our dataset, please cite this dataset using the following BibTeX**:
 
-@misc{cong2019deep,
+`@misc{cong2019deep,
 ​    title={Deep Image Harmonization via Domain Verification},
 ​    author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and Weiyuan Li and Liqing Zhang},
 ​    year={2019},
 ​    eprint={1911.13239},
 ​    archivePrefix={arXiv},
 ​    primaryClass={cs.CV}
-}
+}`
 
 
 
