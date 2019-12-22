@@ -11,25 +11,45 @@ Our dataset is a synthesized dataset for Image Harmonization. It contains 4 sub-
 
 - ### HCOCO
 
-HCOCO, containing 42k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. The sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1bMTNzFJMreOOE-Lz3c7hGg)
+HCOCO, containing 42k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. **The HCOCO sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1bMTNzFJMreOOE-Lz3c7hGg)**
 
 
 - ### HAdobe5k
 
-HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions. The sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1NAtLnCdY1-4uxRKB8REPQg)
+HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions. **The HAdobe5k sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1NAtLnCdY1-4uxRKB8REPQg)**
 
 
 - ### HFlickr
 
-We collected 4833 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate HFlickr sub-dataset. The sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ZaCYo9Z21RGVgCwXgtvmbw) 
+We collected 4833 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate HFlickr sub-dataset. **The HFlickr sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ZaCYo9Z21RGVgCwXgtvmbw) **
 
 
 - ### Hday2night
 
-Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. The sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1wTqGeB9SMweS5UAaxWof8A)
+Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. **The Hday2night sub-dataset and training/testing split are provided in [Baidu Cloud**](https://pan.baidu.com/s/1wTqGeB9SMweS5UAaxWof8A)
 
 
 ![](examples.jpg)
+
+# Color Transfer Methods
+
+To generate synthesized composite images, color transfer methods are adopted to transfer color information from reference images to real images. Considering that color transfer methods can be categorized into four groups based on parametric/non-parametric and correlated/decorrelated color space, we select one representative method from each group. Thanks to Wei Xu's efforts for releasing the code of color transfer method 1, 2 and 3 in their survey paper, we could implement color transfer methods specialized for foreground based on their implementation. And the source code of IDT regrain color transfer is downloaded from the author's [GitHub](https://github.com/frcs/colour-transfer)
+
+### 1. global color transfer
+
+--Parametric method in decorrelated color space. Implementation of paper *Color transfer between images*.
+
+### 2. global color transfer in RGB color space
+
+--Parametric method in correlated color space. Implementation of paper *Color transfer in correlated color space*.
+
+### 3. cumulative histogram mapping
+
+--Non-parametric method in decorrelated color space. Implementation of paper  *Histogram-based prefiltering for luminance and chrominance compensation of multiview video*.
+
+### 4. IDT regrain color transfer
+
+--Non-parametric method in correlated color space. Implementation of paper  *Automated colour grading using colour distribution transfer*.
 
 # Baselines
 
@@ -57,7 +77,7 @@ Jun-Yan Zhu released the code of their ICCV 2015 paper: Learning a discriminativ
 
 Notice that it requires matcaffe interface. We make some changes corresponds to our dataset including how to preprocess data and how to save the harmonized results. Don't forget to specify `DATA_DIR`,`MODEL_DIR` and `RST_DIR` before running `demo.m`.
 
-
+The pre-trained models of Zhu's work can also be found in [BaiduCloud](https://pan.baidu.com/s/1_9UidT1rGNX0gYOYzjqITQ) and remember to put it under `MODEL_DIR`.
 
 ### DIH
 
@@ -71,6 +91,10 @@ To train DIH,
 
 Don't forget to specify the directory of Image Harmonization Dataset after `data_dir`.
 
+Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1GlUh660j0LMQaQ3iykaNJQ). To test and re-produce the results of DIH reported in our paper, run:
+
+`python test.py`
+
 ### U-net
 
 This code of CVPR 2017: Image-to-Image Translation with Conditional Adversarial Networks,  is released by Jun-Yan Zhu in their [GitHub](<https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix>)
@@ -79,15 +103,23 @@ Since our dataset is not organized like a normally aligned dataset, we have to i
 
 To train U-net:
 
-`python train_g.py  --dataroot ./datasets/ihd/ --name unet --model unet --gpu_ids 1 --dataset_mode ihd --is_train 1 --no_flip --preprocess none --norm instance`
+`python train.py  --dataroot ./datasets/ihd/ --name unet --model unet --gpu_ids 1 --dataset_mode ihd --is_train 1 --no_flip --preprocess none --norm instance`
+
+Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1jcgP7Miwmfc-qqezWx8sgg).  Download and put it under `./unet/checkpoint/unet/` To test and re-produce the results of U-net reported in our paper, run:
+
+`python test.py  --dataroot ./datasets/ihd/ --name unet --model unet --gpu_ids 1 --dataset_mode ihd --is_train 0 --no_flip --preprocess none --norm instance`
+
+# Experiments
+
+When conducting experiments, we merge the training sets of all four sub-datasets as a whole training set to learn the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show some example results of different baselines on our dataset.
 
 
 
-
+Besides, to evaluate the effectiveness of different methods in real scenarios, we also conduct user study on 99 real composite images, of which 48 images from Xue and 51 images from Tsai. Below we present several results of different baselines on real composite images. 
 
 # Bibtex
 
-**When using images from our dataset, please cite this dataset using the following BibTeX**:
+**When using images from our dataset, please cite this dataset using the following BibTeX [[pdf](<https://arxiv.org/abs/1911.13239>)]:**
 
 
 
