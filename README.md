@@ -21,12 +21,12 @@ HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/grap
 
 - ### HFlickr
 
-We collected 4833 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate HFlickr sub-dataset. **The HFlickr sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ZaCYo9Z21RGVgCwXgtvmbw) **
+We collected 4833 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate HFlickr sub-dataset. **The HFlickr sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ZaCYo9Z21RGVgCwXgtvmbw)**
 
 
 - ### Hday2night
 
-Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. **The Hday2night sub-dataset and training/testing split are provided in [Baidu Cloud**](https://pan.baidu.com/s/1wTqGeB9SMweS5UAaxWof8A)
+Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. **The Hday2night sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1wTqGeB9SMweS5UAaxWof8A)**
 
 
 ![](examples.jpg)
@@ -111,7 +111,7 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1jcgP7Miw
 
 # Experiments
 
-When conducting experiments, we merge the training sets of all four sub-datasets as a whole training set to learn the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show some example results of different baselines on our dataset.
+When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show some example results of different baselines on our dataset.
 
 
 
