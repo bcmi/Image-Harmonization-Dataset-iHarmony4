@@ -41,7 +41,7 @@ To generate synthesized composite images, color transfer methods are adopted to 
 
 ### 2. global color transfer in RGB color space
 
---Parametric method in correlated color space. Implementation of paper *Color transfer in correlated color space* [[pdf]](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.530.2757&rep=rep1&type=pdf).
+--Parametric method in correlated color space. Implementation of paper *Color transfer in correlated color space* [[pdf]](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.530.2757&rep=rep1&type=pdf base target="_blank").
 
 ### 3. cumulative histogram mapping
 
