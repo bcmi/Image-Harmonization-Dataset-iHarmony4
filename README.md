@@ -37,19 +37,19 @@ To generate synthesized composite images, color transfer methods are adopted to 
 
 ### 1. global color transfer
 
---Parametric method in decorrelated color space. Implementation of paper *Color transfer between images*.
+--Parametric method in decorrelated color space. Implementation of paper *Color transfer between images* [[pdf]](https://www.cs.tau.ac.il/~turkel/imagepapers/ColorTransfer.pdf:_blank).
 
 ### 2. global color transfer in RGB color space
 
---Parametric method in correlated color space. Implementation of paper *Color transfer in correlated color space*.
+--Parametric method in correlated color space. Implementation of paper *Color transfer in correlated color space* [[pdf]](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.530.2757&rep=rep1&type=pdf).
 
 ### 3. cumulative histogram mapping
 
---Non-parametric method in decorrelated color space. Implementation of paper  *Histogram-based prefiltering for luminance and chrominance compensation of multiview video*.
+--Non-parametric method in decorrelated color space. Implementation of paper  *Histogram-based prefiltering for luminance and chrominance compensation of multiview video* [[pdf]](https://ieeexplore.ieee.org/document/4539698).
 
 ### 4. IDT regrain color transfer
 
---Non-parametric method in correlated color space. Implementation of paper  *Automated colour grading using colour distribution transfer*.
+--Non-parametric method in correlated color space. Implementation of paper  *Automated colour grading using colour distribution transfer* [[pdf]](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.458.7694&rep=rep1&type=pdf).
 
 # Baselines
 
@@ -115,7 +115,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 ![](examples/results_syn.jpg)
 
-Besides, to evaluate the effectiveness of different methods in real scenarios, we also conduct user study on 99 real composite images, of which 48 images from Xue and 51 images from Tsai. Below we present several results of different baselines on real composite images. 
+Besides, to evaluate the effectiveness of different methods in real scenarios, we also conduct user study on 99 real composite images, of which 48 images from Xue and 51 images from Tsai. Below we present several results of different baselines on real composite images. And 99 real composite images could be found in [BaiduCloud](https://pan.baidu.com/s/1z0fvp28gWswSCysw0eiUQg)
 
 ![](examples/results_real_comp.jpg)
 
