@@ -37,7 +37,7 @@ To generate synthesized composite images, color transfer methods are adopted to 
 
 ### 1. global color transfer
 
---Parametric method in decorrelated color space. Implementation of paper *Color transfer between images* [[pdf]](https://www.cs.tau.ac.il/~turkel/imagepapers/ColorTransfer.pdf:_blank).
+--Parametric method in decorrelated color space. Implementation of paper *Color transfer between images* [[pdf]](https://www.cs.tau.ac.il/~turkel/imagepapers/ColorTransfer.pdf){target="_blank"}.
 
 ### 2. global color transfer in RGB color space
 
