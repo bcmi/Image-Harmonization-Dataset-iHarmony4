@@ -125,15 +125,15 @@ Besides, to evaluate the effectiveness of different methods in real scenarios, w
 
 # Bibtex
 
-**When using images from our dataset, please cite this dataset using the following BibTeX [[pdf](<https://arxiv.org/abs/1911.13239>)]:**
+**When using images from our dataset, please cite our paper using the following BibTeX [[pdf](<https://arxiv.org/abs/1911.13239>)]:**
 
 
 
 ```
-@inproceedings{
+@inproceedings{dih2020,
 title={Deep Image Harmonization via Domain Verification},
 author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and Weiyuan Li and Liqing Zhang},
 booktitle={CVPR},
-year={2020},}
+year={2020}}
 ```
 
