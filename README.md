@@ -130,7 +130,7 @@ Besides, to evaluate the effectiveness of different methods in real scenarios, w
 
 
 ```
-@inproceedings{dih2020,
+@inproceedings{DoveNet2020,
 title={DoveNet: Deep Image Harmonization via Domain Verification},
 author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and Weiyuan Li and Liqing Zhang},
 booktitle={CVPR},
