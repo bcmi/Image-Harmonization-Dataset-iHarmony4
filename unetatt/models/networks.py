@@ -154,6 +154,8 @@ def define_G(input_nc, output_nc, ngf, netG, norm='batch', use_dropout=False, in
         net = UnetGenerator(input_nc, output_nc, 7, ngf, norm_layer=norm_layer, use_dropout=use_dropout)
     elif netG == 'unet_256':
         net = UnetGenerator(input_nc, output_nc, 8, ngf, norm_layer=norm_layer, use_dropout=use_dropout)
+    elif netG == 'unetatt':
+        net = UnetGenerator(input_nc, output_nc, 8, ngf, norm_layer=norm_layer, use_dropout=use_dropout, use_attention=True)
     else:
         raise NotImplementedError('Generator model name [%s] is not recognized' % netG)
     return init_net(net, init_type, init_gain, gpu_ids)
@@ -234,6 +236,7 @@ class GANLoss(nn.Module):
             self.loss = nn.BCEWithLogitsLoss()
         elif gan_mode in ['wgangp']:
             self.loss = None
+            self.relu = nn.ReLU()
         else:
             raise NotImplementedError('gan mode %s not implemented' % gan_mode)
 
@@ -269,13 +272,13 @@ class GANLoss(nn.Module):
             loss = self.loss(prediction, target_tensor)
         elif self.gan_mode == 'wgangp':
             if target_is_real:
-                loss = -prediction.mean()
+                loss = -prediction.mean() # self.relu(1-prediction.mean())
             else:
-                loss = prediction.mean()
+                loss = prediction.mean() # self.relu(1+prediction.mean())
         return loss
 
 
-def cal_gradient_penalty(netD, real_data, fake_data, device, type='mixed', constant=1.0, lambda_gp=10.0):
+def cal_gradient_penalty(netD, real_data, fake_data, device, type='mixed', constant=1.0, lambda_gp=10.0, mask=None):
     """Calculate the gradient penalty loss, used in WGAN-GP paper https://arxiv.org/abs/1704.00028
 
     Arguments:
@@ -301,10 +304,11 @@ def cal_gradient_penalty(netD, real_data, fake_data, device, type='mixed', const
         else:
             raise NotImplementedError('{} not implemented'.format(type))
         interpolatesv.requires_grad_(True)
-        disc_interpolates = netD(interpolatesv)
+        disc_interpolates = netD(interpolatesv, mask, gp=True)
         gradients = torch.autograd.grad(outputs=disc_interpolates, inputs=interpolatesv,
                                         grad_outputs=torch.ones(disc_interpolates.size()).to(device),
-                                        create_graph=True, retain_graph=True, only_inputs=True)
+                                        create_graph=True, retain_graph=True, only_inputs=True,
+                                        allow_unused=True)
         gradients = gradients[0].view(real_data.size(0), -1)  # flat the data
         gradient_penalty = (((gradients + 1e-16).norm(2, dim=1) - constant) ** 2).mean() * lambda_gp        # added eps
         return gradient_penalty, gradients
@@ -436,7 +440,7 @@ class ResnetBlock(nn.Module):
 class UnetGenerator(nn.Module):
     """Create a Unet-based generator"""
 
-    def __init__(self, input_nc, output_nc, num_downs, ngf=64, norm_layer=nn.BatchNorm2d, use_dropout=False):
+    def __init__(self, input_nc, output_nc, num_downs, ngf=64, norm_layer=nn.BatchNorm2d, use_dropout=False, use_attention=False):
         """Construct a Unet generator
         Parameters:
             input_nc (int)  -- the number of channels in input images
@@ -455,9 +459,9 @@ class UnetGenerator(nn.Module):
         for i in range(num_downs - 5):          # add intermediate layers with ngf * 8 filters
             unet_block = UnetSkipConnectionBlock(ngf * 8, ngf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_dropout=use_dropout)
         # gradually reduce the number of filters from ngf * 8 to ngf
-        unet_block = UnetSkipConnectionBlock(ngf * 4, ngf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
-        unet_block = UnetSkipConnectionBlock(ngf * 2, ngf * 4, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
-        unet_block = UnetSkipConnectionBlock(ngf, ngf * 2, input_nc=None, submodule=unet_block, norm_layer=norm_layer)
+        unet_block = UnetSkipConnectionBlock(ngf * 4, ngf * 8, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_attention=use_attention)
+        unet_block = UnetSkipConnectionBlock(ngf * 2, ngf * 4, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_attention=use_attention)
+        unet_block = UnetSkipConnectionBlock(ngf, ngf * 2, input_nc=None, submodule=unet_block, norm_layer=norm_layer, use_attention=use_attention)
         self.model = UnetSkipConnectionBlock(output_nc, ngf, input_nc=input_nc, submodule=unet_block, outermost=True, norm_layer=norm_layer)  # add the outermost layer
 
     def forward(self, input):
@@ -472,7 +476,7 @@ class UnetSkipConnectionBlock(nn.Module):
     """
 
     def __init__(self, outer_nc, inner_nc, input_nc=None,
-                 submodule=None, outermost=False, innermost=False, norm_layer=nn.BatchNorm2d, use_dropout=False):
+                 submodule=None, outermost=False, innermost=False, norm_layer=nn.BatchNorm2d, use_dropout=False, use_attention=False):
         """Construct a Unet submodule with skip connections.
 
         Parameters:
@@ -526,13 +530,22 @@ class UnetSkipConnectionBlock(nn.Module):
             else:
                 model = down + [submodule] + up
 
+        self.use_attention = use_attention
+        if use_attention:
+            attention_conv = nn.Conv2d(outer_nc+input_nc, outer_nc+input_nc, kernel_size=1)
+            attention_sigmoid = nn.Sigmoid()
+            self.attention = nn.Sequential(*[attention_conv, attention_sigmoid])
+
         self.model = nn.Sequential(*model)
 
     def forward(self, x):
         if self.outermost:
             return self.model(x)
         else:   # add skip connections
-            return torch.cat([x, self.model(x)], 1)
+            ret = torch.cat([x, self.model(x)], 1)
+            if self.use_attention:
+                return self.attention(ret) * ret
+            return ret
 
 
 class NLayerDiscriminator(nn.Module):
@@ -613,3 +626,4 @@ class PixelDiscriminator(nn.Module):
     def forward(self, input):
         """Standard forward."""
         return self.net(input)
+

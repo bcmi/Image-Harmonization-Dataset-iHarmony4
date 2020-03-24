@@ -142,15 +142,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 ![](examples/results_syn.jpg)
 
-Besides, to evaluate the effectiveness of different methods in real scenarios, we also conduct user study on 99 real composite images, of which 48 images from Xue and 51 images from Tsai. Below we present several results of different baselines on real composite images. The 99 real composite images could be found in [BaiduCloud](https://pan.baidu.com/s/1z0fvp28gWswSCysw0eiUQg) and the corresponding results of our DoveNet could be found in  [BaiduCloud](). To visualize the comparison, we put the results of different methods on all 99 real composite images in Supplementary.
+Besides, to evaluate the effectiveness of different methods in real scenarios, we also conduct user study on 99 real composite images, of which 48 images from Xue and 51 images from Tsai. Below we present several results of different baselines on real composite images. The 99 real composite images could be found in [BaiduCloud](https://pan.baidu.com/s/1z0fvp28gWswSCysw0eiUQg) and the corresponding results of our DoveNet could be found in  [BaiduCloud](). And we have put the results of different methods on all 99 real composite images in Supplementary to visualize the comparison.
 
 ![](examples/results_real_comp.jpg)
 
 # Bibtex
 
 **When using images from our dataset, please cite our paper using the following BibTeX [[preprint](https://arxiv.org/abs/1911.13239)]:**
-
-
 
 ```
 @inproceedings{DoveNet2020,
