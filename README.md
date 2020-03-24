@@ -87,29 +87,31 @@ The pre-trained models of Zhu's work can also be found in [BaiduCloud](https://p
 
 This is a Tensorflow implementation based on the caffe network released by Tsai in their [GitHub](<https://github.com/wasidennis/DeepHarmonization>).
 
-Besides, we also discard one inner-most convolutional layer and one inner-most deconvolutional layer to make it suitable for input of 256\*256 size. In DIH, to improve the harmonization results, they proposed an additional segmentation branch and compared the performance between networks with or without segmentation branch. So here we inplement this two versions, DIH without  segmentation branch and  DIH with segmentation branch, corresponding to DIH(w/o semantics) and DIH in their paper.
+Besides, we discard one inner-most convolutional layer and one inner-most deconvolutional layer to make it suitable for input of 256\*256 size. In DIH, to improve the harmonization results, they proposed an additional segmentation branch and compared the performance between networks with or without segmentation branch. So here we inplement this two versions, DIH without  segmentation branch and  DIH with segmentation branch, corresponding to DIH(w/o semantics) and DIH in their paper.
 
 - #### without  segmentation branch
 
-We discard the scene parsing branch and preserve the remaining encoder-decoder structure. To train DIH(w/o semantics) , run: 
+We discard the scene parsing branch and preserve the remaining encoder-decoder structure and skip links.  And this is one of the baselines used in our paper.
+
+To train DIH(w/o semantics) , run: 
 
 `python train.py --data_dir <Your Path to Dataset> --init_lr 0.0001 --batch_size 32`
 
 Don't forget to specify the directory of Image Harmonization Dataset after `data_dir`.
 
-Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1GlUh660j0LMQaQ3iykaNJQ). To test and re-produce the results of DIH reported in our paper, run:
+Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1GlUh660j0LMQaQ3iykaNJQ). To test and re-produce the results, run:
 
 `python test.py`
 
 - #### with segmentation branch
 
-We re-implement the same structure as the Caffe network. To train DIH, 
+The structure is implemented the same as the Caffe network. To train DIH, 
 
 `python train_seg.py --data_dir <Your Path to Dataset> --init_lr 0.0001 --batch_size 32`
 
-Don't forget to specify the directory of Image Harmonization Dataset after `data_dir`.
+Specify the directory of Image Harmonization Dataset after `data_dir`.
 
-Our trained model can be found in [BaiduCloud](). To test and re-produce the results of DIH reported in our paper, run:
+Our trained model can be found in [BaiduCloud](). To test and re-produce the results , run:
 
 `python test_seg.py`
 
@@ -117,15 +119,15 @@ Our trained model can be found in [BaiduCloud](). To test and re-produce the res
 
 ### U-net+attention
 
-The code is implemented based on the work of CVPR 2017: Image-to-Image Translation with Conditional Adversarial Networks, which  is released by Jun-Yan Zhu in their [GitHub](<https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix>)
+The code is implemented based on the work of CVPR 2017: Image-to-Image Translation with Conditional Adversarial Networks, which is released by Jun-Yan Zhu in their [GitHub](<https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix>)
 
-Since our dataset is not organized like a normally aligned dataset, we have to implement image loading and processing part according to our dataset. For more details, you could refer to `data/ihd_dataset.py`. We implement the U-net backbone based on Zhu's implementation of unet_256 and also leverage attention blocks to enhance U-Net. In total, we insert three attention blocks into U-Net. Refer to `unetatt_model.py` for more details.
+Since our dataset is not organized like a normally aligned dataset, we have to implement image loading and processing part according to our dataset. For more details, you could refer to `data/ihd_dataset.py`. We implement the U-net backbone based on Zhu's implementation of unet_256 and leverage attention blocks to enhance U-Net, which could be found in our Supplementary material.  In total, we insert three attention blocks into U-Net. Refer to `unetatt_model.py` for more details.
 
 To train U-net+attention:
 
 `python train.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 1 --no_flip --preprocess none --norm instance`
 
-Our trained model can be found in [BaiduCloud]().  Download and put it under `./unetatt/checkpoint/unetatt/` To test and re-produce the results of U-net+att reported in our paper, run:
+Our trained model can be found in [BaiduCloud]().  Download and put it under `./unetatt/checkpoint/unetatt/` To test and re-produce the results of `U-net+att` reported in our paper, run:
 
 `python test.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 0 --no_flip --preprocess none --norm instance`
 
@@ -141,7 +143,7 @@ Besides, to evaluate the effectiveness of different methods in real scenarios, w
 
 # Bibtex
 
-**When using images from our dataset, please cite our paper using the following BibTeX :**
+**When using images from our dataset, please cite our paper using the following BibTeX [[PDF](<https://arxiv.org/pdf/1911.13239.pdf>)]:**
 
 
 
