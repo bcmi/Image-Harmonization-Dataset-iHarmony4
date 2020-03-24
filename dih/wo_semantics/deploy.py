@@ -42,7 +42,10 @@ def inputs():
   path_img = []
   path_mask = []
   path_truth = []
-  filename=os.path.join(FLAGS.data_dir,'IHD_train.txt')
+  if train：
+    filename=os.path.join(FLAGS.data_dir,'IHD_train.txt')
+  else:
+    filename=os.path.join(FLAGS.data_dir,'IHD_test.txt')
   with open(filename,'r') as f:
     for line in f.readlines():
       path_img.append(line.rstrip())
