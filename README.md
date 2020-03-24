@@ -100,11 +100,11 @@ Don't forget to specify the directory of Image Harmonization Dataset after `data
 
 Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1Uxf-bxJLh5W_TJbFl_cqOw). To test and re-produce the results, remember to put the model under `/dih/wo_semantics/model/` and run:
 
-`python test.py`
+`python test.py --batch_size 1`
 
    - #### with segmentation branch
 
-The structure is implemented the same as the Caffe network. In DIH, to pre-train the joint network, they constructed a synthesized composite dataset based on ADE20K, which provides images segmentations. While  we use HCOCO instead, leveraging existing segmentaitons of COCO images from COCO-Stuff dataset [GitHub](https://github.com/nightrome/cocostuff). In our experiment, we leverage the object segmentations to pretrain the network using HCOCO, and then freeze the segmentation branch and finetune harmonization branch using the whole dataset. 
+The structure is implemented the same as the Caffe network. In DIH, to pre-train the joint network, they constructed a synthesized composite dataset based on ADE20K, which provides images segmentations. While  we use HCOCO instead, leveraging existing segmentaitons of COCO images from COCO-Stuff dataset [GitHub](https://github.com/nightrome/cocostuff).  In our experiment, we leverage the object segmentations to pretrain the network. After downloading the dataset, preprocess the PNG segmentation to filter out stuff labels. Remember to rename the corresponding segmentation with the same name as real images and put them under `<Your Path to Dataset>/HCOCO/object_segmentations/`. Then, we freeze the segmentation branch and finetune harmonization branch using the whole dataset. 
 
 To pre-train this model, under the folder `with_semantics/`, run:
 
@@ -112,13 +112,13 @@ To pre-train this model, under the folder `with_semantics/`, run:
 
 After that, freeze the segmentation branch and finetune harmonization branch. Run:
 
-`python finetune.py --data_dir <Your Path to Dataset> --init_lr 0.0001 --batch_size 32`
+`python finetune.py --data_dir <Your Path to Dataset> --init_lr 0.0001 --batch_size 32 --pretrain False`
 
 Specify the directory of Image Harmonization Dataset after `data_dir`.
 
 Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1mUCNsT-3yAN6JHoPiNp9Xg). To test and re-produce the results, remember to put the model under `/dih/with_semantics/model/` and run:
 
-`python test_seg.py`
+`python test_seg.py --batch_size 1`
 
 
 
