@@ -1,27 +1,5 @@
 <base target="_blank"/>
 
-#  CONTENTS
-**[Image_Harmonization_Datasets: iHarmony4](#Image_Harmonization_Datasets: iHarmony4)**
-   **1. [HCOCO](#1. HCOCO)**
-   **2. [HAdobe5k](#2. HAdobe5k)**
-   **3. [HFlickr](#3. HFlickr)**
-   **4. [Hday2night](#4. Hday2night)**
-**[Color Transfer Methods](#Color Transfer Methods)**
-   **1. [global color transfer](#1. global color transfer)**
-   **2. [global color transfer in RGB color space](#2. global color transfer in RGB color space)**
-   **3. [cumulative histogram mapping](#3. cumulative histogram mapping)**
-   **4. [IDT regrain color transfer](#4. IDT regrain color transfer)**
-**[Baselines](#Baselines)**
-   **1. [Lalonde](#1. Lalonde)**
-   **2. [Xue](#2. Xue)**
-   **3. [Zhu](#3. Zhu)**
-   **4. [DIH](#4. DIH)**
-​       **- [without  segmentation branch](# - without  segmentation branch) **
-​       **- [with  segmentation branch](# - with segmentation branch) **
-   **5. [U-net+attention](#5. U-net+attention)**
-**[Bibtex](#Bibtex)**
-**[Contact](#Contact)**
-
 
 #  Image_Harmonization_Datasets: iHarmony4
 
@@ -120,7 +98,7 @@ To train DIH(w/o semantics) , run:
 
 Don't forget to specify the directory of Image Harmonization Dataset after `data_dir`.
 
-Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1GlUh660j0LMQaQ3iykaNJQ). To test and re-produce the results, remember to put the model under `/dih/wo_semantics/model/` and run:
+Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1Uxf-bxJLh5W_TJbFl_cqOw). To test and re-produce the results, remember to put the model under `/dih/wo_semantics/model/` and run:
 
 `python test.py`
 
@@ -132,7 +110,7 @@ The structure is implemented the same as the Caffe network. To train DIH,
 
 Specify the directory of Image Harmonization Dataset after `data_dir`.
 
-Our trained model can be found in [BaiduCloud](). To test and re-produce the results, remember to put the model under `/dih/with_semantics/model/` and run:
+Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1mUCNsT-3yAN6JHoPiNp9Xg). To test and re-produce the results, remember to put the model under `/dih/with_semantics/model/` and run:
 
 `python test_seg.py`
 
@@ -148,7 +126,7 @@ To train U-net+attention:
 
 `python train.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 1 --no_flip --preprocess none --norm instance`
 
-Our trained model can be found in [BaiduCloud]().  Download and put it under `./unetatt/checkpoint/unetatt/` To test and re-produce the results of `U-net+att` , run:
+Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/173AI769zl_VITMdgqwPBeQ).  Download and put it under `./unetatt/checkpoint/unetatt/` To test and re-produce the results of `U-net+att` , run:
 
 `python test.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 0 --no_flip --preprocess none --norm instance`
 
