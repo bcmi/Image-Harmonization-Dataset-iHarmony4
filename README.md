@@ -157,6 +157,3 @@ author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and 
 booktitle={CVPR},
 year={2020}}
 ```
-# Contact
-
-Wenyan Cong (plcwyam17320 at sjtu.edu.cn) and Jianfu Zhang(c.sis at sjtu.edu.cn)
