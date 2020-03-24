@@ -57,9 +57,9 @@ To generate synthesized composite images, color transfer methods are adopted to 
 
 # Baselines
 
-Here, we provide the code of baselines used in our paper "**DoveNet: Deep Image Harmonization via Domain Verification**", which is accepted by *CVPR2020*.  Refer to [Bibtex](#Bibtex) for more details.
+Here, we provide the code of baselines used in our paper "**DoveNet: Deep Image Harmonization via Domain Verification**", which is accepted by **CVPR2020**.  Refer to [Bibtex](#Bibtex) for more details.
 
-### Lalonde
+### 1. Lalonde
 
 J.-F. Lalonde et al. provides their implementation of paper  "*Using color compatibility for assessing image realism*" (ICCV2017) in their [GitHub](https://github.com/jflalonde/colorRealism).
 
@@ -67,7 +67,7 @@ And we have arranged the code to a "click-and-run" way.
 `demo.m` is available in `/lalonde/colorStatistics/mycode/demo/`. 
 Don't forget to specify the path of the code and results in your computer in `getPathName.m`, and run `setPath.m` before run `demo.m`to get everything ready.
 
-### Xue
+### 2. Xue
 
 This is Xue's implementation of their paper in 2012 ACM Transactions on Graphics "*Understanding and improving the realism of image composites*".
 
@@ -75,9 +75,7 @@ This is Xue's implementation of their paper in 2012 ACM Transactions on Graphics
 
 Notice to add the path of all dependent files using `addpath(genpath('../dependency'))`.
 
-
-
-### Zhu
+### 3. Zhu
 
 Jun-Yan Zhu released the code of their paper "*Learning a discriminative model for the perception of realism in composite images*" (ICCV2015) in their [GitHub](<https://github.com/junyanz/RealismCNN>).
 
@@ -85,7 +83,7 @@ Notice that it requires matcaffe interface. We make some changes corresponds to 
 
 The pre-trained models of Zhu's work can also be found in [BaiduCloud](https://pan.baidu.com/s/1_9UidT1rGNX0gYOYzjqITQ) and remember to put it under `MODEL_DIR`.
 
-### DIH
+### 4. DIH
 
 Tsai released their pre-trained caffe model of their paper "*Deep Image Harmonization*" (CVPR2017)  in their [GitHub](<https://github.com/wasidennis/DeepHarmonization>). This is a Tensorflow implementation based on the released caffe network.
 
@@ -101,7 +99,7 @@ To train DIH(w/o semantics) , run:
 
 Don't forget to specify the directory of Image Harmonization Dataset after `data_dir`.
 
-Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1GlUh660j0LMQaQ3iykaNJQ). To test and re-produce the results, run:
+Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1GlUh660j0LMQaQ3iykaNJQ). To test and re-produce the results, remember to put the model under `/dih/wo_semantics/model/` and run:
 
 `python test.py`
 
@@ -113,13 +111,13 @@ The structure is implemented the same as the Caffe network. To train DIH,
 
 Specify the directory of Image Harmonization Dataset after `data_dir`.
 
-Our trained model can be found in [BaiduCloud](). To test and re-produce the results , run:
+Our trained model can be found in [BaiduCloud](). To test and re-produce the results, remember to put the model under `/dih/with_semantics/model/` and run:
 
 `python test_seg.py`
 
 
 
-### U-net+attention
+### 5. U-net+attention
 
 The code is implemented based on the work of CVPR 2017: Image-to-Image Translation with Conditional Adversarial Networks, which is released by Jun-Yan Zhu in their [GitHub](<https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix>)
 
@@ -129,17 +127,17 @@ To train U-net+attention:
 
 `python train.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 1 --no_flip --preprocess none --norm instance`
 
-Our trained model can be found in [BaiduCloud]().  Download and put it under `./unetatt/checkpoint/unetatt/` To test and re-produce the results of `U-net+att` reported in our paper, run:
+Our trained model can be found in [BaiduCloud]().  Download and put it under `./unetatt/checkpoint/unetatt/` To test and re-produce the results of `U-net+att` , run:
 
 `python test.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 0 --no_flip --preprocess none --norm instance`
 
 # Experiments
 
-When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show some example results of different baselines on our dataset.
+When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show some example results of different baselines on our dataset. More examples can be found in our main paper.
 
 ![](examples/results_syn.jpg)
 
-Besides, to evaluate the effectiveness of different methods in real scenarios, we also conduct user study on 99 real composite images, of which 48 images from Xue and 51 images from Tsai. Below we present several results of different baselines on real composite images. The 99 real composite images could be found in [BaiduCloud](https://pan.baidu.com/s/1z0fvp28gWswSCysw0eiUQg) and the corresponding results of our DoveNet could be found in  [BaiduCloud]()
+Besides, to evaluate the effectiveness of different methods in real scenarios, we also conduct user study on 99 real composite images, of which 48 images from Xue and 51 images from Tsai. Below we present several results of different baselines on real composite images. The 99 real composite images could be found in [BaiduCloud](https://pan.baidu.com/s/1z0fvp28gWswSCysw0eiUQg) and the corresponding results of our DoveNet could be found in  [BaiduCloud](). To visualize the comparison, we put the results of different methods on all 99 real composite images in Supplementary.
 
 ![](examples/results_real_comp.jpg)
 
@@ -156,4 +154,6 @@ author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and 
 booktitle={CVPR},
 year={2020}}
 ```
+# Contact
 
+Wenyan Cong (plcwyam17320 at sjtu.edu.cn) and Jianfu Zhang(c.sis at sjtu.edu.cn)
