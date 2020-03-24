@@ -88,7 +88,7 @@ Tsai released their pre-trained caffe model of their paper "*Deep Image Harmoniz
 
 Besides, we discard one inner-most convolutional layer and one inner-most deconvolutional layer to make it suitable for input of 256\*256 size. In DIH, they proposed to use segmentation branch to help propogate semantics to harmonization branch and it contributes considerable improvments. So here we inplement this two versions, DIH without  segmentation branch and  DIH with segmentation branch, corresponding to DIH(w/o semantics) and DIH in their paper.
 
-#### - without  segmentation branch
+   - #### without  segmentation branch
 
 We discard the scene parsing branch and preserve the remaining encoder-decoder structure and skip links.  And this is the version used as one of the baselines in our paper.
 
@@ -102,7 +102,7 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1Uxf-bxJL
 
 `python test.py`
 
-#### - with segmentation branch
+   - #### with segmentation branch
 
 The structure is implemented the same as the Caffe network. In DIH, to pre-train the joint network, they constructed a synthesized composite dataset based on ADE20K, which provides images segmentations. While  we use HCOCO instead, leveraging existing segmentaitons of COCO images from COCO-Stuff dataset [GitHub](https://github.com/nightrome/cocostuff). In our experiment, we leverage the object segmentations to pretrain the network using HCOCO, and then freeze the segmentation branch and finetune harmonization branch using the whole dataset. 
 
