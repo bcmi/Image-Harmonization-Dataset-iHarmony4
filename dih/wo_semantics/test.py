@@ -17,15 +17,15 @@ from skimage.measure import compare_ssim as ssim
 from skimage.measure import compare_mse as mse
 from skimage.measure import compare_psnr as psnr
 
-import deploy_seg
+import deploy
 FLAGS = tf.app.flags.FLAGS
 
 MODEL_NAME = "model.ckpt"
 image_size = 256
 n=7404
-model_num='689457'
+model_num='117078'
 compathfile =FLAGS.data_dir + 'IHD_test.txt'
-file = open(model_num+'_92.txt', 'a')
+file = open(model_num+'.txt', 'a')
 
 def _get_mask_path_(path):
   split_slash=path.split("/")
@@ -94,7 +94,7 @@ com_placeholder = tf.placeholder(tf.float32,
 masks_placeholder = tf.placeholder(tf.float32,
                                 shape=(1, image_size, image_size, 1))
 
-pred_label,harmnization = deploy_seg.inference(com_placeholder, masks_placeholder)
+harmnization = deploy.inference(com_placeholder, masks_placeholder)
 
 saver = tf.train.Saver()
 

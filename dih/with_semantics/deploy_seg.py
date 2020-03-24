@@ -13,7 +13,7 @@ tf.app.flags.DEFINE_integer('batch_size',32,
                            """Number of steps to run trainer.""")
 tf.app.flags.DEFINE_float('init_lr', 1e-4,
                            """Number of steps to run trainer.""")
-tf.app.flags.DEFINE_string('data_dir','/home/user/disk/IH/IHD/',
+tf.app.flags.DEFINE_string('data_dir','/home/cwy/disk/IHD/',
                           """Path to the composite images""")
 tf.app.flags.DEFINE_boolean('pretrain',1,
                           """Path to the composite images""")

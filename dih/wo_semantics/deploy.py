@@ -14,7 +14,7 @@ tf.app.flags.DEFINE_integer('batch_size',32,
                            """Batch size.""")
 tf.app.flags.DEFINE_float('init_lr', 1e-4,
                            """Initial learning rate.""")
-tf.app.flags.DEFINE_string('data_dir','/home/disk/cwy/IHD/',
+tf.app.flags.DEFINE_string('data_dir','/home/cwy/disk/IHD/',
                            """Path to the dataset images""")
 
 IMAGE_SIZE = 256
