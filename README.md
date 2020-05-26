@@ -58,7 +58,7 @@ To generate synthesized composite images, color transfer methods are adopted to 
 
 Here, we provide the code of baselines used in our paper "**DoveNet: Deep Image Harmonization via Domain Verification**", which is accepted by **CVPR2020**.  Refer to [Bibtex](#Bibtex) for more details.
 
-### 1. Lalonde
+### 1. Lalonde and Efros
 
 J.-F. Lalonde et al. provides their implementation of paper  "*Using color compatibility for assessing image realism*" (ICCV2017) in their [GitHub](https://github.com/jflalonde/colorRealism).
 
@@ -66,7 +66,7 @@ And we have arranged the code to a "click-and-run" way.
 `demo.m` is available in `/lalonde/colorStatistics/mycode/demo/`. 
 Don't forget to specify the path of the code and results in your computer in `getPathName.m`, and run `setPath.m` before run `demo.m`to get everything ready.
 
-### 2. Xue
+### 2. Xue *et al.*
 
 This is Xue's implementation of their paper in 2012 ACM Transactions on Graphics "*Understanding and improving the realism of image composites*".
 
@@ -74,7 +74,7 @@ This is Xue's implementation of their paper in 2012 ACM Transactions on Graphics
 
 Notice to add the path of all dependent files using `addpath(genpath('../dependency'))`.
 
-### 3. Zhu
+### 3. Zhu *et al.*
 
 Jun-Yan Zhu released the code of their paper "*Learning a discriminative model for the perception of realism in composite images*" (ICCV2015) in their [GitHub](<https://github.com/junyanz/RealismCNN>).
 
@@ -122,7 +122,7 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1mUCNsT-3
 
 
 
-### 5. U-net+attention
+### 5. U-Net+attention
 
 The code is implemented based on the work of CVPR 2017: Image-to-Image Translation with Conditional Adversarial Networks, which is released by Jun-Yan Zhu in their [GitHub](<https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix>)
 
