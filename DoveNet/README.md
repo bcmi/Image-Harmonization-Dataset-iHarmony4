@@ -10,7 +10,7 @@ CVPR2020
 In this repository, we release the  PyTorch implementation and model of [DoveNet: Deep Image Harmonization via Domain Verification](). 
 
 <br>
-<img src='examples/teaser.gif' align="center" width=512>
+<img src='examples/results_gif.gif' align="center" width=1024>
 <br>
 
 ## Talks and Slides
@@ -60,7 +60,7 @@ When testing, it prints the results of evaluation metrics MSE and PSNR. It also 
 
 Our pre-trained model is available on [**Baidu Cloud**]() [**(Alternative_address)**](). Download and save it at `./checkpoints/experiment_name_pretrain/latest_net_G.pth`. 
 
-As both instance normalization and batch normalization perform well for our task,  the model we provided here is the one using batch norm.
+As both instance normalization and batch normalization perform well for our task,  the model we provided here is the one using batch normalization.
 
 To test its performance on iHarmony4 dataset, using:
 
@@ -68,7 +68,7 @@ To test its performance on iHarmony4 dataset, using:
 python test.py --dataset_root <path_to_iHarmony4_dataset> --name experiment_name_pretrain --model dovenet --dataset_mode iharmony4 --netG s2ad --is_train 0  --norm batch --no_flip --preprocess none --num_test 7404
 ```
 
-The expected quantitative results is as the following table.
+The expected quantitative results is as the following table. The expected results are slightly different from the results reported in our paper as we are releasing an overall better model.
 
 |      | HCOCO | HAdobe5k | HFlickr | Hday2night | iHarmony4 |
 | :--: | :---: | :------: | :-----: | :--------: | :-------: |
