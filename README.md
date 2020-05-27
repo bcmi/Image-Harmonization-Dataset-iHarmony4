@@ -107,7 +107,7 @@ When testing, it prints the results of evaluation metrics MSE and PSNR. It also 
 
 ### Apply a pre-trained DoveNet model
 
-Our pre-trained model is available on [**Baidu Cloud**]() [**(Alternative_address)**](). Download and save it at `./checkpoints/experiment_name_pretrain/latest_net_G.pth`. 
+Our pre-trained model is available on [**Baidu Cloud**](https://pan.baidu.com/s/12oGrBF88O-x0BlWGVkMjag) (access code: 8q8a) [**(Alternative_address)**](https://bcmi.cloud:5001/sharing/K8kx7epFE). Download and save it at `./checkpoints/experiment_name_pretrain/latest_net_G.pth`. 
 
 As both instance normalization and batch normalization perform well for our task,  the model we provided here is the one using batch normalization.
 
@@ -117,7 +117,7 @@ To test its performance on iHarmony4 dataset, using:
 python test.py --dataset_root <path_to_iHarmony4_dataset> --name experiment_name_pretrain --model dovenet --dataset_mode iharmony4 --netG s2ad --is_train 0  --norm batch --no_flip --preprocess none --num_test 7404
 ```
 
-
+Note to specify `dataset_root` and `name` in the corresponding place.
 
 # Baselines
 
