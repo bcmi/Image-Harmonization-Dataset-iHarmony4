@@ -15,9 +15,6 @@ from skimage import data, img_as_float
 from skimage.measure import compare_mse as mse
 from skimage.measure import compare_psnr as psnr
 
-sub_datasets = ['HCOCO','HAdobe5k','Hday2night','HFlickr']
-test_dirs = ['0to5','5to15','15to90']
-
 if __name__ == '__main__':
     opt = TestOptions().parse()  # get test options
     # hard-code some parameters for test
@@ -46,9 +43,11 @@ if __name__ == '__main__':
         raw_name = raw_name.replace(('.jpg\']'),'.jpg')
         raw_name = raw_name.split('/')[-1]
         image_name = '%s' % raw_name
+        save_path = os.path.join(web_dir,'images/',image_name)
         for label, im_data in visuals.items():
             if label=='output':
                 output = util.tensor2im(im_data)
+                util.save_image(output, save_path, aspect_ratio=opt.aspect_ratio)
                 output =np.array(output, dtype=np.float32)
             if label=='real':
                 real=util.tensor2im(im_data)
@@ -59,5 +58,5 @@ if __name__ == '__main__':
         mse_score_op = mse(output,real)
         psnr_score_op = psnr(real,output,data_range=output.max() - output.min())
         print('%s | mse %0.2f | psnr %0.2f' % (image_name,mse_score_op,psnr_score_op))
+
     webpage.save()  # save the HTML
-    file_op.close()
