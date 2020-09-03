@@ -109,7 +109,7 @@ When testing, it prints the results of evaluation metrics MSE and PSNR. It also 
 
 Our pre-trained model is available on [**Baidu Cloud**](https://pan.baidu.com/s/12oGrBF88O-x0BlWGVkMjag) (access code: 8q8a) [**(Alternative_address)**](https://bcmi.cloud:5001/sharing/WQkB0OnXK). Download and save it at `./checkpoints/experiment_name_pretrain/latest_net_G.pth`. 
 
-As both instance normalization and batch normalization perform well for our task,  the model we provided here is the one using batch normalization.
+As both instance normalization and batch normalization perform well for our task,  **the model we provided here is the one using batch normalization**.
 
 To test its performance on iHarmony4 dataset, using:
 
