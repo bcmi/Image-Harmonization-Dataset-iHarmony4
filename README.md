@@ -213,7 +213,7 @@ Besides, to evaluate the effectiveness of different methods in real scenarios, w
 
 # Bibtex
 
-**When using images from our dataset, please cite our paper using the following BibTeX [[preprint](https://arxiv.org/abs/1911.13239)]:**
+**When using images from our dataset, please cite our paper using the following BibTeX  [[pdf](https://openaccess.thecvf.com/content_CVPR_2020/papers/Cong_DoveNet_Deep_Image_Harmonization_via_Domain_Verification_CVPR_2020_paper.pdf)] [[supp](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Cong_DoveNet_Deep_Image_CVPR_2020_supplemental.pdf)] [[arxiv](https://arxiv.org/abs/1911.13239)]:**
 
 ```
 @inproceedings{DoveNet2020,
