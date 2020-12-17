@@ -15,7 +15,7 @@ Our dataset **iHarmony4** is a synthesized dataset for Image Harmonization. It c
 
 ### 1. HCOCO
 
-HCOCO, containing 42k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. **The HCOCO sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1bMTNzFJMreOOE-Lz3c7hGg)** [**(Alternative_address)**](https://bcmi.cloud:5001/sharing/KOBUL3QOs).
+HCOCO, containing 42k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. **The HCOCO sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1b7MQDLI1n0FlnW7059KjQA)**(access code: yhh7)  [**(Alternative_address)**](https://bcmi.cloud:5001/sharing/KOBUL3QOs).
 
 
 ### 2. HAdobe5k
