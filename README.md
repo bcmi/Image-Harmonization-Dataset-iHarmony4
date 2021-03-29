@@ -371,14 +371,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">38.31</td>
   </tr> 
 </table>
+<font size=2.5>\*: Results of S<sup>2</sup>AM here are trained from scratch using the code from the official S<sup>2</sup>AM [GitHub](https://github.com/vinthony/s2am). In the GitHub, they also provide results trained on each sub-dataset individually, which we do not include here for fair comparison.</font>
 
-\*: Results of S<sup>2</sup>AM here are trained using the code from the official S<sup>2</sup>AM [GitHub](https://github.com/vinthony/s2am). In the GitHub, they also provide results trained on each sub-dataset individually, which we do not include here for fair comparison.
+<font size=2>\+: Results of Hao et al. here are tested using the released model from the official [GitHub](https://github.com/Dominoer/bmvc2020_image_harmonization) since they do not report MSE in their paper.</font>
 
-\+: Results of Hao et al. here are tested using the released model from the official [GitHub](https://github.com/Dominoer/bmvc2020_image_harmonization).
+<font size=2>\#: Results of iDIH backbone without auxiliary semantic information are copied from the official [GitHub](https://github.com/saic-vul/image_harmonization).</font>
 
-\#: Results of iDIH backbone without auxiliary semantic information are copied from the official [GitHub](https://github.com/saic-vul/image_harmonization).
-
-Other results are directly copied from our DoveNet or other original papers.
+<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers.</font>
 
 
 
