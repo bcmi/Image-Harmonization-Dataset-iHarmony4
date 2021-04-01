@@ -201,6 +201,11 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/173AI769z
 
 `python test.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 0 --no_flip --preprocess none --norm instance`
 
+### 6. S<sup>2</sup>AM
+
+Cun and Pan released the code and model of their paper "*Improving the Harmony of the Composite Image by Spatial-Separated Attention Module*" (TIP2020)  in [GitHub](https://github.com/vinthony/s2am). They provide the [model](https://drive.google.com/file/d/1bm1ZdZ4xmV9fKCQBDsulvYwrxPAidZ3T/view?usp=sharing) trained on their SCOCO and S-Adobe5k dataset and the [models](https://uofmacau-my.sharepoint.com/:f:/g/personal/yb87432_umac_mo/EpemCJwfnhpIoDNAMfiegqIB0RXkdKH9Z2WibJJ4s27PbA?e=qPNzpI) trained on each sub-dataset of iHarmony4 individually. To facilitate the fair comparison, we adopt the same training strategy to train S<sup>2</sup>AM model on the merged training set of four sub-datasets using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1xTlNxjX9l0WJxx4I5d4zgA) (access code: 92tj).
+
+
 # Experiments
 
 When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE score on the whole test set to facilitate future study.
@@ -306,17 +311,17 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   </tr>
   <tr>
     <td class="tg-0pky" align="center">S</td>
-    <td class="tg-0pky" align="center">50.11</td>
-    <td class="tg-0pky" align="center">34.69</td>
-    <td class="tg-0pky" align="center">94.43</td>
-    <td class="tg-0pky" align="center">32.17</td>
-    <td class="tg-0pky" align="center">151.39</td>
-    <td class="tg-0pky" align="center">30.08</td>
-    <td class="tg-0pky" align="center">69.901</td>
-    <td class="tg-0pky" align="center">35.24</td>
-    <td class="tg-0pky" align="center">73.74</td>
-    <td class="tg-0pky" align="center">33.49</td>
-    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">49.63</td>
+    <td class="tg-0pky" align="center">34.80</td>
+    <td class="tg-0pky" align="center">95.41</td>
+    <td class="tg-0pky" align="center">32.29</td>
+    <td class="tg-0pky" align="center">168.62</td>
+    <td class="tg-0pky" align="center">29.58</td>
+    <td class="tg-0pky" align="center">68.81</td>
+    <td class="tg-0pky" align="center">35.51</td>
+    <td class="tg-0pky" align="center">76.63</td>
+    <td class="tg-0pky" align="center">33.50</td>
+    <td class="tg-0pky" align="center">769.79</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Cong_DoveNet_Deep_Image_Harmonization_via_Domain_Verification_CVPR_2020_paper.pdf">DoveNet</a> [CVPR2020]</td>
@@ -336,17 +341,17 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   <tr>
     <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/1907.06406.pdf">S<sup>2</sup>AM</a> [TIP2020]<sup>*</sup></td>
     <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">33.35</td>
-    <td class="tg-0pky" align="center">35.96</td>
-    <td class="tg-0pky" align="center">49.30</td>
-    <td class="tg-0pky" align="center">35.00</td>
-    <td class="tg-0pky" align="center">129.30</td>
-    <td class="tg-0pky" align="center">30.88</td>
-    <td class="tg-0pky" align="center">45.19</td>
-    <td class="tg-0pky" align="center">35.44</td>
-    <td class="tg-0pky" align="center">48.95</td>
-    <td class="tg-0pky" align="center">35.10</td>
-    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">33.07</td>
+    <td class="tg-0pky" align="center">36.09</td>
+    <td class="tg-0pky" align="center">48.22</td>
+    <td class="tg-0pky" align="center">35.34</td>
+    <td class="tg-0pky" align="center">124.53</td>
+    <td class="tg-0pky" align="center">31.00</td>
+    <td class="tg-0pky" align="center">48.78</td>
+    <td class="tg-0pky" align="center">35.60</td>
+    <td class="tg-0pky" align="center">48.00</td>
+    <td class="tg-0pky" align="center">35.29</td>
+    <td class="tg-0pky" align="center">481.79</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://www.bmvc2020-conference.com/assets/papers/0121.pdf">Hao et al.</a> [BMVC2020]<sup>+</sup></td>
@@ -361,7 +366,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">36.96</td>
     <td class="tg-0pky" align="center">38.46</td>
     <td class="tg-0pky" align="center">35.91</td>
-    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">437.90</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2009.09169.pdf">BargainNet</a> [ICME2021]</td>
@@ -381,17 +386,17 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   <tr>
     <td class="tg-0pky" rowspan="2" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iDIH</a> [WACV2021]</td>
     <td class="tg-0pky" align="center">-<sup>#</sup></td>
-    <td class="tg-0pky" align="center">19.58</td>
-    <td class="tg-0pky" align="center">38.34</td>
-    <td class="tg-0pky" align="center">30.84</td>
-    <td class="tg-0pky" align="center">36.00</td>
-    <td class="tg-0pky" align="center">84.74</td>
-    <td class="tg-0pky" align="center">32.58</td>
-    <td class="tg-0pky" align="center">50.05</td>
-    <td class="tg-0pky" align="center">37.10</td>
-    <td class="tg-0pky" align="center">30.70</td>
-    <td class="tg-0pky" align="center">36.99</td>
-    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">19.51</td>
+    <td class="tg-0pky" align="center">38.40</td>
+    <td class="tg-0pky" align="center">33.81</td>
+    <td class="tg-0pky" align="center">36.39</td>
+    <td class="tg-0pky" align="center">86.44</td>
+    <td class="tg-0pky" align="center">32.60</td>
+    <td class="tg-0pky" align="center">49.94</td>
+    <td class="tg-0pky" align="center">37.01</td>
+    <td class="tg-0pky" align="center">31.71</td>
+    <td class="tg-0pky" align="center">37.14</td>
+    <td class="tg-0pky" align="center">341.77</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center">S</td>
@@ -409,13 +414,14 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   </tr> 
 </table>
 
+
 <font size=2>**S** in Extro info indicates using **auxiliary semantic information** in image harmonization.</font>
 
 <font size=2.5>**\***: Results of S<sup>2</sup>AM here are trained from scratch using the code from the official S<sup>2</sup>AM [GitHub](https://github.com/vinthony/s2am). In the GitHub, they provide results trained on each sub-dataset individually, which we do not include here for fair comparison.</font>
 
 <font size=2>**\+**: Results of Hao et al. here are tested using the released model from the official [GitHub](https://github.com/Dominoer/bmvc2020_image_harmonization) since the results of their released model are not consistent with the reported results in their paper.</font>
 
-<font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are copied from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
+<font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
 
 <font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers.</font>
 
