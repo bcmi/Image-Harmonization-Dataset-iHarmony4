@@ -403,6 +403,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 </table>
 
 
+
 <font size=2>**S** in Extro info indicates using **auxiliary semantic information** in image harmonization.</font>
 
 <font size=2.5>**\***: Results of S<sup>2</sup>AM here are trained from scratch using the code from the official S<sup>2</sup>AM [GitHub](https://github.com/vinthony/s2am). In the GitHub, they provide results trained on each sub-dataset individually, which we do not include here for fair comparison.</font>
@@ -411,7 +412,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
 
-<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers.</font>
+<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. Summary of image harmonization related methods could be found in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization).</font>
 
 
 
