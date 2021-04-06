@@ -412,7 +412,9 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
 
-<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. Summary of image harmonization related methods could be found in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization).</font>
+<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers.</font>
+
+**Summary of image harmonization related methods could be found in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization).**
 
 
 
