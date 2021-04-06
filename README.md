@@ -55,6 +55,8 @@ To generate synthesized composite images, color transfer methods are adopted to 
 
 --Non-parametric method in correlated color space. Implementation of paper  "*Automated colour grading using colour distribution transfer*" [[pdf]](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.458.7694&rep=rep1&type=pdf).
 
+
+
 # Our DoveNet
 
 Here we provide PyTorch implementation and the trained model of our DoveNet.
@@ -185,25 +187,11 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1mUCNsT-3
 
 `python test_seg.py --batch_size 1`
 
-
-
-### 5. U-Net+attention
-
-The code is implemented based on the work of CVPR 2017: Image-to-Image Translation with Conditional Adversarial Networks, which is released by Jun-Yan Zhu in their [GitHub](<https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix>)
-
-Since our dataset is not organized like a normally aligned dataset, we have to implement image loading and processing part according to our dataset. For more details, you could refer to `data/ihd_dataset.py`. We implement the U-net backbone based on Zhu's implementation of unet_256 and leverage attention blocks to enhance U-Net, which could be found in our Supplementary material.  In total, we insert three attention blocks into U-Net. Refer to `unetatt_model.py` for more details.
-
-To train U-net+attention:
-
-`python train.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 1 --no_flip --preprocess none --norm instance`
-
-Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/173AI769zl_VITMdgqwPBeQ).  Download and put it under `./unetatt/checkpoint/unetatt/` To test and re-produce the results of `U-net+att` , run:
-
-`python test.py  --dataroot ./datasets/ihd/ --name unetatt --model unetatt --gpu_ids 1 --dataset_mode ihd --is_train 0 --no_flip --preprocess none --norm instance`
-
 ### 6. S<sup>2</sup>AM
 
 Cun and Pan released the code and model of their paper "*Improving the Harmony of the Composite Image by Spatial-Separated Attention Module*" (TIP2020)  in [GitHub](https://github.com/vinthony/s2am). They provide the [model](https://drive.google.com/file/d/1bm1ZdZ4xmV9fKCQBDsulvYwrxPAidZ3T/view?usp=sharing) trained on their SCOCO and S-Adobe5k dataset and the [models](https://uofmacau-my.sharepoint.com/:f:/g/personal/yb87432_umac_mo/EpemCJwfnhpIoDNAMfiegqIB0RXkdKH9Z2WibJJ4s27PbA?e=qPNzpI) trained on each sub-dataset of iHarmony4 individually. To facilitate the fair comparison, we adopt the same training strategy to train S<sup>2</sup>AM model on the merged training set of four sub-datasets using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1xTlNxjX9l0WJxx4I5d4zgA) (access code: 92tj).
+
+
 
 
 # Experiments
@@ -214,29 +202,32 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   <tr>
     <th class="tg-0pky" align="center">Sub-dataset</th>
     <th class="tg-0pky" rowspan="2" align="center">Extra info</th>
+    <th class="tg-0pky" colspan="3" align="center">All</th>
     <th class="tg-0pky" colspan="2" align="center">HCOCO</th>
     <th class="tg-0pky" colspan="2" align="center">HAdobe5k</th>
     <th class="tg-0pky" colspan="2" align="center">HFlickr</th>
-    <th class="tg-0pky" colspan="2" align="center">Hday2night</th>
-    <th class="tg-0pky" colspan="3" align="center">All</th>
+    <th class="tg-0pky" colspan="2" align="center">Hday2night</th>  
   </tr>
   <tr>
     <th class="tg-0pky" align="center">Evaluation metric</th>
     <th class="tg-0pky" align="center">MSE</th>
     <th class="tg-0pky" align="center">PSNR</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
     <th class="tg-0pky" align="center">fMSE</th>
+    <th class="tg-0pky" align="center">MSE</th>
+    <th class="tg-0pky" align="center">PSNR</th>
+    <th class="tg-0pky" align="center">MSE</th>
+    <th class="tg-0pky" align="center">PSNR</th>
+    <th class="tg-0pky" align="center">MSE</th>
+    <th class="tg-0pky" align="center">PSNR</th>
+    <th class="tg-0pky" align="center">MSE</th>
+    <th class="tg-0pky" align="center">PSNR</th>    
   </tr>
   <tr>
     <td class="tg-0pky" align="center">input composite</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">172.47</td>
+    <td class="tg-0pky" align="center">31.63</td>
+    <td class="tg-0pky" align="center">1387.30</td>
     <td class="tg-0pky" align="center">69.37</td>
     <td class="tg-0pky" align="center">33.94</td>
     <td class="tg-0pky" align="center">345.54</td>
@@ -245,13 +236,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">28.32</td>
     <td class="tg-0pky" align="center">109.65</td>
     <td class="tg-0pky" align="center">34.01</td>
-    <td class="tg-0pky" align="center">172.47</td>
-    <td class="tg-0pky" align="center">31.63</td>
-    <td class="tg-0pky" align="center">1387.30</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="http://vision.gel.ulaval.ca/~jflalonde/assets/pubs/papers/lalonde_iccv_07.pdf">Lalonde and Efros</a> [ICCV2017]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">150.53</td>
+    <td class="tg-0pky" align="center">30.16</td>
+    <td class="tg-0pky" align="center">1433.21</td>
     <td class="tg-0pky" align="center">110.10</td>
     <td class="tg-0pky" align="center">31.14</td>
     <td class="tg-0pky" align="center">158.90</td>
@@ -260,13 +251,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">26.43</td>
     <td class="tg-0pky" align="center">199.93</td>
     <td class="tg-0pky" align="center">29.80</td>
-    <td class="tg-0pky" align="center">150.53</td>
-    <td class="tg-0pky" align="center">30.16</td>
-    <td class="tg-0pky" align="center">1433.21</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://graphics.cs.yale.edu/sites/default/files/2012sig_compositing.pdf">Xue et al.</a> [TOG2012]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">155.87</td>
+    <td class="tg-0pky" align="center">31.40</td>
+    <td class="tg-0pky" align="center">1411.40</td>
     <td class="tg-0pky" align="center">77.04</td>
     <td class="tg-0pky" align="center">33.32</td>
     <td class="tg-0pky" align="center">274.15</td>
@@ -275,13 +266,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">28.32</td>
     <td class="tg-0pky" align="center">190.51</td>
     <td class="tg-0pky" align="center">31.24</td>
-    <td class="tg-0pky" align="center">155.87</td>
-    <td class="tg-0pky" align="center">31.40</td>
-    <td class="tg-0pky" align="center">1411.40</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Zhu_Learning_a_Discriminative_ICCV_2015_paper.pdf">Zhu et al.</a> [ICCV2015]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">204.77</td>
+    <td class="tg-0pky" align="center">30.72</td>
+    <td class="tg-0pky" align="center">1580.17</td>
     <td class="tg-0pky" align="center">79.82</td>
     <td class="tg-0pky" align="center">33.04</td>
     <td class="tg-0pky" align="center">414.31</td>
@@ -290,13 +281,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">27.52</td>
     <td class="tg-0pky" align="center">136.71</td>
     <td class="tg-0pky" align="center">32.32</td>
-    <td class="tg-0pky" align="center">204.77</td>
-    <td class="tg-0pky" align="center">30.72</td>
-    <td class="tg-0pky" align="center">1580.17</td>
   </tr>
   <tr>
     <td class="tg-0pky" rowspan="2" align="center"><a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Tsai_Deep_Image_Harmonization_CVPR_2017_paper.pdf">DIH</a> [CVPR2017]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">76.77</td>
+    <td class="tg-0pky" align="center">33.41</td>
+    <td class="tg-0pky" align="center">773.18</td>
     <td class="tg-0pky" align="center">51.85</td>
     <td class="tg-0pky" align="center">34.69</td>
     <td class="tg-0pky" align="center">92.65</td>
@@ -305,12 +296,12 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">29.55</td>
     <td class="tg-0pky" align="center">82.34</td>
     <td class="tg-0pky" align="center">34.62</td>
-    <td class="tg-0pky" align="center">76.77</td>
-    <td class="tg-0pky" align="center">33.41</td>
-    <td class="tg-0pky" align="center">773.18</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center">S</td>
+    <td class="tg-0pky" align="center">76.63</td>
+    <td class="tg-0pky" align="center">33.50</td>
+    <td class="tg-0pky" align="center">769.79</td>
     <td class="tg-0pky" align="center">49.63</td>
     <td class="tg-0pky" align="center">34.80</td>
     <td class="tg-0pky" align="center">95.41</td>
@@ -319,13 +310,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">29.58</td>
     <td class="tg-0pky" align="center">68.81</td>
     <td class="tg-0pky" align="center">35.51</td>
-    <td class="tg-0pky" align="center">76.63</td>
-    <td class="tg-0pky" align="center">33.50</td>
-    <td class="tg-0pky" align="center">769.79</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Cong_DoveNet_Deep_Image_Harmonization_via_Domain_Verification_CVPR_2020_paper.pdf">DoveNet</a> [CVPR2020]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">52.36</td>
+    <td class="tg-0pky" align="center">34.75</td>
+    <td class="tg-0pky" align="center">549.96</td>
     <td class="tg-0pky" align="center">36.72</td>
     <td class="tg-0pky" align="center">35.83</td>
     <td class="tg-0pky" align="center">52.32</td>
@@ -334,13 +325,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">30.21</td>
     <td class="tg-0pky" align="center">54.05</td>
     <td class="tg-0pky" align="center">35.18</td>
-    <td class="tg-0pky" align="center">52.36</td>
-    <td class="tg-0pky" align="center">34.75</td>
-    <td class="tg-0pky" align="center">549.96</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/1907.06406.pdf">S<sup>2</sup>AM</a> [TIP2020]<sup>*</sup></td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">48.00</td>
+    <td class="tg-0pky" align="center">35.29</td>
+    <td class="tg-0pky" align="center">481.79</td>
     <td class="tg-0pky" align="center">33.07</td>
     <td class="tg-0pky" align="center">36.09</td>
     <td class="tg-0pky" align="center">48.22</td>
@@ -349,13 +340,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">31.00</td>
     <td class="tg-0pky" align="center">48.78</td>
     <td class="tg-0pky" align="center">35.60</td>
-    <td class="tg-0pky" align="center">48.00</td>
-    <td class="tg-0pky" align="center">35.29</td>
-    <td class="tg-0pky" align="center">481.79</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://www.bmvc2020-conference.com/assets/papers/0121.pdf">Hao et al.</a> [BMVC2020]<sup>+</sup></td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">38.46</td>
+    <td class="tg-0pky" align="center">35.91</td>
+    <td class="tg-0pky" align="center">437.90</td>
     <td class="tg-0pky" align="center">23.44</td>
     <td class="tg-0pky" align="center">37.33</td>
     <td class="tg-0pky" align="center">39.22</td>
@@ -364,13 +355,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">31.29</td>
     <td class="tg-0pky" align="center">49.73</td>
     <td class="tg-0pky" align="center">36.96</td>
-    <td class="tg-0pky" align="center">38.46</td>
-    <td class="tg-0pky" align="center">35.91</td>
-    <td class="tg-0pky" align="center">437.90</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2009.09169.pdf">BargainNet</a> [ICME2021]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">37.82</td>
+    <td class="tg-0pky" align="center">35.88</td>
+    <td class="tg-0pky" align="center">405.23</td>
     <td class="tg-0pky" align="center">24.84</td>
     <td class="tg-0pky" align="center">37.03</td>
     <td class="tg-0pky" align="center">39.94</td>
@@ -379,13 +370,13 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">31.34</td>
     <td class="tg-0pky" align="center">50.98</td>
     <td class="tg-0pky" align="center">35.67</td>
-    <td class="tg-0pky" align="center">37.82</td>
-    <td class="tg-0pky" align="center">35.88</td>
-    <td class="tg-0pky" align="center">405.23</td>
   </tr>
   <tr>
     <td class="tg-0pky" rowspan="2" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iDIH</a> [WACV2021]</td>
     <td class="tg-0pky" align="center">-<sup>#</sup></td>
+    <td class="tg-0pky" align="center">31.71</td>
+    <td class="tg-0pky" align="center">37.14</td>
+    <td class="tg-0pky" align="center">341.77</td>
     <td class="tg-0pky" align="center">19.51</td>
     <td class="tg-0pky" align="center">38.40</td>
     <td class="tg-0pky" align="center">33.81</td>
@@ -394,12 +385,12 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">32.60</td>
     <td class="tg-0pky" align="center">49.94</td>
     <td class="tg-0pky" align="center">37.01</td>
-    <td class="tg-0pky" align="center">31.71</td>
-    <td class="tg-0pky" align="center">37.14</td>
-    <td class="tg-0pky" align="center">341.77</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center">S</td>
+    <td class="tg-0pky" align="center">22.00</td>
+    <td class="tg-0pky" align="center">38.31</td>
+    <td class="tg-0pky" align="center">252.00</td>
     <td class="tg-0pky" align="center">14.01</td>
     <td class="tg-0pky" align="center">39.64</td>
     <td class="tg-0pky" align="center">21.36</td>
@@ -408,9 +399,6 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">34.03</td>
     <td class="tg-0pky" align="center">50.61</td>
     <td class="tg-0pky" align="center">37.68</td>
-    <td class="tg-0pky" align="center">22.00</td>
-    <td class="tg-0pky" align="center">38.31</td>
-    <td class="tg-0pky" align="center">252.00</td>
   </tr> 
 </table>
 
