@@ -187,7 +187,7 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1mUCNsT-3
 
 `python test_seg.py --batch_size 1`
 
-### 6. S<sup>2</sup>AM
+### 5. S<sup>2</sup>AM
 
 Cun and Pan released the code and model of their paper "*Improving the Harmony of the Composite Image by Spatial-Separated Attention Module*" (TIP2020)  in [GitHub](https://github.com/vinthony/s2am). They provide the [model](https://drive.google.com/file/d/1bm1ZdZ4xmV9fKCQBDsulvYwrxPAidZ3T/view?usp=sharing) trained on their SCOCO and S-Adobe5k dataset and the [models](https://uofmacau-my.sharepoint.com/:f:/g/personal/yb87432_umac_mo/EpemCJwfnhpIoDNAMfiegqIB0RXkdKH9Z2WibJJ4s27PbA?e=qPNzpI) trained on each sub-dataset of iHarmony4 individually. To facilitate the fair comparison, we adopt the same training strategy to train S<sup>2</sup>AM model on the merged training set of four sub-datasets using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1xTlNxjX9l0WJxx4I5d4zgA) (access code: 92tj).
 
