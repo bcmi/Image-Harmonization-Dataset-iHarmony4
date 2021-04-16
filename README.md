@@ -400,7 +400,23 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">50.61</td>
     <td class="tg-0pky" align="center">37.68</td>
   </tr> 
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iSSAM</a> [WACV2021]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">24.65</td>
+    <td class="tg-0pky" align="center">37.95</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">16.48</td>
+    <td class="tg-0pky" align="center">39.16</td>
+    <td class="tg-0pky" align="center">22.60</td>
+    <td class="tg-0pky" align="center">37.24</td>
+    <td class="tg-0pky" align="center">69.67</td>
+    <td class="tg-0pky" align="center">33.56</td>
+    <td class="tg-0pky" align="center">40.59</td>
+    <td class="tg-0pky" align="center">37.72</td>
+  </tr>
 </table>
+
 
 
 
