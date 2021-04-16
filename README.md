@@ -428,7 +428,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
 
-<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf)[WACV2021].</font>
+<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf)[WACV2021].</font>
 
 
 
