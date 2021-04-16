@@ -196,7 +196,7 @@ Cun and Pan released the code and model of their paper "*Improving the Harmony o
 
 # Experiments
 
-When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE score on the whole test set to facilitate future study.
+When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE score on the whole test set to facilitate future study. **The paper/code/model of image harmonization related methods are summarized in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization).**
 
 <table class="tg">
   <tr>
@@ -430,7 +430,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers.</font>
 
-**Summary of image harmonization related methods could be found in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization).**
+
 
 
 
