@@ -415,7 +415,38 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">40.59</td>
     <td class="tg-0pky" align="center">37.72</td>
   </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Guo_Intrinsic_Image_Harmonization_CVPR_2021_paper.pdf">Guo et al.</a> [CVPR2021]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">38.71</td>
+    <td class="tg-0pky" align="center">35.90</td>
+    <td class="tg-0pky" align="center">400.29</td>
+    <td class="tg-0pky" align="center">24.92</td>
+    <td class="tg-0pky" align="center">37.16</td>
+    <td class="tg-0pky" align="center">43.02</td>
+    <td class="tg-0pky" align="center">35.20</td>
+    <td class="tg-0pky" align="center">105.13</td>
+    <td class="tg-0pky" align="center">31.34</td>
+    <td class="tg-0pky" align="center">55.53</td>
+    <td class="tg-0pky" align="center">35.96</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Ling_Region-Aware_Adaptive_Instance_Normalization_for_Image_Harmonization_CVPR_2021_paper.pdf">RainNet</a> [CVPR2021]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">40.29</td>
+    <td class="tg-0pky" align="center">36.12</td>
+    <td class="tg-0pky" align="center">469.60</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">37.08</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">36.22</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">31.64</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">34.83</td>
+  </tr>
 </table>
+
 
 
 
@@ -428,7 +459,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
 
-<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf)[WACV2021].</font>
+<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf) [WACV2021].</font>
 
 
 
