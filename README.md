@@ -401,15 +401,15 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">37.68</td>
   </tr> 
   <tr>
-    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iSSAM</a> [WACV2021]</td>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iSSAM</a> [WACV2021]<sup>@</sup></td>
     <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">24.65</td>
-    <td class="tg-0pky" align="center">37.95</td>
-    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">24.44</td>
+    <td class="tg-0pky" align="center">38.19</td>
+    <td class="tg-0pky" align="center">264.96</td>
     <td class="tg-0pky" align="center">16.48</td>
     <td class="tg-0pky" align="center">39.16</td>
-    <td class="tg-0pky" align="center">22.60</td>
-    <td class="tg-0pky" align="center">37.24</td>
+    <td class="tg-0pky" align="center">21.88</td>
+    <td class="tg-0pky" align="center">38.08</td>
     <td class="tg-0pky" align="center">69.67</td>
     <td class="tg-0pky" align="center">33.56</td>
     <td class="tg-0pky" align="center">40.59</td>
@@ -451,6 +451,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 
 
+
 <font size=2>**S** in Extro info indicates using **auxiliary semantic information** in image harmonization.</font>
 
 <font size=2.5>**\***: Results of S<sup>2</sup>AM here are trained from scratch using the code from the official S<sup>2</sup>AM [GitHub](https://github.com/vinthony/s2am). In the GitHub, they provide results trained on each sub-dataset individually, which we do not include here for fair comparison.</font>
@@ -459,7 +460,9 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
 
-<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf) [WACV2021].</font>
+<font size=2>**@**: Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf) [WACV2021]. Results of iSSAM backbone without auxiliary semantic information are also tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the fMSE metric in their paper.</font>
+
+<font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. </font>
 
 
 
