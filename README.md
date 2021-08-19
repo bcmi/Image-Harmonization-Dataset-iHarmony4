@@ -196,7 +196,7 @@ Cun and Pan released the code and model of their paper "*Improving the Harmony o
 
 # Experiments
 
-When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE score on the whole test set to facilitate future study. **The paper/code/model of image harmonization related methods are summarized in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization).**
+When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE (foreground MSE) score on the whole test set to facilitate future study. The paper/code/model of image harmonization related methods are summarized in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization). **The following leaderboard is based on fMSE metric.**
 
 <table class="tg">
   <tr>
@@ -210,9 +210,9 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   </tr>
   <tr>
     <th class="tg-0pky" align="center">Evaluation metric</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
     <th class="tg-0pky" align="center">fMSE</th>
+    <th class="tg-0pky" align="center">MSE</th>
+    <th class="tg-0pky" align="center">PSNR</th>    
     <th class="tg-0pky" align="center">MSE</th>
     <th class="tg-0pky" align="center">PSNR</th>
     <th class="tg-0pky" align="center">MSE</th>
@@ -225,9 +225,9 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   <tr>
     <td class="tg-0pky" align="center">input composite</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">1387.30</td>
     <td class="tg-0pky" align="center">172.47</td>
     <td class="tg-0pky" align="center">31.63</td>
-    <td class="tg-0pky" align="center">1387.30</td>
     <td class="tg-0pky" align="center">69.37</td>
     <td class="tg-0pky" align="center">33.94</td>
     <td class="tg-0pky" align="center">345.54</td>
@@ -238,145 +238,26 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">34.01</td>
   </tr>
   <tr>
-    <td class="tg-0pky" align="center"><a href="http://vision.gel.ulaval.ca/~jflalonde/assets/pubs/papers/lalonde_iccv_07.pdf">Lalonde and Efros</a> [ICCV2017]</td>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iSSAM</a> [WACV2021]<sup>@</sup></td>
     <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">150.53</td>
-    <td class="tg-0pky" align="center">30.16</td>
-    <td class="tg-0pky" align="center">1433.21</td>
-    <td class="tg-0pky" align="center">110.10</td>
-    <td class="tg-0pky" align="center">31.14</td>
-    <td class="tg-0pky" align="center">158.90</td>
-    <td class="tg-0pky" align="center">29.66</td>
-    <td class="tg-0pky" align="center">329.87</td>
-    <td class="tg-0pky" align="center">26.43</td>
-    <td class="tg-0pky" align="center">199.93</td>
-    <td class="tg-0pky" align="center">29.80</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" align="center"><a href="https://graphics.cs.yale.edu/sites/default/files/2012sig_compositing.pdf">Xue et al.</a> [TOG2012]</td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">155.87</td>
-    <td class="tg-0pky" align="center">31.40</td>
-    <td class="tg-0pky" align="center">1411.40</td>
-    <td class="tg-0pky" align="center">77.04</td>
-    <td class="tg-0pky" align="center">33.32</td>
-    <td class="tg-0pky" align="center">274.15</td>
-    <td class="tg-0pky" align="center">28.79</td>
-    <td class="tg-0pky" align="center">249.54</td>
-    <td class="tg-0pky" align="center">28.32</td>
-    <td class="tg-0pky" align="center">190.51</td>
-    <td class="tg-0pky" align="center">31.24</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" align="center"><a href="https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Zhu_Learning_a_Discriminative_ICCV_2015_paper.pdf">Zhu et al.</a> [ICCV2015]</td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">204.77</td>
-    <td class="tg-0pky" align="center">30.72</td>
-    <td class="tg-0pky" align="center">1580.17</td>
-    <td class="tg-0pky" align="center">79.82</td>
-    <td class="tg-0pky" align="center">33.04</td>
-    <td class="tg-0pky" align="center">414.31</td>
-    <td class="tg-0pky" align="center">27.26</td>
-    <td class="tg-0pky" align="center">315.42</td>
-    <td class="tg-0pky" align="center">27.52</td>
-    <td class="tg-0pky" align="center">136.71</td>
-    <td class="tg-0pky" align="center">32.32</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" rowspan="2" align="center"><a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Tsai_Deep_Image_Harmonization_CVPR_2017_paper.pdf">DIH</a> [CVPR2017]</td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">76.77</td>
-    <td class="tg-0pky" align="center">33.41</td>
-    <td class="tg-0pky" align="center">773.18</td>
-    <td class="tg-0pky" align="center">51.85</td>
-    <td class="tg-0pky" align="center">34.69</td>
-    <td class="tg-0pky" align="center">92.65</td>
-    <td class="tg-0pky" align="center">32.28</td>
-    <td class="tg-0pky" align="center">163.38</td>
-    <td class="tg-0pky" align="center">29.55</td>
-    <td class="tg-0pky" align="center">82.34</td>
-    <td class="tg-0pky" align="center">34.62</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" align="center">S</td>
-    <td class="tg-0pky" align="center">76.63</td>
-    <td class="tg-0pky" align="center">33.50</td>
-    <td class="tg-0pky" align="center">769.79</td>
-    <td class="tg-0pky" align="center">49.63</td>
-    <td class="tg-0pky" align="center">34.80</td>
-    <td class="tg-0pky" align="center">95.41</td>
-    <td class="tg-0pky" align="center">32.29</td>
-    <td class="tg-0pky" align="center">168.62</td>
-    <td class="tg-0pky" align="center">29.58</td>
-    <td class="tg-0pky" align="center">68.81</td>
-    <td class="tg-0pky" align="center">35.51</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Cong_DoveNet_Deep_Image_Harmonization_via_Domain_Verification_CVPR_2020_paper.pdf">DoveNet</a> [CVPR2020]</td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">52.36</td>
-    <td class="tg-0pky" align="center">34.75</td>
-    <td class="tg-0pky" align="center">549.96</td>
-    <td class="tg-0pky" align="center">36.72</td>
-    <td class="tg-0pky" align="center">35.83</td>
-    <td class="tg-0pky" align="center">52.32</td>
-    <td class="tg-0pky" align="center">34.34</td>
-    <td class="tg-0pky" align="center">133.14</td>
-    <td class="tg-0pky" align="center">30.21</td>
-    <td class="tg-0pky" align="center">54.05</td>
-    <td class="tg-0pky" align="center">35.18</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/1907.06406.pdf">S<sup>2</sup>AM</a> [TIP2020]<sup>*</sup></td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">48.00</td>
-    <td class="tg-0pky" align="center">35.29</td>
-    <td class="tg-0pky" align="center">481.79</td>
-    <td class="tg-0pky" align="center">33.07</td>
-    <td class="tg-0pky" align="center">36.09</td>
-    <td class="tg-0pky" align="center">48.22</td>
-    <td class="tg-0pky" align="center">35.34</td>
-    <td class="tg-0pky" align="center">124.53</td>
-    <td class="tg-0pky" align="center">31.00</td>
-    <td class="tg-0pky" align="center">48.78</td>
-    <td class="tg-0pky" align="center">35.60</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" align="center"><a href="https://www.bmvc2020-conference.com/assets/papers/0121.pdf">Hao et al.</a> [BMVC2020]<sup>+</sup></td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">38.46</td>
-    <td class="tg-0pky" align="center">35.91</td>
-    <td class="tg-0pky" align="center">437.90</td>
-    <td class="tg-0pky" align="center">23.44</td>
-    <td class="tg-0pky" align="center">37.33</td>
-    <td class="tg-0pky" align="center">39.22</td>
-    <td class="tg-0pky" align="center">34.80</td>
-    <td class="tg-0pky" align="center">112.39</td>
-    <td class="tg-0pky" align="center">31.29</td>
-    <td class="tg-0pky" align="center">49.73</td>
-    <td class="tg-0pky" align="center">36.96</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2009.09169.pdf">BargainNet</a> [ICME2021]</td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">37.82</td>
-    <td class="tg-0pky" align="center">35.88</td>
-    <td class="tg-0pky" align="center">405.23</td>
-    <td class="tg-0pky" align="center">24.84</td>
-    <td class="tg-0pky" align="center">37.03</td>
-    <td class="tg-0pky" align="center">39.94</td>
-    <td class="tg-0pky" align="center">35.34</td>
-    <td class="tg-0pky" align="center">97.32</td>
-    <td class="tg-0pky" align="center">31.34</td>
-    <td class="tg-0pky" align="center">50.98</td>
-    <td class="tg-0pky" align="center">35.67</td>
+    <td class="tg-0pky" align="center">264.96</td>
+    <td class="tg-0pky" align="center">24.44</td>
+    <td class="tg-0pky" align="center">38.19</td>
+    <td class="tg-0pky" align="center">16.48</td>
+    <td class="tg-0pky" align="center">39.16</td>
+    <td class="tg-0pky" align="center">21.88</td>
+    <td class="tg-0pky" align="center">38.08</td>
+    <td class="tg-0pky" align="center">69.67</td>
+    <td class="tg-0pky" align="center">33.56</td>
+    <td class="tg-0pky" align="center">40.59</td>
+    <td class="tg-0pky" align="center">37.72</td>
   </tr>
   <tr>
     <td class="tg-0pky" rowspan="2" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iDIH</a> [WACV2021]</td>
     <td class="tg-0pky" align="center">-<sup>#</sup></td>
+    <td class="tg-0pky" align="center">341.77</td>
     <td class="tg-0pky" align="center">31.71</td>
     <td class="tg-0pky" align="center">37.14</td>
-    <td class="tg-0pky" align="center">341.77</td>
     <td class="tg-0pky" align="center">19.51</td>
     <td class="tg-0pky" align="center">38.40</td>
     <td class="tg-0pky" align="center">33.81</td>
@@ -388,9 +269,9 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   </tr>
   <tr>
     <td class="tg-0pky" align="center">S</td>
+    <td class="tg-0pky" align="center">252.00</td>
     <td class="tg-0pky" align="center">22.00</td>
     <td class="tg-0pky" align="center">38.31</td>
-    <td class="tg-0pky" align="center">252.00</td>
     <td class="tg-0pky" align="center">14.01</td>
     <td class="tg-0pky" align="center">39.64</td>
     <td class="tg-0pky" align="center">21.36</td>
@@ -401,26 +282,11 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">37.68</td>
   </tr> 
   <tr>
-    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iSSAM</a> [WACV2021]<sup>@</sup></td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">24.44</td>
-    <td class="tg-0pky" align="center">38.19</td>
-    <td class="tg-0pky" align="center">264.96</td>
-    <td class="tg-0pky" align="center">16.48</td>
-    <td class="tg-0pky" align="center">39.16</td>
-    <td class="tg-0pky" align="center">21.88</td>
-    <td class="tg-0pky" align="center">38.08</td>
-    <td class="tg-0pky" align="center">69.67</td>
-    <td class="tg-0pky" align="center">33.56</td>
-    <td class="tg-0pky" align="center">40.59</td>
-    <td class="tg-0pky" align="center">37.72</td>
-  </tr>
-  <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Guo_Intrinsic_Image_Harmonization_CVPR_2021_paper.pdf">Guo et al.</a> [CVPR2021]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">400.29</td>
     <td class="tg-0pky" align="center">38.71</td>
     <td class="tg-0pky" align="center">35.90</td>
-    <td class="tg-0pky" align="center">400.29</td>
     <td class="tg-0pky" align="center">24.92</td>
     <td class="tg-0pky" align="center">37.16</td>
     <td class="tg-0pky" align="center">43.02</td>
@@ -431,11 +297,41 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">35.96</td>
   </tr>
   <tr>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2009.09169.pdf">BargainNet</a> [ICME2021]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">405.23</td>
+    <td class="tg-0pky" align="center">37.82</td>
+    <td class="tg-0pky" align="center">35.88</td>
+    <td class="tg-0pky" align="center">24.84</td>
+    <td class="tg-0pky" align="center">37.03</td>
+    <td class="tg-0pky" align="center">39.94</td>
+    <td class="tg-0pky" align="center">35.34</td>
+    <td class="tg-0pky" align="center">97.32</td>
+    <td class="tg-0pky" align="center">31.34</td>
+    <td class="tg-0pky" align="center">50.98</td>
+    <td class="tg-0pky" align="center">35.67</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://www.bmvc2020-conference.com/assets/papers/0121.pdf">Hao et al.</a> [BMVC2020]<sup>+</sup></td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">437.90</td>
+    <td class="tg-0pky" align="center">38.46</td>
+    <td class="tg-0pky" align="center">35.91</td>
+    <td class="tg-0pky" align="center">23.44</td>
+    <td class="tg-0pky" align="center">37.33</td>
+    <td class="tg-0pky" align="center">39.22</td>
+    <td class="tg-0pky" align="center">34.80</td>
+    <td class="tg-0pky" align="center">112.39</td>
+    <td class="tg-0pky" align="center">31.29</td>
+    <td class="tg-0pky" align="center">49.73</td>
+    <td class="tg-0pky" align="center">36.96</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Ling_Region-Aware_Adaptive_Instance_Normalization_for_Image_Harmonization_CVPR_2021_paper.pdf">RainNet</a> [CVPR2021]</td>
     <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">469.60</td>
     <td class="tg-0pky" align="center">40.29</td>
     <td class="tg-0pky" align="center">36.12</td>
-    <td class="tg-0pky" align="center">469.60</td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">37.08</td>
     <td class="tg-0pky" align="center">-</td>
@@ -444,6 +340,110 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">31.64</td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">34.83</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/1907.06406.pdf">S<sup>2</sup>AM</a> [TIP2020]<sup>*</sup></td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">481.79</td>
+    <td class="tg-0pky" align="center">48.00</td>
+    <td class="tg-0pky" align="center">35.29</td>
+    <td class="tg-0pky" align="center">33.07</td>
+    <td class="tg-0pky" align="center">36.09</td>
+    <td class="tg-0pky" align="center">48.22</td>
+    <td class="tg-0pky" align="center">35.34</td>
+    <td class="tg-0pky" align="center">124.53</td>
+    <td class="tg-0pky" align="center">31.00</td>
+    <td class="tg-0pky" align="center">48.78</td>
+    <td class="tg-0pky" align="center">35.60</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Cong_DoveNet_Deep_Image_Harmonization_via_Domain_Verification_CVPR_2020_paper.pdf">DoveNet</a> [CVPR2020]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">549.96</td>
+    <td class="tg-0pky" align="center">52.36</td>
+    <td class="tg-0pky" align="center">34.75</td>
+    <td class="tg-0pky" align="center">36.72</td>
+    <td class="tg-0pky" align="center">35.83</td>
+    <td class="tg-0pky" align="center">52.32</td>
+    <td class="tg-0pky" align="center">34.34</td>
+    <td class="tg-0pky" align="center">133.14</td>
+    <td class="tg-0pky" align="center">30.21</td>
+    <td class="tg-0pky" align="center">54.05</td>
+    <td class="tg-0pky" align="center">35.18</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" rowspan="2" align="center"><a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Tsai_Deep_Image_Harmonization_CVPR_2017_paper.pdf">DIH</a> [CVPR2017]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">773.18</td>
+    <td class="tg-0pky" align="center">76.77</td>
+    <td class="tg-0pky" align="center">33.41</td> 
+    <td class="tg-0pky" align="center">51.85</td>
+    <td class="tg-0pky" align="center">34.69</td>
+    <td class="tg-0pky" align="center">92.65</td>
+    <td class="tg-0pky" align="center">32.28</td>
+    <td class="tg-0pky" align="center">163.38</td>
+    <td class="tg-0pky" align="center">29.55</td>
+    <td class="tg-0pky" align="center">82.34</td>
+    <td class="tg-0pky" align="center">34.62</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center">S</td>
+    <td class="tg-0pky" align="center">769.79</td>
+    <td class="tg-0pky" align="center">76.63</td>
+    <td class="tg-0pky" align="center">33.50</td>
+    <td class="tg-0pky" align="center">49.63</td>
+    <td class="tg-0pky" align="center">34.80</td>
+    <td class="tg-0pky" align="center">95.41</td>
+    <td class="tg-0pky" align="center">32.29</td>
+    <td class="tg-0pky" align="center">168.62</td>
+    <td class="tg-0pky" align="center">29.58</td>
+    <td class="tg-0pky" align="center">68.81</td>
+    <td class="tg-0pky" align="center">35.51</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://graphics.cs.yale.edu/sites/default/files/2012sig_compositing.pdf">Xue et al.</a> [TOG2012]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">1411.40</td>
+    <td class="tg-0pky" align="center">155.87</td>
+    <td class="tg-0pky" align="center">31.40</td>   
+    <td class="tg-0pky" align="center">77.04</td>
+    <td class="tg-0pky" align="center">33.32</td>
+    <td class="tg-0pky" align="center">274.15</td>
+    <td class="tg-0pky" align="center">28.79</td>
+    <td class="tg-0pky" align="center">249.54</td>
+    <td class="tg-0pky" align="center">28.32</td>
+    <td class="tg-0pky" align="center">190.51</td>
+    <td class="tg-0pky" align="center">31.24</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="http://vision.gel.ulaval.ca/~jflalonde/assets/pubs/papers/lalonde_iccv_07.pdf">Lalonde and Efros</a> [ICCV2017]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">1433.21</td>
+    <td class="tg-0pky" align="center">150.53</td>
+    <td class="tg-0pky" align="center">30.16</td>
+    <td class="tg-0pky" align="center">110.10</td>
+    <td class="tg-0pky" align="center">31.14</td>
+    <td class="tg-0pky" align="center">158.90</td>
+    <td class="tg-0pky" align="center">29.66</td>
+    <td class="tg-0pky" align="center">329.87</td>
+    <td class="tg-0pky" align="center">26.43</td>
+    <td class="tg-0pky" align="center">199.93</td>
+    <td class="tg-0pky" align="center">29.80</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Zhu_Learning_a_Discriminative_ICCV_2015_paper.pdf">Zhu et al.</a> [ICCV2015]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">1580.17</td>
+    <td class="tg-0pky" align="center">204.77</td>
+    <td class="tg-0pky" align="center">30.72</td>
+    <td class="tg-0pky" align="center">79.82</td>
+    <td class="tg-0pky" align="center">33.04</td>
+    <td class="tg-0pky" align="center">414.31</td>
+    <td class="tg-0pky" align="center">27.26</td>
+    <td class="tg-0pky" align="center">315.42</td>
+    <td class="tg-0pky" align="center">27.52</td>
+    <td class="tg-0pky" align="center">136.71</td>
+    <td class="tg-0pky" align="center">32.32</td>
   </tr>
 </table>
 
