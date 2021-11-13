@@ -252,6 +252,21 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">40.59</td>
     <td class="tg-0pky" align="center">37.72</td>
   </tr>
+    <tr>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Guo_Image_Harmonization_With_Transformer_ICCV_2021_paper.pdf">D-HT</a> [ICCV2021]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">320.78</td>
+    <td class="tg-0pky" align="center">30.30</td>
+    <td class="tg-0pky" align="center">37.55</td>
+    <td class="tg-0pky" align="center">16.89</td>
+    <td class="tg-0pky" align="center">38.76</td>
+    <td class="tg-0pky" align="center">38.53</td>
+    <td class="tg-0pky" align="center">36.88</td>
+    <td class="tg-0pky" align="center">74.51</td>
+    <td class="tg-0pky" align="center">33.13</td>
+    <td class="tg-0pky" align="center">53.01</td>
+    <td class="tg-0pky" align="center">37.10</td>
+  </tr>
   <tr>
     <td class="tg-0pky" rowspan="2" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iDIH</a> [WACV2021]</td>
     <td class="tg-0pky" align="center">-<sup>#</sup></td>
