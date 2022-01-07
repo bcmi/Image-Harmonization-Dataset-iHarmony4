@@ -494,6 +494,11 @@ Besides, to evaluate the effectiveness of different methods in real scenarios, w
 
 ![](examples/results_real_comp.jpg)
 
+# Other Resources
+
++ [Awesome-Image-Harmonization](https://github.com/bcmi/Awesome-Image-Harmonization)
++ [Awesome-Image-Composition](https://github.com/bcmi/Awesome-Image-Composition)
+
 # Bibtex
 
 **When using images from our dataset, please cite our paper using the following BibTeX  [[pdf](https://openaccess.thecvf.com/content_CVPR_2020/papers/Cong_DoveNet_Deep_Image_Harmonization_via_Domain_Verification_CVPR_2020_paper.pdf)] [[supp](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Cong_DoveNet_Deep_Image_CVPR_2020_supplemental.pdf)] [[arxiv](https://arxiv.org/abs/1911.13239)]:**
