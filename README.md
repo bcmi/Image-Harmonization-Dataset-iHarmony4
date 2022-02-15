@@ -300,7 +300,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">37.68</td>
   </tr> 
   <tr>
-    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2106.03106.pdf">Uformer</a> [arXiv2021]</td>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2106.03106.pdf">Uformer</a> [arXiv2021]<sup>^</sup></td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">347.41</td>
     <td class="tg-0pky" align="center">29.93</td>
@@ -434,7 +434,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">35.51</td>
   </tr>
   <tr>
-    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2108.06805.pdf">SSH</a> [ICCV2021]</td>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2108.06805.pdf">SSH</a> [ICCV2021]<sup>~</sup></td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">1140.66</td>
     <td class="tg-0pky" align="center">89.23</td>
@@ -508,7 +508,11 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
 
-<font size=2>**@**: Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf) [WACV2021]. Results of iSSAM backbone without auxiliary semantic information are also tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the fMSE metric in their paper.</font>
+<font size=2>**@**: Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf) [WACV2021]. Results of iSSAM backbone without auxiliary semantic information are also tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not report the fMSE metric in their paper.</font>
+
+<font size=2>**\^**: Results of Uformer here are trained from scratch using the code from the official Uformer [GitHub](https://github.com/ZhendongWang6/Uformer) since they apply to various image restoration tasks (*e.g.* real noise removal).</font>
+
+<font size=2>**\~**: Note that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. Here we directly testing the released model from from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as input of SSH, while the ground-truth real image is reference.</font>
 
 <font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. </font>
 
