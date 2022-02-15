@@ -434,6 +434,21 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">35.51</td>
   </tr>
   <tr>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2108.06805.pdf">SSH</a> [ICCV2021]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">1140.66</td>
+    <td class="tg-0pky" align="center">89.23</td>
+    <td class="tg-0pky" align="center">32.77</td>   
+    <td class="tg-0pky" align="center">73.20</td>
+    <td class="tg-0pky" align="center">34.03</td>
+    <td class="tg-0pky" align="center">115.03</td>
+    <td class="tg-0pky" align="center">31.73</td>
+    <td class="tg-0pky" align="center">266.56</td>
+    <td class="tg-0pky" align="center">28.68</td>
+    <td class="tg-0pky" align="center">98.84</td>
+    <td class="tg-0pky" align="center">34.56</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" align="center"><a href="https://graphics.cs.yale.edu/sites/default/files/2012sig_compositing.pdf">Xue et al.</a> [TOG2012]</td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">1411.40</td>
