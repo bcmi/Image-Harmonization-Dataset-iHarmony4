@@ -300,6 +300,21 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">37.68</td>
   </tr> 
   <tr>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2106.03106.pdf">Uformer</a> [arXiv2021]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">347.41</td>
+    <td class="tg-0pky" align="center">29.93</td>
+    <td class="tg-0pky" align="center">36.88</td>
+    <td class="tg-0pky" align="center">22.55</td>
+    <td class="tg-0pky" align="center">37.56</td>
+    <td class="tg-0pky" align="center">23.42</td>
+    <td class="tg-0pky" align="center">37.13</td>
+    <td class="tg-0pky" align="center">82.72</td>
+    <td class="tg-0pky" align="center">32.71</td>
+    <td class="tg-0pky" align="center">44.47</td>
+    <td class="tg-0pky" align="center">36.88</td>
+  </tr>
+  <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Guo_Intrinsic_Image_Harmonization_CVPR_2021_paper.pdf">Guo et al.</a> [CVPR2021]</td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">400.29</td>
