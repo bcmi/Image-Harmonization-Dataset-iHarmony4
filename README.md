@@ -434,7 +434,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">35.51</td>
   </tr>
   <tr>
-    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2108.06805.pdf">SSH</a> [ICCV2021]<sup>~</sup></td>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2108.06805.pdf">SSH</a> [ICCV2021]<sup>%</sup></td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">1140.66</td>
     <td class="tg-0pky" align="center">89.23</td>
@@ -512,7 +512,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\^**: Results of Uformer here are trained from scratch using the code from the official Uformer [GitHub](https://github.com/ZhendongWang6/Uformer) since they apply to various image restoration tasks (*e.g.* real noise removal).</font>
 
-<font size=2>**\~**: Note that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. Here we directly testing the released model from from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as input of SSH, while the ground-truth real image is reference.</font>
+<font size=2>**\%**: Note that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. Here we directly testing the released model from from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as input of SSH, while the ground-truth real image is reference.</font>
 
 <font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. </font>
 
