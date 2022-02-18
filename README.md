@@ -198,7 +198,11 @@ Cun and Pan released the code and model of their paper "*Improving the Harmony o
 
 Zhendong Wang released the code and model of their paper "*Uformer: A General U-Shaped Transformer for Image Restoration*" (arXiv2021) in their [GitHub](<https://github.com/ZhendongWang6/Uformer>). We make some changes corresponds to our setting and adopt the default training strategy to train Uformer16 from scratch using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1ldi495B_GKib-vLlE6dTrw) (access code: 6ulc).
 
-### 7. SSH
+### 7. HRNet
+
+The released code and model of paper "*Object-Contextual Representations for Semantic Segmentation*" (ECCV2020) could be found in [GitHub](<https://github.com/HRNet/HRNet-Semantic-Segmentation>). We transplant the code to make it suitable for image harmonization task and adopt the default training strategy to train it from scratch. The trained model and test code could be found in [BaiduCloud]() (access code: ).
+
+### 8. SSH
 
 Yifan Jiang provide the inference code and pretrained weight of their paper "*SSH: A Self-Supervised Framework for Image Harmonization*" (ICCV2021) in their [GitHub](<https://github.com/VITA-Group/SSHarmonization>).
 Notice that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. 
@@ -265,6 +269,36 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">40.59</td>
     <td class="tg-0pky" align="center">37.72</td>
   </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123510171.pdf">HRNet</a> [ECCV2020]<sup>-</sup></td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">297.31</td>
+    <td class="tg-0pky" align="center">27.92</td>
+    <td class="tg-0pky" align="center">37.45</td>
+    <td class="tg-0pky" align="center">18.31</td>
+    <td class="tg-0pky" align="center">38.96</td>
+    <td class="tg-0pky" align="center">29.76</td>
+    <td class="tg-0pky" align="center">36.09</td>
+    <td class="tg-0pky" align="center">70.35</td>
+    <td class="tg-0pky" align="center">33.21</td>
+    <td class="tg-0pky" align="center">43.28</td>
+    <td class="tg-0pky" align="center">37.05</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2106.03106.pdf">Uformer</a> [arXiv2021]<sup>^</sup></td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">347.41</td>
+    <td class="tg-0pky" align="center">29.93</td>
+    <td class="tg-0pky" align="center">36.88</td>
+    <td class="tg-0pky" align="center">22.55</td>
+    <td class="tg-0pky" align="center">37.56</td>
+    <td class="tg-0pky" align="center">23.42</td>
+    <td class="tg-0pky" align="center">37.13</td>
+    <td class="tg-0pky" align="center">82.72</td>
+    <td class="tg-0pky" align="center">32.71</td>
+    <td class="tg-0pky" align="center">44.47</td>
+    <td class="tg-0pky" align="center">36.88</td>
+  </tr>
     <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Guo_Image_Harmonization_With_Transformer_ICCV_2021_paper.pdf">D-HT</a> [ICCV2021]</td>
     <td class="tg-0pky" align="center">-</td>
@@ -309,21 +343,6 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">50.61</td>
     <td class="tg-0pky" align="center">37.68</td>
   </tr> 
-  <tr>
-    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2106.03106.pdf">Uformer</a> [arXiv2021]<sup>^</sup></td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">347.41</td>
-    <td class="tg-0pky" align="center">29.93</td>
-    <td class="tg-0pky" align="center">36.88</td>
-    <td class="tg-0pky" align="center">22.55</td>
-    <td class="tg-0pky" align="center">37.56</td>
-    <td class="tg-0pky" align="center">23.42</td>
-    <td class="tg-0pky" align="center">37.13</td>
-    <td class="tg-0pky" align="center">82.72</td>
-    <td class="tg-0pky" align="center">32.71</td>
-    <td class="tg-0pky" align="center">44.47</td>
-    <td class="tg-0pky" align="center">36.88</td>
-  </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Guo_Intrinsic_Image_Harmonization_CVPR_2021_paper.pdf">Guo et al.</a> [CVPR2021]</td>
     <td class="tg-0pky" align="center">-</td>
@@ -510,19 +529,23 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 
 
+
+
 <font size=2>**S** in Extro info indicates using **auxiliary semantic information** in image harmonization.</font>
 
 <font size=2.5>**\***: Results of S<sup>2</sup>AM here are trained from scratch using the code from the official S<sup>2</sup>AM [GitHub](https://github.com/vinthony/s2am). In the GitHub, they provide results trained on each sub-dataset individually, which we do not include here for fair comparison.</font>
+
+<font size=2.5>**-**: Results of HRNet are trained from scratch using the code from the official HRNet-Semantic-Segmentation [GitHub](https://github.com/HRNet/HRNet-Semantic-Segmentation).</font>
+
+<font size=2>**^**: Results of Uformer are trained from scratch using the code from the official Uformer [GitHub](https://github.com/ZhendongWang6/Uformer). They focus on various image restoration tasks (*e.g.* real noise removal) in their paper, but do not apply to image harmonization.</font>
 
 <font size=2>**\+**: Results of Hao et al. here are tested using the released model from the official [GitHub](https://github.com/Dominoer/bmvc2020_image_harmonization) since the results of their released model are not consistent with the reported results in their paper.</font>
 
 <font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not report the detailed results on each sub-dataset in their paper.</font>
 
-<font size=2>**\^**: Results of Uformer here are trained from scratch using the code from the official Uformer [GitHub](https://github.com/ZhendongWang6/Uformer). They focus on various image restoration tasks (*e.g.* real noise removal) in their paper, but do not apply to image harmonization.</font>
-
 <font size=2>**@**: Note that iDIH and iSSAM listed in the table are two different backbones mentioned in the same [paper](https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf) [WACV2021]. Results of iSSAM backbone without auxiliary semantic information are also tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not report the fMSE metric in their paper.</font>
 
-<font size=2>**\%**: Note that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. Results here are tested using the released model from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization). The composite image is regarded as the input in the testing pipeline of SSH, while the ground-truth real image is the reference.</font>
+<font size=2>**%**: Note that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. Results here are tested using the released model from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization). The composite image is regarded as the input in the testing pipeline of SSH, while the ground-truth real image is the reference.</font>
 
 <font size=2>Other results without any specifications are directly copied from our DoveNet or other published papers. </font>
 
