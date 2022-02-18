@@ -194,10 +194,13 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1mUCNsT-3
 
 Cun and Pan released the code and model of their paper "*Improving the Harmony of the Composite Image by Spatial-Separated Attention Module*" (TIP2020)  in [GitHub](https://github.com/vinthony/s2am). They provide the [model](https://drive.google.com/file/d/1bm1ZdZ4xmV9fKCQBDsulvYwrxPAidZ3T/view?usp=sharing) trained on their SCOCO and S-Adobe5k dataset and the [models](https://uofmacau-my.sharepoint.com/:f:/g/personal/yb87432_umac_mo/EpemCJwfnhpIoDNAMfiegqIB0RXkdKH9Z2WibJJ4s27PbA?e=qPNzpI) trained on each sub-dataset of iHarmony4 individually. To facilitate the fair comparison, we adopt the same training strategy to train S<sup>2</sup>AM model on the merged training set of four sub-datasets using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1xTlNxjX9l0WJxx4I5d4zgA) (access code: 92tj).
 
-### 6. SSH
+### 6. Uformer
 
-Yifan Jiang provide the inference code and collected Dataset of their paper "*SSH: A Self-Supervised Framework for Image Harmonization*" (ICCV2021) in their [GitHub](<https://github.com/VITA-Group/SSHarmonization>). Their released model can also be found from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization).
+Zhendong Wang released the code and model of their paper "*Uformer: A General U-Shaped Transformer for Image Restoration*" (arXiv2021) in their [GitHub](<https://github.com/ZhendongWang6/Uformer>). We make some changes corresponds to our setting and adopt the default training strategy to train Uformer16 from scratch using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1ldi495B_GKib-vLlE6dTrw) (access code: 6ulc).
 
+### 7. SSH
+
+Yifan Jiang provide the inference code and pretrained weight of their paper "*SSH: A Self-Supervised Framework for Image Harmonization*" (ICCV2021) in their [GitHub](<https://github.com/VITA-Group/SSHarmonization>).
 Notice that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. 
 Here we directly testing the released model from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as the input in the testing pipeline of SSH, while the ground-truth real image is the reference. We make some changes corresponds to our dataset in `demo.ipynb` including how to preprocess data and how to save the harmonized results. The test images are resized to 256\*256 for for fair comparison.
 
@@ -513,7 +516,7 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 
 <font size=2>**\+**: Results of Hao et al. here are tested using the released model from the official [GitHub](https://github.com/Dominoer/bmvc2020_image_harmonization) since the results of their released model are not consistent with the reported results in their paper.</font>
 
-<font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not  report the detailed results on each sub-dataset in their paper.</font>
+<font size=2>**\#**: Results of iDIH backbone without auxiliary semantic information are tested using the released model from the official [GitHub](https://github.com/saic-vul/image_harmonization) since they do not report the detailed results on each sub-dataset in their paper.</font>
 
 <font size=2>**\^**: Results of Uformer here are trained from scratch using the code from the official Uformer [GitHub](https://github.com/ZhendongWang6/Uformer). They focus on various image restoration tasks (*e.g.* real noise removal) in their paper, but do not apply to image harmonization.</font>
 
