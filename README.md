@@ -206,7 +206,7 @@ The released code and model of paper "*Object-Contextual Representations for Sem
 
 Yifan Jiang provide the inference code and pretrained weight of their paper "*SSH: A Self-Supervised Framework for Image Harmonization*" (ICCV2021) in their [GitHub](<https://github.com/VITA-Group/SSHarmonization>).
 Notice that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. 
-Here we directly testing the released model from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as the input in the testing pipeline of SSH, while the ground-truth real image is the reference. We make some changes corresponds to our dataset in `demo.ipynb` and convert it to `test.py`, which could be found in [BaiduCloud]() (access code: ). The test images are resized to 256\*256 for for fair comparison.
+Here we directly testing the released model from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as the input in the testing pipeline of SSH, while the ground-truth real image is the reference. We make some changes corresponds to our dataset in `demo.ipynb` and convert it to `test.py`, which could be found in [BaiduCloud](https://pan.baidu.com/s/12WjdMhOODx68tzGFgZhaSw ) (access code: 2tdg). The test images are resized to 256\*256 for for fair comparison.
 
 To test and re-produce the results, remember to put the pretrained weight download from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization) under `./`, modify the data path in `test.py`, and run:
 
