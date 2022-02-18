@@ -196,7 +196,7 @@ Cun and Pan released the code and model of their paper "*Improving the Harmony o
 
 ### 6. Uformer
 
-Zhendong Wang released the code and model of their paper "*Uformer: A General U-Shaped Transformer for Image Restoration*" (arXiv2021) in their [GitHub](<https://github.com/ZhendongWang6/Uformer>). We make some changes corresponds to our setting and adopt the default training strategy to train Uformer16 from scratch using the released code from their GitHub. The trained model and test code could be found in [BaiduCloud](https://pan.baidu.com/s/1ldi495B_GKib-vLlE6dTrw) (access code: 6ulc).
+Zhendong Wang released the code and model of their paper "*Uformer: A General U-Shaped Transformer for Image Restoration*" (arXiv2021) in their [GitHub](<https://github.com/ZhendongWang6/Uformer>). We make some changes corresponds to our setting and adopt the default training strategy to train Uformer16 from scratch using the released code from their GitHub. The trained model and test code would be found in [BaiduCloud](https://pan.baidu.com/s/1ldi495B_GKib-vLlE6dTrw) (access code: 6ulc).
 
 ### 7. HRNet
 
