@@ -196,7 +196,7 @@ Cun and Pan released the code and model of their paper "*Improving the Harmony o
 
 ### 6. Uformer
 
-Zhendong Wang released the code and model of their paper "*Uformer: A General U-Shaped Transformer for Image Restoration*" (arXiv2021) in their [GitHub](<https://github.com/ZhendongWang6/Uformer>). We make some changes corresponds to our setting and adopt the default training strategy to train Uformer16 from scratch using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1ldi495B_GKib-vLlE6dTrw) (access code: 6ulc).
+Zhendong Wang released the code and model of their paper "*Uformer: A General U-Shaped Transformer for Image Restoration*" (arXiv2021) in their [GitHub](<https://github.com/ZhendongWang6/Uformer>). We make some changes corresponds to our setting and adopt the default training strategy to train Uformer16 from scratch using the released code from their GitHub. The trained model and test code could be found in [BaiduCloud](https://pan.baidu.com/s/1ldi495B_GKib-vLlE6dTrw) (access code: 6ulc).
 
 ### 7. HRNet
 
@@ -206,7 +206,7 @@ The released code and model of paper "*Object-Contextual Representations for Sem
 
 Yifan Jiang provide the inference code and pretrained weight of their paper "*SSH: A Self-Supervised Framework for Image Harmonization*" (ICCV2021) in their [GitHub](<https://github.com/VITA-Group/SSHarmonization>).
 Notice that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. 
-Here we directly testing the released model from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as the input in the testing pipeline of SSH, while the ground-truth real image is the reference. We make some changes corresponds to our dataset in `demo.ipynb` including how to preprocess data and how to save the harmonized results. The test images are resized to 256\*256 for for fair comparison.
+Here we directly testing the released model from the official SSH [GitHub](https://github.com/VITA-Group/SSHarmonization), in which the composite image is regarded as the input in the testing pipeline of SSH, while the ground-truth real image is the reference. We make some changes corresponds to our dataset in `demo.ipynb`, which could be found in [BaiduCloud](). The test images are resized to 256\*256 for for fair comparison.
 
 
 
