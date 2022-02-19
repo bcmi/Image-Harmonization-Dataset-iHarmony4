@@ -194,15 +194,11 @@ Our trained model can be found in [BaiduCloud](https://pan.baidu.com/s/1mUCNsT-3
 
 Cun and Pan released the code and model of their paper "*Improving the Harmony of the Composite Image by Spatial-Separated Attention Module*" (TIP2020)  in [GitHub](https://github.com/vinthony/s2am). They provide the [model](https://drive.google.com/file/d/1bm1ZdZ4xmV9fKCQBDsulvYwrxPAidZ3T/view?usp=sharing) trained on their SCOCO and S-Adobe5k dataset and the [models](https://uofmacau-my.sharepoint.com/:f:/g/personal/yb87432_umac_mo/EpemCJwfnhpIoDNAMfiegqIB0RXkdKH9Z2WibJJ4s27PbA?e=qPNzpI) trained on each sub-dataset of iHarmony4 individually. To facilitate the fair comparison, we adopt the same training strategy to train S<sup>2</sup>AM model on the merged training set of four sub-datasets using the released code from their GitHub. The trained model could be found in [BaiduCloud](https://pan.baidu.com/s/1xTlNxjX9l0WJxx4I5d4zgA) (access code: 92tj).
 
-### 6. Uformer
-
-Zhendong Wang released the code and model of their paper "*Uformer: A General U-Shaped Transformer for Image Restoration*" (arXiv2021) in their [GitHub](<https://github.com/ZhendongWang6/Uformer>). We make some changes corresponds to our setting and adopt the default training strategy to train Uformer16 from scratch using the released code from their GitHub. The trained model and test code would be found in [BaiduCloud](https://pan.baidu.com/s/1ldi495B_GKib-vLlE6dTrw) (access code: 6ulc).
-
-### 7. HRNet
+### 6. HRNet
 
 The released code and model of paper "*Object-Contextual Representations for Semantic Segmentation*" (ECCV2020) could be found in [GitHub](<https://github.com/HRNet/HRNet-Semantic-Segmentation>). We transplant the code to make it suitable for image harmonization task and adopt the default training strategy to train it from scratch. The trained model and test code could be found in [BaiduCloud]() (access code: ).
 
-### 8. SSH
+### 7. SSH
 
 Yifan Jiang provide the inference code and pretrained weight of their paper "*SSH: A Self-Supervised Framework for Image Harmonization*" (ICCV2021) in their [GitHub](<https://github.com/VITA-Group/SSHarmonization>).
 Notice that SSH has different input format (separate foreground and background image) and training data (image crops processed with LUTs), which does not strictly match our setting. 
@@ -289,21 +285,6 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">37.05</td>
   </tr>
   <tr>
-    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2106.03106.pdf">Uformer</a> [arXiv2021]<sup>^</sup></td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">347.41</td>
-    <td class="tg-0pky" align="center">29.93</td>
-    <td class="tg-0pky" align="center">36.88</td>
-    <td class="tg-0pky" align="center">22.55</td>
-    <td class="tg-0pky" align="center">37.56</td>
-    <td class="tg-0pky" align="center">23.42</td>
-    <td class="tg-0pky" align="center">37.13</td>
-    <td class="tg-0pky" align="center">82.72</td>
-    <td class="tg-0pky" align="center">32.71</td>
-    <td class="tg-0pky" align="center">44.47</td>
-    <td class="tg-0pky" align="center">36.88</td>
-  </tr>
-    <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Guo_Image_Harmonization_With_Transformer_ICCV_2021_paper.pdf">D-HT</a> [ICCV2021]</td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">320.78</td>
@@ -540,8 +521,6 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
 <font size=2.5>**\***: Results of S<sup>2</sup>AM here are trained from scratch using the code from the official S<sup>2</sup>AM [GitHub](https://github.com/vinthony/s2am). In the GitHub, they provide results trained on each sub-dataset individually, which we do not include here for fair comparison.</font>
 
 <font size=2.5>**-**: Results of HRNet are trained from scratch using the code from the official HRNet-Semantic-Segmentation [GitHub](https://github.com/HRNet/HRNet-Semantic-Segmentation).</font>
-
-<font size=2>**^**: Results of Uformer are trained from scratch using the code from the official Uformer [GitHub](https://github.com/ZhendongWang6/Uformer). They focus on various image restoration tasks (*e.g.* real noise removal) in their paper, but do not apply to image harmonization.</font>
 
 <font size=2>**\+**: Results of Hao et al. here are tested using the released model from the official [GitHub](https://github.com/Dominoer/bmvc2020_image_harmonization) since the results of their released model are not consistent with the reported results in their paper.</font>
 
