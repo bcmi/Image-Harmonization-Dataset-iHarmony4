@@ -270,21 +270,6 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">37.72</td>
   </tr>
   <tr>
-    <td class="tg-0pky" align="center"><a href="https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123510171.pdf">HRNet</a> [ECCV2020]<sup>-</sup></td>
-    <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center">297.31</td>
-    <td class="tg-0pky" align="center">27.92</td>
-    <td class="tg-0pky" align="center">37.45</td>
-    <td class="tg-0pky" align="center">18.31</td>
-    <td class="tg-0pky" align="center">38.96</td>
-    <td class="tg-0pky" align="center">29.76</td>
-    <td class="tg-0pky" align="center">36.09</td>
-    <td class="tg-0pky" align="center">70.35</td>
-    <td class="tg-0pky" align="center">33.21</td>
-    <td class="tg-0pky" align="center">43.28</td>
-    <td class="tg-0pky" align="center">37.05</td>
-  </tr>
-  <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Guo_Image_Harmonization_With_Transformer_ICCV_2021_paper.pdf">D-HT</a> [ICCV2021]</td>
     <td class="tg-0pky" align="center">-</td>
     <td class="tg-0pky" align="center">320.78</td>
