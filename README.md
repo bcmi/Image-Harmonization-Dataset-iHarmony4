@@ -257,17 +257,17 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
    <tr>
     <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2109.06671.pdf">CDTNet</a> [CVPR2022]</td>
     <td class="tg-0pky" align="center">-</td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
-    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center">252.05</td>
+    <td class="tg-0pky" align="center">23.75</td>
+    <td class="tg-0pky" align="center">38.23</td>
+    <td class="tg-0pky" align="center">16.25</td>
+    <td class="tg-0pky" align="center">39.15</td>
+    <td class="tg-0pky" align="center">20.62</td>
+    <td class="tg-0pky" align="center">38.24</td>
+    <td class="tg-0pky" align="center">68.61</td>
+    <td class="tg-0pky" align="center">33.55</td>
+    <td class="tg-0pky" align="center">36.72</td>
+    <td class="tg-0pky" align="center">37.95</td>
   </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iSSAM</a> [WACV2021]<sup>@</sup></td>
