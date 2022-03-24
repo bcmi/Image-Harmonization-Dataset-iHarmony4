@@ -254,6 +254,21 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">109.65</td>
     <td class="tg-0pky" align="center">34.01</td>
   </tr>
+   <tr>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2109.06671.pdf">CDTNet</a> [CVPR2022]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+    <td class="tg-0pky" align="center"></td>
+  </tr>
   <tr>
     <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Sofiiuk_Foreground-Aware_Semantic_Representations_for_Image_Harmonization_WACV_2021_paper.pdf">iSSAM</a> [WACV2021]<sup>@</sup></td>
     <td class="tg-0pky" align="center">-</td>
