@@ -18,22 +18,22 @@ Our dataset **iHarmony4** is a synthesized dataset for Image Harmonization. It c
 
 ### 1. HCOCO
 
-HCOCO, containing 42k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. **The HCOCO sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/11oXE9fXU1n54JUTxaI6Nzw )**(access code:  ab5e)  [**(Alternative_address1)**](https://cloud.bcmi.sjtu.edu.cn/sharing/iv9v9j2Na) [**(Alternative_address2)**](https://drive.google.com/file/d/1YfC-P94eJ66hWvd5YQKHTKpZ1j3G2j0T/view?usp=sharing).
+HCOCO, containing 42k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. **The HCOCO sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/11oXE9fXU1n54JUTxaI6Nzw )**(access code:  ab5e)  [**(Alternative_address1)**](https://cloud.bcmi.sjtu.edu.cn/sharing/iv9v9j2Na) **(Google Drive)**(https://drive.google.com/file/d/1YfC-P94eJ66hWvd5YQKHTKpZ1j3G2j0T/view?usp=sharing).
 
 
 ### 2. HAdobe5k
 
-HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions. **The HAdobe5k sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1NAtLnCdY1-4uxRKB8REPQg)** [**(Alternative_address)**](https://cloud.bcmi.sjtu.edu.cn/sharing/eBXLV8iU5).
+HAdobe5k is generated based on [MIT-Adobe FiveK](<http://data.csail.mit.edu/graphics/fivek/>) dataset. Provided with 6 editions of the same image, we manually segment the foreground region and exchange foregrounds between 2 versions. **The HAdobe5k sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1NAtLnCdY1-4uxRKB8REPQg)** [**(Alternative_address)**](https://cloud.bcmi.sjtu.edu.cn/sharing/eBXLV8iU5) [**Google Drive**](https://drive.google.com/file/d/11_HIeo25FqXxOhFR6SK6H7UvomCQ7T62/view?usp=share_link).
 
 
 ### 3. HFlickr
 
-We collected 4833 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate HFlickr sub-dataset. **The HFlickr sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ZaCYo9Z21RGVgCwXgtvmbw)** [**(Alternative_address)**](https://cloud.bcmi.sjtu.edu.cn/sharing/IJu8Q2fK5).
+We collected 4833 images from [Flickr](<https://www.flickr.com/>). After manually segmenting the foreground region, we use the same method as HCOCO to generate HFlickr sub-dataset. **The HFlickr sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1ZaCYo9Z21RGVgCwXgtvmbw)** [**Google Drive**](https://drive.google.com/file/d/1Xg8dMctCM8kV_w5yf6s6f6EvwhC-6JUb/view?usp=share_link).
 
 
 ### 4. Hday2night
 
-Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. **The Hday2night sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1wTqGeB9SMweS5UAaxWof8A)** [**(Alternative_address)**](https://cloud.bcmi.sjtu.edu.cn/sharing/sFqh4GfI9).
+Hday2night is generated based on [day2night](https://pan.baidu.com/s/1bCtVhhtb_EDool_UnN2Bjw) dataset. We manually segment the foreground region, which is cropped and overlaid on another image captured on a different time. **The Hday2night sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/1wTqGeB9SMweS5UAaxWof8A)** [**(Alternative_address)**](https://cloud.bcmi.sjtu.edu.cn/sharing/sFqh4GfI9) [**Google Drive**](https://drive.google.com/file/d/1N2Coki5IGCknDoj3w2vGt6qDEHpBdHTn/view?usp=share_link).
 
 
 ![](examples/examples.jpg)
