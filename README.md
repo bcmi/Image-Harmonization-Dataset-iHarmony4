@@ -207,7 +207,7 @@ To test and re-produce the results, remember to put the pretrained weight downlo
 
 # Experiments
 
-When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE (foreground MSE) score on the whole test set to facilitate future study. The paper/code/model of image harmonization related methods are summarized in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization). **The following leaderboard is based on fMSE metric.**
+When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE (foreground MSE) score on the whole test set to facilitate future study. The paper/code/model of image harmonization related methods are summarized in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization). The following leaderboard is based on fMSE metric. This leaderboard has stopped updating. For the up-to-date leaderboard, please refer to [here](https://paperswithcode.com/sota/image-harmonization-on-iharmony4).
 
 <table class="tg">
   <tr>
