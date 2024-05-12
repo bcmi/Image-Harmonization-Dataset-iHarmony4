@@ -14,6 +14,11 @@
 |Training set| 38545 |19437| 7449 |311|65742|
 |Test set| 4283 |2160| 828 |133|7404|
 
+You can augment the small-scale dataset using our [SycoNet](https://github.com/bcmi/SycoNet-Adaptive-Image-Harmonization), by synthesizing high-quality composite images for real images. 
+
+We also construct [ccHarmony](https://github.com/bcmi/Image-Harmonization-Dataset-ccHarmony) dataset with color checker, which can more faithfully reflect the illumination variation. 
+
+
 ### 1. HCOCO
 
 HCOCO, containing 42k synthesized composite images, is generated based on [Microsoft COCO](<http://cocodataset.org/>) dataset. The foreground region is corresponding object segmentation mask provided from COCO. Within the foreground region, the appearance of COCO image is edited using various color transfer methods. **The HCOCO sub-dataset and training/testing split are provided in [Baidu Cloud](https://pan.baidu.com/s/11oXE9fXU1n54JUTxaI6Nzw )(access code:  ab5e), [BCMI Cloud](https://cloud.bcmi.sjtu.edu.cn/sharing/iv9v9j2Na), [Google Drive](https://drive.google.com/file/d/1YfC-P94eJ66hWvd5YQKHTKpZ1j3G2j0T/view?usp=sharing).**
