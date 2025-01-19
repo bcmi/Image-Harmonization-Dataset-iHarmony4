@@ -544,7 +544,7 @@ Besides, to evaluate the effectiveness of different methods in real scenarios, w
 # Other Resources
 
 + [Awesome-Image-Harmonization](https://github.com/bcmi/Awesome-Image-Harmonization)
-+ [Awesome-Image-Composition](https://github.com/bcmi/Awesome-Image-Composition)
++ [Awesome-Image-Composition](https://github.com/bcmi/Awesome-Object-Insertion)
 
 # Bibtex
 
