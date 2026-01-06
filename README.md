@@ -212,7 +212,7 @@ To test and re-produce the results, remember to put the pretrained weight downlo
 
 # Experiments
 
-When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE (foreground MSE) score on the whole test set to facilitate future study. The paper/code/model of image harmonization related methods are summarized in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization). The following leaderboard is based on fMSE metric. This leaderboard has stopped updating. For the up-to-date leaderboard, please refer to [here](https://paperswithcode.com/sota/image-harmonization-on-iharmony4).
+When conducting experiments, we merge training sets of four sub-datasets as a whole training set to train the model, and evaluate it on the test set of each sub-dataset and the whole test set. Here we show the results of recent baselines on our iHarmony4 dataset based on MSE and PSNR metrics. In addition, we also provide the fMSE (foreground MSE) score on the whole test set to facilitate future study. The paper/code/model of image harmonization related methods are summarized in [Awesome-image-harmonization](https://github.com/bcmi/Awesome-Image-Harmonization). The following leaderboard is based on fMSE metric. This leaderboard has stopped updating. 
 
 <table class="tg">
   <tr>
@@ -226,17 +226,17 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
   </tr>
   <tr>
     <th class="tg-0pky" align="center">Evaluation metric</th>
-    <th class="tg-0pky" align="center">fMSE</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>    
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>
-    <th class="tg-0pky" align="center">MSE</th>
-    <th class="tg-0pky" align="center">PSNR</th>    
+    <th class="tg-0pky" align="center">fMSE&downarrow;</th>
+    <th class="tg-0pky" align="center">MSE&downarrow;</th>
+    <th class="tg-0pky" align="center">PSNR&uparrow;</th>    
+    <th class="tg-0pky" align="center">MSE&downarrow;</th>
+    <th class="tg-0pky" align="center">PSNR&uparrow;</th>
+    <th class="tg-0pky" align="center">MSE&downarrow;</th>
+    <th class="tg-0pky" align="center">PSNR&uparrow;</th>
+    <th class="tg-0pky" align="center">MSE&downarrow;</th>
+    <th class="tg-0pky" align="center">PSNR&uparrow;</th>
+    <th class="tg-0pky" align="center">MSE&downarrow;</th>
+    <th class="tg-0pky" align="center">PSNR&uparrow;</th>    
   </tr>
   <tr>
     <td class="tg-0pky" align="center">input composite</td>
@@ -252,6 +252,36 @@ When conducting experiments, we merge training sets of four sub-datasets as a wh
     <td class="tg-0pky" align="center">28.32</td>
     <td class="tg-0pky" align="center">109.65</td>
     <td class="tg-0pky" align="center">34.01</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2211.08639">HDNet</a> [ACMMM2023]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">179.49</td>
+    <td class="tg-0pky" align="center">16.55</td>
+    <td class="tg-0pky" align="center">40.46</td>
+    <td class="tg-0pky" align="center">11.60</td>
+    <td class="tg-0pky" align="center">41.04</td>
+    <td class="tg-0pky" align="center">13.58</td>
+    <td class="tg-0pky" align="center">41.17</td>
+    <td class="tg-0pky" align="center">47.39</td>
+    <td class="tg-0pky" align="center">35.81</td>
+    <td class="tg-0pky" align="center">31.97</td>
+    <td class="tg-0pky" align="center">38.85</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky" align="center"><a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Guerreiro_PCT-Net_Full_Resolution_Image_Harmonization_Using_Pixel-Wise_Color_Transformations_CVPR_2023_paper.pdf">PCTNet</a> [CVPR2023]</td>
+    <td class="tg-0pky" align="center">-</td>
+    <td class="tg-0pky" align="center">238.27</td>
+    <td class="tg-0pky" align="center">18.80</td>
+    <td class="tg-0pky" align="center">39.28</td>
+    <td class="tg-0pky" align="center">12.45</td>
+    <td class="tg-0pky" align="center">39.85</td>
+    <td class="tg-0pky" align="center">19.35</td>
+    <td class="tg-0pky" align="center">39.97</td>
+    <td class="tg-0pky" align="center">45.79</td>
+    <td class="tg-0pky" align="center">34.87</td>
+    <td class="tg-0pky" align="center">46.47</td>
+    <td class="tg-0pky" align="center">37.25</td>
   </tr>
    <tr>
     <td class="tg-0pky" align="center"><a href="https://arxiv.org/pdf/2109.06671.pdf">CDTNet</a> [CVPR2022]</td>
@@ -557,5 +587,6 @@ author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and 
 booktitle={CVPR},
 year={2020}}
 ```
+
 
 
