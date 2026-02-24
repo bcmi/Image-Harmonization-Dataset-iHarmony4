@@ -3,7 +3,10 @@
 
 <img src='examples/results_gif.gif' align="center" width=1024>
 
-### Try this [online demo](http://libcom.ustcnewly.com/) for image harmonization and have fun!
+### Online Demo
+
+Try this [online demo](http://libcom.ustcnewly.com/) for image composition (object insertion) built upon [libcom](https://github.com/bcmi/libcom) toolbox and have fun!
+
 
 [![]](https://github.com/user-attachments/assets/87416ec5-2461-42cb-9f2d-5030b1e1b5ec)
 
@@ -589,6 +592,7 @@ author={Wenyan Cong and Jianfu Zhang and Li Niu and Liu Liu and Zhixin Ling and 
 booktitle={CVPR},
 year={2020}}
 ```
+
 
 
 
