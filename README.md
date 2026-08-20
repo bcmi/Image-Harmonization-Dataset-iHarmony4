@@ -1,5 +1,9 @@
 # Image_Harmonization_Datasets: iHarmony4
 
+Welcome to scan the WeChat QR code to join the discussion group on image composition/compositing, object insertion/addition.
+<p align="center">
+<img width="150" height="150" alt="Image" src="https://github.com/user-attachments/assets/8572a7c4-0f62-4a5f-bc06-9a1d9fcb14e3" />
+</p>
 
 <img src='examples/results_gif.gif' align="center" width=1024>
 
